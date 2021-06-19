@@ -1,0 +1,5 @@
+# one argocd app per environment
+# argocd app for 00-preview
+# argocd app for 01-dev
+# argocd app for 02-stage
+# argocd app for 03-prod
