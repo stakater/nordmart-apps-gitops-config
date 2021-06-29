@@ -2,7 +2,26 @@
 
 org > tenants > apps > envs
 
-gitops-config-template
+1) where to apps of apps?
+
+2) do we need to any differentiation between?
+- global operator installation
+- namespace scoped operator installation 
+- CR creation or 
+- application deployment
+
+3) where to put helm chart and helm values?
+inside the application folder; and not anywhere common
+
+4) where should we store the creation of spaces?
+
+5) argocd setup?
+- per cluster
+- per organization? (controls multiple clusters)
+
+6) where to put build folders?
+
+---
 
 1) Why call it configs?
 it has argocd, spaces, operators, tekton, forecastle, etc.
@@ -17,17 +36,4 @@ namespace scoped operators in another place
 
 4) Tekton CRs should be in team specific folder of team DelEng? Why put it in common configs folder?
 
-5) Why have helm-values folder? Why not application specific folder? 
-> yes we can
-
-6) Can we move tenant specific argo project to common folder?
-> yes we can
-
-7) Maybe we should move spaces definition to common tenants folder?
-> 
-
 8) I think we can remove common folder as this should belong to a specific team; who owns; that; e.g. DelEng team
-
-
-
-9) 
