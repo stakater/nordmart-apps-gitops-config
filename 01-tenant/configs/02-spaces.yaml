@@ -1,0 +1,9 @@
+# spaces == projects == namespaces
+# list of spaces
+# 00-preview space
+# 01-dev space
+# 02-stage space
+# 03-prod space
+apiVersion: tenantoperator.stakater.com/v1alpha1
+kind: Space
+...
