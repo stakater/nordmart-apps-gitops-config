@@ -6,7 +6,7 @@ spec:
   generators:
   - git:
       repoURL: https://github.com/stakater/gitops-config-template.git
-      revision: HEAD
+      revision: option-2
       directories:
       - path: "01-gabbar/01-review/00-preview/*"
   template:
@@ -16,7 +16,7 @@ spec:
       project: default
       source:
         repoURL: https://github.com/stakater/gitops-config-template.git
-        targetRevision: HEAD
+        targetRevision: option-2
         path: '{{path}}'
       destination:
         server: https://kubernetes.default.svc
