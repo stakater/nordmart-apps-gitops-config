@@ -5,17 +5,17 @@ metadata:
 spec:
   generators:
   - git:
-      repoURL: https://github.com/argoproj-labs/applicationset.git
+      repoURL: https://github.com/stakater/gitops-config-template.git
       revision: HEAD
       directories:
-      - path: */*/00-preview/
+      - path: "*/*/00-preview/"
   template:
     metadata:
       name: '{{path.basename}}'
     spec:
       project: default
       source:
-        repoURL: https://github.com/argoproj-labs/applicationset.git
+        repoURL: https://github.com/stakater/gitops-config-template.git
         targetRevision: HEAD
         path: '{{path}}'
       destination:
