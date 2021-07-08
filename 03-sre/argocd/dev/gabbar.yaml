@@ -9,7 +9,7 @@ spec:
     namespace: openshift-stakater-argocd
     server: 'https://kubernetes.default.svc'
   source:
-    path: 01-gabbar/config/argocd/dev/
+    path: 01-gabbar/configs/argocd/dev/
     repoURL: 'http://github.com/stakater/gitops-config-template.git'
     targetRevision: option-2
   project: default
