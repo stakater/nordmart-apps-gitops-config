@@ -1,0 +1,4 @@
+application:
+   deployment:
+      image: 
+         repository: nginx

@@ -2,16 +2,18 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: preview
+  namespace: openshift-stakater-argocd
 spec:
   generators:
   - git:
       repoURL: https://github.com/stakater/gitops-config-template.git
       revision: option-2
       directories:
-      - path: "01-gabbar/01-review/00-preview/*"
+      - path: "**/00-preview/"
   template:
     metadata:
       name: '{{path.basename}}'
+      namespace: openshift-stakater-argocd
     spec:
       project: default
       source:
@@ -21,3 +23,4 @@ spec:
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{path.basename}}'
+

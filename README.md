@@ -5,8 +5,8 @@ org > tenants > apps > envs
 1) where to apps of apps?
 
 2) do we need to any differentiation between?
-- global operator installation
-- namespace scoped operator installation 
+- global operator installation    - sre 
+- namespace scoped operator installation  - team
 - CR creation or 
 - application deployment
 
@@ -36,4 +36,9 @@ namespace scoped operators in another place
 
 4) Tekton CRs should be in team specific folder of team DelEng? Why put it in common configs folder?
 
+7) How to handle multi-tenancy? team based applicationset?
+8) How to handle multi cluster
 8) I think we can remove common folder as this should belong to a specific team; who owns; that; e.g. DelEng team
+9) Tenant should configure everything inside its folder(should not go out of folder for new application)
+
+
