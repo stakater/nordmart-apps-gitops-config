@@ -12,7 +12,7 @@ spec:
   source:
     path: 01-gabbar/argocd/dev/
     repoURL: 'http://github.com/stakater/gitops-config-template.git'
-    targetRevision: HEAD
+    targetRevision: option-2
   project: default
   syncPolicy:
     automated:
