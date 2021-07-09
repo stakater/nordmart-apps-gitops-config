@@ -1,4 +1,5 @@
-application:
-   deployment:
-      image: 
-         repository: nginx
+review:
+  application:
+     deployment:
+        image: 
+           repository: nginx
