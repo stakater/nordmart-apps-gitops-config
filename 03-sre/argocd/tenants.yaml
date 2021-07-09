@@ -2,14 +2,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gabbar-review
+  name: tenants
   namespace: openshift-stakater-argocd
 spec:
   destination:
     namespace: openshift-stakater-argocd
     server: 'https://kubernetes.default.svc'
   source:
-    path: 01-gabbar/01-review/01-dev
+    path: 03-sre/tenants
     repoURL: 'http://github.com/stakater/gitops-config-template.git'
     targetRevision: option-2
   project: default
