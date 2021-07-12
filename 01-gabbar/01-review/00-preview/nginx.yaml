@@ -3,12 +3,12 @@ kind: Pod
 metadata:
   creationTimestamp: null
   labels:
-    run: nginx
-  name: nginx
+    run: review-ui
+  name: review-ui
 spec:
   containers:
-  - image: nginx
-    name: nginx
+  - image: review-ui
+    name: stakater/stakater-nordmart-review-ui
     resources: {}
   dnsPolicy: ClusterFirst
   restartPolicy: Never
