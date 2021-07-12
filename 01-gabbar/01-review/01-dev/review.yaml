@@ -1,4 +1,4 @@
---
+---
 # Source: helm/charts/application/templates/serviceaccount.yaml
 apiVersion: v1
 kind: ServiceAccount
