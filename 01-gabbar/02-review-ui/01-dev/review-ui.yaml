@@ -7,8 +7,8 @@ metadata:
   name: review-ui
 spec:
   containers:
-  - image: review-ui
-    name: stakater/stakater-nordmart-review-ui
+  - image: stakater/nordmart-review-ui
+    name: review-ui
     resources: {}
   dnsPolicy: ClusterFirst
   restartPolicy: Never
