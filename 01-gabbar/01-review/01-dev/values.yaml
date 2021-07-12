@@ -10,7 +10,6 @@ application:
         JAEGER_ENDPOINT: "http://jaeger-collector.istio-system:14268/api/traces"
  route:
       enabled: true
-      port: https
       additionalLabels:
               router: default
  deployment:
@@ -55,7 +54,7 @@ application:
  service:
    ports:
    - port: 8080
-     name: https
+     name: http
      targetPort: 8080
  rbac:
    create: true
