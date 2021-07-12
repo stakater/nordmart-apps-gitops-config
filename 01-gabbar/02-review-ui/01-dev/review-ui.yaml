@@ -146,6 +146,7 @@ metadata:
     chart: "application-0.0.29"
     release: "RELEASE-NAME"
     heritage: "Helm"
+    router: "default"
 spec:
   port:
     targetPort: http
