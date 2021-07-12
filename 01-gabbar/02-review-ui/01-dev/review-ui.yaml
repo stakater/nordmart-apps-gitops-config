@@ -73,7 +73,7 @@ spec:
       - name: nexus-docker-config-forked
       containers:
       - name: review-web
-        image: "stakater/stakater-nordmart-web:v0.0.7"
+        image: "stakater/nordmart-review-ui"
         imagePullPolicy: IfNotPresent
         env:
           - name: PORT
