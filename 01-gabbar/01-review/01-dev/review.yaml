@@ -279,7 +279,7 @@ metadata:
     router: default
 spec:
   port:
-    targetPort: http
+    targetPort: https
 
   to:
     kind: Service
