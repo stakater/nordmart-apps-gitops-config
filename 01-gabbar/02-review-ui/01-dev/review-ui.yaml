@@ -1,14 +1,160 @@
 apiVersion: v1
-kind: Pod
+kind: ServiceAccount
 metadata:
-  creationTimestamp: null
   labels:
-    run: review-ui
-  name: review-ui
+    app: review-web
+    appVersion: "v0.0.7"
+    group: com.stakater.platform
+    provider: stakater
+    team: stakater
+    chart: "application-0.0.29"
+    release: "RELEASE-NAME"
+    heritage: "Helm"
+  name: review-web
+---
+# Source: review-web/charts/application/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: review-web
+    appVersion: "v0.0.7"
+    group: com.stakater.platform
+    provider: stakater
+    team: stakater
+    chart: "application-0.0.29"
+    release: "RELEASE-NAME"
+    heritage: "Helm"
+  name: review-web
 spec:
-  containers:
-  - image: stakater/nordmart-review-ui
-    name: review-ui
-    resources: {}
-  dnsPolicy: ClusterFirst
-  restartPolicy: Never
+  selector:
+    app: review-web
+    maistra.io/expose-route: "true"
+  ports:
+    - name: http
+      port: 8080
+      protocol: TCP
+      targetPort: 4200
+---
+# Source: review-web/charts/application/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: review-web
+    appVersion: "v0.0.7"
+    group: com.stakater.platform
+    provider: stakater
+    team: stakater
+    chart: "application-0.0.29"
+    release: "RELEASE-NAME"
+    heritage: "Helm"
+    appCategory: frontend
+  annotations: 
+    reloader.stakater.com/auto: "true"
+  name: review-web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: review-web
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: review-web
+        maistra.io/expose-route: "true"
+      annotations:
+        sidecar.istio.io/inject: "true"
+        sidecar.istio.io/rewriteAppHTTPProbers: "true"
+    spec:      
+      imagePullSecrets:
+      - name: nexus-docker-config-forked
+      containers:
+      - name: review-web
+        image: "stakater/stakater-nordmart-web:v0.0.7"
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: PORT
+            value: "4200"
+          - name: REVIEW_API
+            value: https://review-gabbar-dev.apps.devtest.41b996e9.kubeapp.cloud
+          - name: JAEGER_ENDPOINT
+            value: http://jaeger-collector.istio-system:14268/api/traces          
+        livenessProbe:
+          failureThreshold: 3
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+          initialDelaySeconds: 10
+          httpGet:
+            path: /health
+            port: 4200
+        readinessProbe:
+          failureThreshold: 3
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+          initialDelaySeconds: 10
+          httpGet:
+            path: /health
+            port: 4200
+        resources:
+          limits:
+            memory: 256Mi
+            cpu: 0.5
+          requests:
+            memory: 128Mi
+            cpu: 0.1
+      serviceAccountName: review-web
+---
+# Source: review-web/charts/application/templates/forecastle.yaml
+apiVersion: forecastle.stakater.com/v1alpha1
+kind: ForecastleApp
+metadata:
+  labels:
+    app: review-web
+    appVersion: "v0.0.7"
+    group: com.stakater.platform
+    provider: stakater
+    team: stakater
+    chart: "application-0.0.29"
+    release: "RELEASE-NAME"
+    heritage: "Helm"
+  name: review-web
+spec:
+  name: Review Web
+  group: Nordmart
+  icon: https://raw.githubusercontent.com/stakater/ForecastleIcons/master/stakater-big.png
+  urlFrom:
+    routeRef:
+      name: review-web
+  networkRestricted: false
+---
+# Source: review-web/charts/application/templates/route.yaml
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: review-web
+  labels:
+    app: review-web
+    appVersion: "v0.0.7"
+    group: com.stakater.platform
+    provider: stakater
+    team: stakater
+    chart: "application-0.0.29"
+    release: "RELEASE-NAME"
+    heritage: "Helm"
+spec:
+  port:
+    targetPort: http
+
+  to:
+    kind: Service
+    name: review-web
+    weight: 100
+  wildcardPolicy: None
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
