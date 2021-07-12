@@ -1,0 +1,291 @@
+--
+# Source: helm/charts/application/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app: review
+    appVersion: "v0.0.2"
+    group: com.stakater.platform
+    provider: stakater
+    team: stakater
+    chart: "application-0.0.31"
+    release: "RELEASE-NAME"
+    heritage: "Helm"
+  name: review
+---
+# Source: helm/charts/mongodb/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: review-mongodb
+  namespace: default
+  labels:
+    app.kubernetes.io/name: mongodb
+    helm.sh/chart: mongodb-10.0.5
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+secrets:
+  - name: review-mongodb
+---
+# Source: helm/charts/application/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app: review
+    appVersion: "v0.0.2"
+    group: com.stakater.platform
+    provider: stakater
+    team: stakater
+    chart: "application-0.0.31"
+    release: "RELEASE-NAME"
+    heritage: "Helm"
+  name: review
+data:
+  DB_NAME: nordmartDB
+  JAEGER_ENDPOINT: http://jaeger-collector.istio-system:14268/api/traces
+  MONGO_HOST: review-mongodb
+---
+# Source: helm/charts/mongodb/templates/standalone/pvc.yaml
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: review-mongodb
+  namespace: default
+  labels:
+    app.kubernetes.io/name: mongodb
+    helm.sh/chart: mongodb-10.0.5
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: mongodb
+spec:
+  accessModes:
+    - "ReadWriteOnce"
+  resources:
+    requests:
+      storage: "8Gi"
+---
+# Source: helm/charts/application/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: review
+    appVersion: "v0.0.2"
+    group: com.stakater.platform
+    provider: stakater
+    team: stakater
+    chart: "application-0.0.31"
+    release: "RELEASE-NAME"
+    heritage: "Helm"
+  name: review
+spec:
+  selector:
+    app: review
+  ports:
+    - name: https
+      port: 8080
+      targetPort: 8080
+---
+# Source: helm/charts/mongodb/templates/standalone/svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: review-mongodb
+  namespace: default
+  labels:
+    app.kubernetes.io/name: mongodb
+    helm.sh/chart: mongodb-10.0.5
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: mongodb
+spec:
+  type: ClusterIP
+  ports:
+    - name: mongodb
+      port: 27017
+      targetPort: mongodb
+      nodePort: null
+  selector:
+    app.kubernetes.io/name: mongodb
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/component: mongodb
+---
+# Source: helm/charts/application/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: review
+    appVersion: "v0.0.2"
+    group: com.stakater.platform
+    provider: stakater
+    team: stakater
+    chart: "application-0.0.31"
+    release: "RELEASE-NAME"
+    heritage: "Helm"
+    appCategory: backend
+  annotations: 
+    reloader.stakater.com/auto: "true"
+  name: review
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: review
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: review
+    spec:      
+      imagePullSecrets:
+      - name: nexus-docker-config-forked
+      containers:
+      - name: review
+        image: "stakater/stakater-nordmart-review:v0.0.2"
+        imagePullPolicy: IfNotPresent
+        envFrom:
+        - configMapRef:
+            name: review
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 60
+          successThreshold: 1
+          timeoutSeconds: 1
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 60
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources:
+          limits:
+            memory: 1Gi
+            cpu: 0.5
+          requests:
+            memory: 128Mi
+            cpu: 0.1
+      serviceAccountName: review
+---
+# Source: helm/charts/mongodb/templates/standalone/dep-sts.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: review-mongodb
+  namespace: default
+  labels:
+    app.kubernetes.io/name: mongodb
+    helm.sh/chart: mongodb-10.0.5
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: mongodb
+spec:
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: mongodb
+      app.kubernetes.io/instance: RELEASE-NAME
+      app.kubernetes.io/component: mongodb
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: mongodb
+        helm.sh/chart: mongodb-10.0.5
+        app.kubernetes.io/instance: RELEASE-NAME
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/component: mongodb
+    spec:
+      
+      serviceAccountName: review-mongodb
+      containers:
+        - name: mongodb
+          image: docker.io/bitnami/mongodb:4.4.2-debian-10-r0
+          imagePullPolicy: "IfNotPresent"
+          env:
+            - name: BITNAMI_DEBUG
+              value: "false"
+            - name: ALLOW_EMPTY_PASSWORD
+              value: "yes"
+            - name: MONGODB_SYSTEM_LOG_VERBOSITY
+              value: "0"
+            - name: MONGODB_DISABLE_SYSTEM_LOG
+              value: "no"
+            - name: MONGODB_ENABLE_IPV6
+              value: "no"
+            - name: MONGODB_ENABLE_DIRECTORY_PER_DB
+              value: "no"
+          ports:
+            - name: mongodb
+              containerPort: 27017
+          livenessProbe:
+            exec:
+              command:
+                - mongo
+                - --eval
+                - "db.adminCommand('ping')"
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          readinessProbe:
+            exec:
+              command:
+                - mongo
+                - --eval
+                - "db.adminCommand('ping')"
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          resources:
+            limits: {}
+            requests: {}
+          volumeMounts:
+            - name: datadir
+              mountPath: /bitnami/mongodb
+              subPath: 
+      volumes:
+        - name: datadir
+          persistentVolumeClaim:
+            claimName: review-mongodb
+---
+# Source: helm/charts/application/templates/route.yaml
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: review
+  labels:
+    app: review
+    appVersion: "v0.0.2"
+    group: com.stakater.platform
+    provider: stakater
+    team: stakater
+    chart: "application-0.0.31"
+    release: "RELEASE-NAME"
+    heritage: "Helm"
+    router: default
+spec:
+  port:
+    targetPort: http
+
+  to:
+    kind: Service
+    name: review
+    weight: 100
+  wildcardPolicy: None
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
