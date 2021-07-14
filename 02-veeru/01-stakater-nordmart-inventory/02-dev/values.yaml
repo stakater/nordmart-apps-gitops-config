@@ -90,7 +90,12 @@ application:
         JAEGER_ENDPOINT: "http://jaeger-collector.istio-system:14268/api/traces"
         POSTGRESQL_HOST: inventory-postgres
         DB_NAME: "inventory"
-
+  sealedSecrets:
+    enabled: true
+    files:
+      - name: inventory-postgres
+        encryptedData:
+          postgresql-password: AgCGNdFH8keTqQhcTV9tX3flDPvOkMZkJ3CUjSIcBjkBDlhnAk5sr5tVzMoomnv7bBR8Pvts1vKTPocBfw0Jqf/7TJDMDd3X3apFviru6h5JTjx0ZT5U9/CQn1Jt+GaZc9d98pRfuaLWlkLReFf5Wm/knkNM2wWWbrm4HGqbUJEHJ5MhaxFOiM7i7s0ge1CyiOAa50322/2WD/X7bPCmaoN5Wke1Yeek3SdpfGw+D9Q0aY0KcJipWqON1Kvdz94PXpl+iVmGRGb5tND2+XpiKCNXK6mQcVYRTmi0tgwNZDo/5MQrT9Sx1VJpgdxpGvIq0cIPYX5SbWSG50Rc2vp6utGaYAVOp8bH6Uu4/QfIyxOrfwwjpefOniyjumuZdIAquTxBGOOLWSpsl4+IuPa6ZiAvg9Xa/UYXhBETTVlkoSoi899i7cWgcrnhJgZtN7hR/mpbepN9Ns5e78ntsx0Kqke55SV8h5YCTy2ZyV1z82ybAnivA+7ksCzHHPbHeiYFs6H7Ld0MFVMNJG8y/H1JOsrknrWTJgF5WuyTZIs8VrcHi9+yccXf4ZqPVx1Uq4Mqvde8QJlhYoCxlGVVJtYRJGfV9v1Bpw+thFuOk0KWt1HO+rqvnng35bb5TCjFQQjkYE5QnTJ5vTwf4Y8xE35zOQ6LGi9AX0rsiYk0Auwh3go9vTQBl3KCwKT4cZDmF5xXbnFtKaKTdSanvx4=
   deployment:
     envFrom:
     - type: configmap
@@ -114,7 +119,6 @@ application:
         memory: 128Mi
         cpu: 0.1
     imagePullSecrets: nexus-docker-config-forked   
-
     env:
     - name: POSTGRESQL_PASSWORD
       valueFrom:
