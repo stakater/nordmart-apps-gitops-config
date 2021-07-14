@@ -104,8 +104,8 @@ application:
       app: "inventory"
       team: "nordmart"
     image:
-      repository: DOCKER_REPOSITORY_URL
-      tag: IMAGE_TAG
+      repository: stakater/stakater-nordmart-inventory
+      tag: v0.0.1
     resources: 
       limits:
         memory: 1Gi
