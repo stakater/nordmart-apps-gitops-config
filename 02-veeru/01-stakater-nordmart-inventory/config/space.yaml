@@ -1,0 +1,13 @@
+apiVersion: tenantoperator.stakater.com/v1alpha1
+kind: Space
+metadata:
+  name: gabbar-dev
+  labels:
+    team: gabbar
+    kind: dev 
+    stakater.com/workload-monitoring: 'true'
+  annotations:
+    openshift.io/node-selector: node-role.kubernetes.io/worker= 
+spec:
+  tenant: gabbar
+---
