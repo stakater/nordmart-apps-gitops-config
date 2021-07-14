@@ -1,7 +1,7 @@
 apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: Space
 metadata:
-  name: gabbar-dev
+  name: veeru-dev
   labels:
     team: gabbar
     kind: dev 
@@ -9,5 +9,5 @@ metadata:
   annotations:
     openshift.io/node-selector: node-role.kubernetes.io/worker= 
 spec:
-  tenant: gabbar
+  tenant: veeru
 ---
