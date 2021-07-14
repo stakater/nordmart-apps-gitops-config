@@ -9,7 +9,7 @@ spec:
     namespace: veeru-dev
     server: 'https://kubernetes.default.svc'
   source:
-    path: 02-veeru/01-stakater-nordmart-inventory/01-dev
+    path: 02-veeru/01-stakater-nordmart-inventory/02-dev
     repoURL: 'http://github.com/stakater/gitops-config-template.git'
     targetRevision: option-2
   project: veeru  
