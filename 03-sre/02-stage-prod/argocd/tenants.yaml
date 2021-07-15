@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: tenants
+  name: tenants-2
   namespace: openshift-stakater-argocd
 spec:
   destination:
