@@ -6,13 +6,13 @@ metadata:
   namespace: openshift-stakater-argocd
 spec:
   destination:
-    namespace: gabbar-dev
+    namespace: gabbar-prod
     server: 'https://kubernetes.default.svc'
   source:
-    path: 01-gabbar/01-review/01-dev
+    path: 01-gabbar/01-review/03-prod
     repoURL: 'http://github.com/stakater/gitops-config-template.git'
     targetRevision: option-2
-  project: gabbar
+  project: gabbar   
   syncPolicy:
     automated:
       prune: true
