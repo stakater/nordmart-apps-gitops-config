@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gabbar-review
+  name: gabbar-stage-review
   namespace: openshift-stakater-argocd
 spec:
   destination:

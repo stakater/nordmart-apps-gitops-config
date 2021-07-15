@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gabbar-review-ui
+  name: gabbar-dev-review-ui
   namespace: openshift-stakater-argocd
 spec:
   destination:
