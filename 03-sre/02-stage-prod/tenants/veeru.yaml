@@ -1,0 +1,8 @@
+apiVersion: tenantoperator.stakater.com/v1alpha1
+kind: Tenant
+metadata:
+  name: veeru
+spec:
+  users:
+  - hanzala@stakater.com
+  quota: medium
