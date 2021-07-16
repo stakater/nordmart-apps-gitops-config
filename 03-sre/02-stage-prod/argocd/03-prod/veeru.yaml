@@ -22,7 +22,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: veeru
+  name: veeru-prod
   namespace: openshift-stakater-argocd
 spec:
   destination:
