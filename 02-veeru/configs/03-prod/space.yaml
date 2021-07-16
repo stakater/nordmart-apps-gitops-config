@@ -1,0 +1,13 @@
+apiVersion: tenantoperator.stakater.com/v1alpha1
+kind: Space
+metadata:
+  name: veeru-prod
+  labels:
+    team: veeru
+    kind: prod
+    stakater.com/workload-monitoring: 'true'
+  annotations:
+    openshift.io/node-selector: node-role.kubernetes.io/worker= 
+spec:
+  tenant: veeru
+---
