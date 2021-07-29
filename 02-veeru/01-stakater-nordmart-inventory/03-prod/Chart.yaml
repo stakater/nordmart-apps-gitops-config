@@ -1,0 +1,13 @@
+apiVersion: v2
+name: helm
+description: A Helm chart for Kubernetes
+dependencies:
+- name: postgresql
+  version: 9.1.4
+  repository: "https://charts.bitnami.com/bitnami"
+- name: application
+  version: 0.0.*
+  repository: https://stakater.github.io/stakater-charts  
+
+version: 0.1.0
+

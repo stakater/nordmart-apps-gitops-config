@@ -1,0 +1,20 @@
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gabbar-stage-review
+  namespace: openshift-stakater-argocd
+spec:
+  destination:
+    namespace: gabbar-stage
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: 01-gabbar/01-review/02-stage
+    repoURL: 'http://github.com/stakater/gitops-config-template.git'
+    targetRevision: option-2
+  project: gabbar-stage 
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+

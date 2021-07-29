@@ -1,0 +1,20 @@
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tenants-2
+  namespace: openshift-stakater-argocd
+spec:
+  destination:
+    namespace: openshift-stakater-argocd
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: 03-sre/02-stage-prod/tenant-operator
+    repoURL: 'http://github.com/stakater/gitops-config-template.git'
+    targetRevision: option-2
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+

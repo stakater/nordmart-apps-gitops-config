@@ -1,2 +1,3 @@
 # gitops-config-template
-gitops-config-template
+
+An opinionated gitops structure!
