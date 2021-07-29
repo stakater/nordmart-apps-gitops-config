@@ -9,7 +9,7 @@ spec:
     namespace: openshift-stakater-argocd
     server: 'https://kubernetes.default.svc'
   source:
-    path: 03-sre/01-dev-test/tenants
+    path: 03-sre/01-dev-test/tenant-operator
     repoURL: 'http://github.com/stakater/gitops-config-template.git'
     targetRevision: option-2
   project: default
