@@ -8,7 +8,7 @@ spec:
   destination:
     namespace: gabbar-dev
     server: 'https://kubernetes.default.svc'
-  project: gabbar
+  project: gabbar-dev
   source:
     path: 01-gabbar/02-review-ui/01-dev
     repoURL: 'http://github.com/stakater/gitops-config-template.git'
