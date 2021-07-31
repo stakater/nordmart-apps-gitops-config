@@ -3,11 +3,8 @@ kind: Space
 metadata:
   name: gabbar-pr
   labels:
-    team: gabbar
-    kind: pr
-    stakater.com/workload-monitoring: 'true'
-  annotations:
-    openshift.io/node-selector: node-role.kubernetes.io/worker= 
+    env.stakater.com/name: 'pr'
+    env.stakater.com/kind: 'pr'
 spec:
   tenant: gabbar
 ---

@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: tenants
+  name: tenant-operator
   namespace: openshift-stakater-argocd
 spec:
   destination:
@@ -11,7 +11,7 @@ spec:
   source:
     path: 03-sre/01-dev-test/tenant-operator
     repoURL: 'http://github.com/stakater/gitops-config-template.git'
-    targetRevision: option-2
+    targetRevision: main
   project: default
   syncPolicy:
     automated:

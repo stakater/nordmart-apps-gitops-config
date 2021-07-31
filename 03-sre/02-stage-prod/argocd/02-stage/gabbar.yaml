@@ -31,7 +31,7 @@ spec:
   source:
     path: 01-gabbar/configs/02-stage/
     repoURL: 'http://github.com/stakater/gitops-config-template.git'
-    targetRevision: option-2
+    targetRevision: main
     directory:
        recurse: true
   project: gabbar-stage

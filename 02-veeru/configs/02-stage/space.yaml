@@ -3,11 +3,8 @@ kind: Space
 metadata:
   name: veeru-stage
   labels:
-    team: veeru
-    kind: stage
-    stakater.com/workload-monitoring: 'true'
-  annotations:
-    openshift.io/node-selector: node-role.kubernetes.io/worker= 
+    env.stakater.com/name: 'stage'
+    env.stakater.com/kind: 'stage'
 spec:
   tenant: veeru
 ---
