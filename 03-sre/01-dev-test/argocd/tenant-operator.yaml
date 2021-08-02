@@ -12,6 +12,8 @@ spec:
     path: 03-sre/01-dev-test/tenant-operator
     repoURL: 'https://github.com/stakater/gitops-config-template.git'
     targetRevision: main
+    directory:
+      recurse: true
   project: default
   syncPolicy:
     automated:
