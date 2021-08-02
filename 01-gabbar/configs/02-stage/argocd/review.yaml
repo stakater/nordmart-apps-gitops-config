@@ -10,7 +10,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   source:
     path: 01-gabbar/01-review/02-stage
-    repoURL: 'http://github.com/stakater/gitops-config-template.git'
+    repoURL: 'https://github.com/stakater/gitops-config-template.git'
     targetRevision: option-2
   project: gabbar-stage 
   syncPolicy:

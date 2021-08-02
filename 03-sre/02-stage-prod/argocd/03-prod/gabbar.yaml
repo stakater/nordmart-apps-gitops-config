@@ -30,8 +30,8 @@ spec:
     server: 'https://kubernetes.default.svc'
   source:
     path: 01-gabbar/configs/03-prod/
-    repoURL: 'http://github.com/stakater/gitops-config-template.git'
-    targetRevision: option-2
+    repoURL: 'https://github.com/stakater/gitops-config-template.git'
+    targetRevision: main
     directory:
        recurse: true
   project: gabbar-prod

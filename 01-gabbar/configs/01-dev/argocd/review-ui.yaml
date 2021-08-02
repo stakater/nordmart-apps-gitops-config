@@ -11,7 +11,7 @@ spec:
   project: gabbar-dev
   source:
     path: 01-gabbar/02-review-ui/01-dev
-    repoURL: 'http://github.com/stakater/gitops-config-template.git'
+    repoURL: 'https://github.com/stakater/gitops-config-template.git'
     targetRevision: option-2
   syncPolicy:
     automated:
