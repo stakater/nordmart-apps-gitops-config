@@ -1,0 +1,10 @@
+apiVersion: tenantoperator.stakater.com/v1alpha1
+kind: Space
+metadata:
+  name: veeru-build
+  labels:
+    env.stakater.com/name: 'build'
+    env.stakater.com/kind: 'build'
+spec:
+  tenant: veeru
+---
