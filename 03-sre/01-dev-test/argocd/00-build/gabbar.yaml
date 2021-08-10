@@ -25,7 +25,7 @@ metadata:
   namespace: openshift-stakater-argocd
 spec:
   destination:
-    namespace: openshift-stakater-argocd
+    namespace: gabbar-build
     server: 'https://kubernetes.default.svc'
   source:
     path: 01-gabbar/configs/00-build/
