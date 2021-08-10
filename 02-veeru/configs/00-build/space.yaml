@@ -5,6 +5,7 @@ metadata:
   labels:
     env.stakater.com/name: 'build'
     env.stakater.com/kind: 'build'
+    kind: build
 spec:
   tenant: veeru
 ---
