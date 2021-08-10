@@ -12,7 +12,7 @@ spec:
   sourceRepos:
   - '*'
   destinations:
-  - namespace: "veeru-build"
+  - namespace: "openshift-stakater-argocd"
     server: https://kubernetes.default.svc
   clusterResourceWhitelist:
   - group: "*"
