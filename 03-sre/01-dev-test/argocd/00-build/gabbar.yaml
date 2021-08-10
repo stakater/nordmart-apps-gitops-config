@@ -12,7 +12,7 @@ spec:
   sourceRepos:
   - '*'
   destinations:
-  - namespace: "gabbar-build"
+  - namespace: "openshift-stakater-argocd"
     server: https://kubernetes.default.svc
   clusterResourceWhitelist:
   - group: "*"
