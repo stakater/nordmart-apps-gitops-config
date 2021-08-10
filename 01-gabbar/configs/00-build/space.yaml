@@ -3,8 +3,7 @@ kind: Space
 metadata:
   name: gabbar-build
   labels:
-    env.stakater.com/name: 'build'
-    env.stakater.com/kind: 'build'
+     kind: build
 spec:
   tenant: gabbar
 ---
