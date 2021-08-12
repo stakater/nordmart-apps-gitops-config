@@ -1,11 +1,1 @@
-application: 
- applicationName: "review"
- configMap:
-    enabled: true
-    files:
-    - nameSuffix: ""
-      data:
-        DB_NAME: "nordmartDB"
-        MONGO_HOST: "review-mongodb"
-        JAEGER_ENDPOINT: "http://jaeger-collector.istio-system:14268/api/traces"
- 
+{"application":{"applicationName":"review","configMap":{"enabled":true,"files":[{"data":{"DB_NAME":"nordmartDB","JAEGER_ENDPOINT":"http://jaeger-collector.istio-system:14268/api/traces","MONGO_HOST":"review-mongodb"},"nameSuffix":""}]},"deployment":{"additionalLabels":{"appCategory":"backend"},"annotations":null,"envFrom":[{"name":"","type":"configmap"}],"image":{"repository":"stakater/stakater-nordmart-review","tag":"v0.0.2"},"imagePullSecrets":"nexus-docker-config-forked","probes":{"livenessProbe":{"failureThreshold":3,"httpGet":{"path":"/health","port":8080},"initialDelaySeconds":10,"periodSeconds":60,"successThreshold":1,"timeoutSeconds":1},"readinessProbe":{"failureThreshold":3,"httpGet":{"path":"/health","port":8080},"initialDelaySeconds":10,"periodSeconds":60,"successThreshold":1,"timeoutSeconds":1}},"resources":{"limits":{"cpu":0.5,"memory":"1Gi"},"requests":{"cpu":0.1,"memory":"128Mi"}},"volumes":{}},"rbac":{"create":true,"serviceAccount":{"create":true,"enabled":true}},"route":{"additionalLabels":{"router":"default"},"enabled":true},"service":{"ports":[{"name":"http","port":8080,"targetPort":8080}]}},"mongodb":{"auth":{"enabled":false},"containerSecurityContext":{"enabled":false},"fullnameOverride":"review-mongodb","podSecurityContext":{"enabled":false}}}
