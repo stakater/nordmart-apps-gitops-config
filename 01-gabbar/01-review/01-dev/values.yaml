@@ -60,3 +60,11 @@ application:
     - name: http
       port: 8080
       targetPort: 8080
+mongodb:
+  auth:
+    enabled: false
+  containerSecurityContext:
+    enabled: false
+  fullnameOverride: review-mongodb
+  podSecurityContext:
+    enabled: false
