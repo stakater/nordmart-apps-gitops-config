@@ -12,7 +12,7 @@ spec:
   sourceRepos:
   - '*'
   destinations:
-  - namespace: "veeru-preview"
+  - namespace: "veeru-*"
     server: https://kubernetes.default.svc
   - namespace: "openshift-stakater-argocd"
     server: https://kubernetes.default.svc
