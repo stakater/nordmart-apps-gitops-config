@@ -12,7 +12,7 @@ spec:
   source:
     path: 01-gabbar/02-review-ui/02-stage
     repoURL: 'https://github.com/stakater/gitops-config-template.git'
-    targetRevision: master
+    targetRevision: HEAD
   syncPolicy:
     automated:
       prune: true
