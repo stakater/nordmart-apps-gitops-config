@@ -5,7 +5,7 @@ application:
     files:
     - data:
         DB_NAME: nordmartDB
-        JAEGER_ENDPOINT: http://jaeger-collector.istio-system:14268/api/traces
+        JAEGER_ENDPOINT: http://jaeger-collector.istio-stem:14268/api/traces
         MONGO_HOST: review-mongodb
       nameSuffix: ""
   deployment:
