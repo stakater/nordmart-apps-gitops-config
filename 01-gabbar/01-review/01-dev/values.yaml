@@ -9,9 +9,6 @@ application:
         MONGO_HOST: "review-mongodb"
         JAEGER_ENDPOINT: "http://jaeger-collector.istio-system:14268/api/traces"
  route:
-      enabled: true
-      additionalLabels:
-              router: default
  deployment:
    additionalLabels:
      appCategory: "backend"
