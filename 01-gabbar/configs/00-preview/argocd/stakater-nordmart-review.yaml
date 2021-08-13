@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gabbar-preview-stakater-nordmartreview
+  name: gabbar-preview-stakater-nordmart-review
   namespace: openshift-stakater-argocd
 spec:
   destination:
