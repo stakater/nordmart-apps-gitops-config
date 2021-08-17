@@ -4,5 +4,6 @@ metadata:
   name: veeru
 spec:
   users:
-  - hanzala@stakater.com
+    admin:
+    - hanzala@stakater.com
   quota: medium
