@@ -3,8 +3,8 @@ kind: ServiceAccount
 metadata:
   labels:
     app: review-web
-    appVersion: SNAPSHOT-PR-3-ab1171f4
-    chart: application-0.0.29
+    appVersion: SNAPSHOT-PR-3-2f359a5e
+    chart: application-0.0.60
     group: com.stakater.platform
     heritage: Helm
     provider: stakater
@@ -18,8 +18,8 @@ kind: Service
 metadata:
   labels:
     app: review-web
-    appVersion: SNAPSHOT-PR-3-ab1171f4
-    chart: application-0.0.29
+    appVersion: SNAPSHOT-PR-3-2f359a5e
+    chart: application-0.0.60
     group: com.stakater.platform
     heritage: Helm
     provider: stakater
@@ -45,8 +45,8 @@ metadata:
   labels:
     app: review-web
     appCategory: frontend
-    appVersion: SNAPSHOT-PR-3-ab1171f4
-    chart: application-0.0.29
+    appVersion: SNAPSHOT-PR-3-2f359a5e
+    chart: application-0.0.60
     group: com.stakater.platform
     heritage: Helm
     provider: stakater
@@ -76,7 +76,7 @@ spec:
           value: "4200"
         - name: REVIEW_API
           value: https://review-gabbar-dev.apps.binero-test.8sdzwd1l.kubeapp.cloud
-        image: nexus-docker-openshift-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-review-ui:SNAPSHOT-PR-3-ab1171f4
+        image: nexus-docker-openshift-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-review-ui:SNAPSHOT-PR-3-2f359a5e
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
@@ -113,8 +113,8 @@ kind: ForecastleApp
 metadata:
   labels:
     app: review-web
-    appVersion: SNAPSHOT-PR-3-ab1171f4
-    chart: application-0.0.29
+    appVersion: SNAPSHOT-PR-3-2f359a5e
+    chart: application-0.0.60
     group: com.stakater.platform
     heritage: Helm
     provider: stakater
@@ -136,8 +136,8 @@ kind: Route
 metadata:
   labels:
     app: review-web
-    appVersion: SNAPSHOT-PR-3-ab1171f4
-    chart: application-0.0.29
+    appVersion: SNAPSHOT-PR-3-2f359a5e
+    chart: application-0.0.60
     group: com.stakater.platform
     heritage: Helm
     provider: stakater
@@ -156,3 +156,22 @@ spec:
     name: review-web
     weight: 100
   wildcardPolicy: None
+---
+apiVersion: tenantoperator.stakater.com/v1alpha1
+kind: Space
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+  labels:
+    app: review-web
+    appVersion: SNAPSHOT-PR-3-2f359a5e
+    chart: application-0.0.60
+    group: com.stakater.platform
+    heritage: Helm
+    kind: pr
+    provider: stakater
+    release: stakater-nordmart-review-ui
+    team: gabbar
+  name: gabbar-stakater-nordmart-review-ui-pr-3
+spec:
+  tenant: gabbar
