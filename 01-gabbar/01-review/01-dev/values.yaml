@@ -1,7 +1,7 @@
 application:
   applicationName: review
   configMap:
-    enabled: false
+    enabled: true
     files:
     - data:
         DB_NAME: nordmartDB
