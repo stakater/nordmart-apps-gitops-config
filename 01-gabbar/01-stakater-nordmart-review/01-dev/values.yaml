@@ -1,8 +1,6 @@
-stakater-nordmart-review:
-  application: 
-   deployment:
-     image:
-       repository: stakater/stakater-nordmart-review
-       tag: v0.0.2
-  
-  
+stakater-nordmart-review: 
+ deployment:   
+   image:
+     repository: stakater/stakater-nordmart-review
+     tag: v0.0.2
+
