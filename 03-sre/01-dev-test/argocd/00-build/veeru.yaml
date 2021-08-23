@@ -30,7 +30,7 @@ spec:
     namespace: veeru-build
     server: 'https://kubernetes.default.svc'
   source:
-    path: 02-veeru/configs/01-build/
+    path: 02-veeru/configs/00-build/
     repoURL: 'https://github.com/stakater/gitops-config-template.git'
     targetRevision: main
     directory:
