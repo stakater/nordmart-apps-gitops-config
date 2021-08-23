@@ -1,5 +1,7 @@
 stakater-nordmart-review-ui:
   application:
+    space:
+       enabled: false
     deployment:
       image:
         repository: stakater/nordmart-review-ui
