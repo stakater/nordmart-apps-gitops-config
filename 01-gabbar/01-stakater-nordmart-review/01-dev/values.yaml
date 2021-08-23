@@ -3,4 +3,4 @@ stakater-nordmart-review:
    image:
      repository: stakater/stakater-nordmart-review
      tag: v0.0.2
- 
+
