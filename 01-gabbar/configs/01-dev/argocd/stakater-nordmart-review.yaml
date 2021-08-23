@@ -1,20 +1,18 @@
-
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gabbar-stage-review-ui
+  name: gabbar-dev-stakater-nordmart-review
   namespace: openshift-stakater-argocd
 spec:
   destination:
-    namespace: gabbar-stage
+    namespace: gabbar-dev
     server: 'https://kubernetes.default.svc'
-  project: gabbar-stage
   source:
-    path: 01-gabbar/02-review-ui/02-stage
+    path: 01-gabbar/01-stakater-nordmart-review/01-dev
     repoURL: 'https://github.com/stakater/gitops-config-template.git'
     targetRevision: HEAD
+  project: gabbar-dev 
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-

@@ -6,4 +6,5 @@ spec:
   users:
     admin:
     - hanzala@stakater.com
+    - nebojsa
   quota: medium

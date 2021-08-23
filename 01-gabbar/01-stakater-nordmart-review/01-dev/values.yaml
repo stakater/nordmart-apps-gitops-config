@@ -1,10 +1,10 @@
-stakater-nordmart-review:
-  application: 
-   space:
-     enabled: false
-   deployment:
-     image:
-       repository: stakater/stakater-nordmart-review
-       tag: v0.0.2
-  
-  
+
+stakater-nordmart-review: 
+ space:
+    enabled: false
+ deployment:   
+   image:
+     repository: nexus-docker-openshift-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-review
+     tag: 0.0.18
+
+
