@@ -3,7 +3,7 @@ kind: ServiceAccount
 metadata:
   labels:
     app: review
-    appVersion: SNAPSHOT-PR-41-dfbc6186
+    appVersion: SNAPSHOT-PR-41-701ed1d9
     chart: application-0.0.60
     group: com.stakater.platform
     heritage: Helm
@@ -35,7 +35,7 @@ kind: ConfigMap
 metadata:
   labels:
     app: review
-    appVersion: SNAPSHOT-PR-41-dfbc6186
+    appVersion: SNAPSHOT-PR-41-701ed1d9
     chart: application-0.0.60
     group: com.stakater.platform
     heritage: Helm
@@ -68,7 +68,7 @@ kind: Service
 metadata:
   labels:
     app: review
-    appVersion: SNAPSHOT-PR-41-dfbc6186
+    appVersion: SNAPSHOT-PR-41-701ed1d9
     chart: application-0.0.60
     group: com.stakater.platform
     heritage: Helm
@@ -116,7 +116,7 @@ metadata:
   labels:
     app: review
     appCategory: backend
-    appVersion: SNAPSHOT-PR-41-dfbc6186
+    appVersion: SNAPSHOT-PR-41-701ed1d9
     chart: application-0.0.60
     group: com.stakater.platform
     heritage: Helm
@@ -141,7 +141,7 @@ spec:
       - envFrom:
         - configMapRef:
             name: review
-        image: nexus-docker-openshift-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-review:SNAPSHOT-PR-41-dfbc6186
+        image: nexus-docker-openshift-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-review:SNAPSHOT-PR-41-701ed1d9
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
@@ -265,7 +265,7 @@ kind: Route
 metadata:
   labels:
     app: review
-    appVersion: SNAPSHOT-PR-41-dfbc6186
+    appVersion: SNAPSHOT-PR-41-701ed1d9
     chart: application-0.0.60
     group: com.stakater.platform
     heritage: Helm
@@ -294,7 +294,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "-1"
   labels:
     app: review
-    appVersion: SNAPSHOT-PR-41-dfbc6186
+    appVersion: SNAPSHOT-PR-41-701ed1d9
     chart: application-0.0.60
     group: com.stakater.platform
     heritage: Helm
