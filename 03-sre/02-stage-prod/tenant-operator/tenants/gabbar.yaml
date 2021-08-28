@@ -4,5 +4,7 @@ metadata:
   name: gabbar
 spec:
   users:
-  - hanzala@stakater.com
+    admin:
+    - hanzala@stakater.com
+    - nebojsa
   quota: medium
