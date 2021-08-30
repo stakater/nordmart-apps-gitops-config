@@ -11,8 +11,8 @@ postgresql:
     image:
       pullPolicy: Always
       registry: docker.io
-      repository: bitnami/minideb
-      tag: stretch
+      repository: nexus-docker-openshift-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-inventory
+      tag: 0.0.21
     securityContext:
       runAsUser: "auto"
   shmVolume:
@@ -109,8 +109,8 @@ application:
       app: "inventory"
       team: "nordmart"
     image:
-      repository: stakater/stakater-nordmart-inventory
-      tag: v0.0.1
+      repository: nexus-docker-openshift-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-inventory
+      tag: 0.0.21
     resources: 
       limits:
         memory: 1Gi
