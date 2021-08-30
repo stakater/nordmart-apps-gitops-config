@@ -3,5 +3,6 @@ stakater-nordmart-inventory:
          space:
              enabled: false
          deployment:
-             image: nexus-docker-openshift-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-inventory
-             tag: 0.0.21
+             image:
+              repository: nexus-docker-openshift-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-inventory
+              tag: 0.0.21
