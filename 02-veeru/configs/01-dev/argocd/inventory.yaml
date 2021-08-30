@@ -11,7 +11,7 @@ spec:
     path: 02-veeru/01-stakater-nordmart-inventory/02-dev
     repoURL: 'https://github.com/stakater/gitops-config-template.git'
     targetRevision: main
-  project: veeru  
+  project: veeru-dev
   syncPolicy:
     automated:
       prune: true
