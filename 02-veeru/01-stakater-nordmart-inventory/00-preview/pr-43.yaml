@@ -3,7 +3,7 @@ kind: ServiceAccount
 metadata:
   labels:
     app: inventory
-    appVersion: SNAPSHOT-PR-43-3f8e8ba1
+    appVersion: SNAPSHOT-PR-43-6c873bd2
     chart: application-0.0.60
     group: com.stakater
     heritage: Helm
@@ -26,6 +26,20 @@ metadata:
 ---
 apiVersion: v1
 data:
+  postgresql-password: cG9zdGdyZXMtcGFzc3dvcmQ=
+kind: Secret
+metadata:
+  labels:
+    app.kubernetes.io/instance: stakater-nordmart-inventory
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: postgresql
+    helm.sh/chart: postgresql-9.1.4
+  name: inventory-postgres
+  namespace: veeru-stakater-nordmart-inventory-pr-43
+type: Opaque
+---
+apiVersion: v1
+data:
   DB_NAME: inventory
   JAEGER_ENDPOINT: http://jaeger-collector.istio-system:14268/api/traces
   POSTGRESQL_HOST: inventory-postgres
@@ -33,7 +47,7 @@ kind: ConfigMap
 metadata:
   labels:
     app: inventory
-    appVersion: SNAPSHOT-PR-43-3f8e8ba1
+    appVersion: SNAPSHOT-PR-43-6c873bd2
     chart: application-0.0.60
     group: com.stakater
     heritage: Helm
@@ -48,7 +62,7 @@ kind: Service
 metadata:
   labels:
     app: inventory
-    appVersion: SNAPSHOT-PR-43-3f8e8ba1
+    appVersion: SNAPSHOT-PR-43-6c873bd2
     chart: application-0.0.60
     group: com.stakater
     heritage: Helm
@@ -115,7 +129,7 @@ metadata:
     reloader.stakater.com/auto: "true"
   labels:
     app: inventory
-    appVersion: SNAPSHOT-PR-43-3f8e8ba1
+    appVersion: SNAPSHOT-PR-43-6c873bd2
     chart: application-0.0.60
     group: com.stakater
     heritage: Helm
@@ -142,14 +156,11 @@ spec:
       containers:
       - env:
         - name: POSTGRESQL_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              key: postgresql-password
-              name: inventory-postgres
+          value: postgres-password
         envFrom:
         - configMapRef:
             name: inventory
-        image: nexus-docker-openshift-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-inventory:SNAPSHOT-PR-43-3f8e8ba1
+        image: nexus-docker-openshift-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-inventory:SNAPSHOT-PR-43-6c873bd2
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
@@ -327,7 +338,7 @@ kind: Route
 metadata:
   labels:
     app: inventory
-    appVersion: SNAPSHOT-PR-43-3f8e8ba1
+    appVersion: SNAPSHOT-PR-43-6c873bd2
     chart: application-0.0.60
     group: com.stakater
     heritage: Helm
@@ -354,7 +365,7 @@ kind: ServiceMonitor
 metadata:
   labels:
     app: inventory
-    appVersion: SNAPSHOT-PR-43-3f8e8ba1
+    appVersion: SNAPSHOT-PR-43-6c873bd2
     chart: application-0.0.60
     group: com.stakater
     heritage: Helm
@@ -381,7 +392,7 @@ metadata:
   annotations: null
   labels:
     app: inventory
-    appVersion: SNAPSHOT-PR-43-3f8e8ba1
+    appVersion: SNAPSHOT-PR-43-6c873bd2
     chart: application-0.0.60
     group: com.stakater
     heritage: Helm
