@@ -4,7 +4,7 @@ metadata:
   name: gabbar-build-stakater-nordmart-reivew
   namespace: openshift-stakater-argocd
   labels:
-    tenant.stakater.com/name : "gabbar"  
+    tenant.stakater.com/name: "gabbar"  
 spec:
   destination:
     namespace: gabbar-build
