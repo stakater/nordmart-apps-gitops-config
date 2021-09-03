@@ -6,6 +6,8 @@ metadata:
   namespace: openshift-stakater-argocd
   labels:
     tenant.stakater.com/name: "gabbar"  
+    env.stakater.com/name: "stage"
+    env.stakater.com/kind: "stage"     
 spec:
   destination:
     namespace: gabbar-stage

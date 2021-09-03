@@ -5,7 +5,9 @@ metadata:
   name: gabbar-stage-stakater-nordmart-review
   namespace: openshift-stakater-argocd
   labels:
-    tenant.stakater.com/name: "gabbar"  
+    tenant.stakater.com/name: "gabbar"
+    env.stakater.com/name: "stage"
+    env.stakater.com/kind: "stage"         
 spec:
   destination:
     namespace: gabbar-stage
