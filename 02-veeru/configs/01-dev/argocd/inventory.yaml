@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: veeru-dev-inventory
   namespace: openshift-stakater-argocd
+  labels:
+    tenant.stakater.com/name : "veeru"     
 spec:
   destination:
     namespace: veeru-dev
