@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: gabbar-stage-stakater-nordmart-review-ui
   namespace: openshift-stakater-argocd
+  labels:
+    tenant.stakater.com/name : "gabbar"  
 spec:
   destination:
     namespace: gabbar-stage
