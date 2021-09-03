@@ -5,6 +5,8 @@ metadata:
   namespace: openshift-stakater-argocd
   labels:
     tenant.stakater.com/name: "gabbar"  
+    env.stakater.com/name: "build"
+    env.stakater.com/kind: "build"    
 spec:
   destination:
     namespace: gabbar-build

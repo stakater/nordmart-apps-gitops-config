@@ -4,7 +4,9 @@ metadata:
   name: gabbar-build-stakater-nordmart-review-ui
   namespace: openshift-stakater-argocd
   labels:
-    tenant.stakater.com/name: "gabbar"  
+    tenant.stakater.com/name: "gabbar"
+    env.stakater.com/name: "build"
+    env.stakater.com/kind: "build"    
 spec:
   destination:
     namespace: gabbar-build

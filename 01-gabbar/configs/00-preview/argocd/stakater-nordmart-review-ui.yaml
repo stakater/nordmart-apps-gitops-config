@@ -5,6 +5,8 @@ metadata:
   namespace: openshift-stakater-argocd
   labels:
     tenant.stakater.com/name: "gabbar"  
+    env.stakater.com/name: "preview"
+    env.stakater.com/kind: "preview"    
 spec:
   destination:
     namespace: gabbar-preview
