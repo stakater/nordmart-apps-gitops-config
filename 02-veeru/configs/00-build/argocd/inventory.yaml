@@ -4,7 +4,7 @@ metadata:
   name: veeru-build-inventory
   namespace: openshift-stakater-argocd 
   labels:
-    tenant.stakater.com/name : "veeru"   
+    tenant.stakater.com/name: "veeru"   
 spec:
   destination:
     namespace: veeru-build
