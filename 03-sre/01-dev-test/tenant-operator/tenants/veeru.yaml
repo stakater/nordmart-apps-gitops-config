@@ -6,6 +6,7 @@ spec:
   users:
     admin:
     - hanzala@stakater.com
+    - sabkat@stakater.com
     - nebojsa
     # Test user for Stakater Cloud IAM
     - sro-privileged
