@@ -4,8 +4,7 @@ metadata:
   name: gabbar-preview
   namespace: openshift-stakater-argocd
   # Finalizer that ensures that project is not deleted until it is not referenced by any application
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
+  finalizers: []
 spec:
   description: gabbar team
   # Allow manifests to deploy from any Git repos
