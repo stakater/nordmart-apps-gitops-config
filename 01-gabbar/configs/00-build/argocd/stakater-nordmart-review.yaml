@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: gabbar-build-stakater-nordmart-reivew
-  namespace: openshift-stakater-argocd
+  namespace: stakater-argocd
   labels:
     tenant.stakater.com/name: "gabbar"  
     env.stakater.com/name: "build"
