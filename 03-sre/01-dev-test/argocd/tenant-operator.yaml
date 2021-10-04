@@ -3,10 +3,10 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: tenant-operator
-  namespace: stakater-argocd
+  namespace: openshift-stakater-argocd
 spec:
   destination:
-    namespace: stakater-argocd
+    namespace: openshift-stakater-argocd
     server: 'https://kubernetes.default.svc'
   source:
     path: 03-sre/01-dev-test/tenant-operator

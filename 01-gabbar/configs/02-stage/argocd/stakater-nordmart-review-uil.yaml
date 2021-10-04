@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: gabbar-stage-stakater-nordmart-review-ui
-  namespace: stakater-argocd
+  namespace: openshift-stakater-argocd
   labels:
     tenant.stakater.com/name: "gabbar"  
     env.stakater.com/name: "stage"

@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: veeru-dev
-  namespace: stakater-argocd
+  namespace: openshift-stakater-argocd
 spec:
   description: Veeru team
   # Allow manifests to deploy from any Git repos
@@ -11,7 +11,7 @@ spec:
   destinations:
   - namespace: "veeru-dev"
     server: https://kubernetes.default.svc
-  - namespace: "stakater-argocd"
+  - namespace: "openshift-stakater-argocd"
     server: https://kubernetes.default.svc
   clusterResourceWhitelist:
   - group: "*"
@@ -21,10 +21,10 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: veeru-dev
-  namespace: stakater-argocd
+  namespace: openshift-stakater-argocd
 spec:
   destination:
-    namespace: stakater-argocd
+    namespace: openshift-stakater-argocd
     server: 'https://kubernetes.default.svc'
   source:
     path: 02-veeru/configs/01-dev/
