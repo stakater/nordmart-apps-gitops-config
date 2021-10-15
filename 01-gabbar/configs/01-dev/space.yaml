@@ -9,3 +9,11 @@ metadata:
 spec:
   tenant: gabbar
 ---
+apiVersion: tenantoperator.stakater.com/v1alpha1
+kind: Namespace
+metadata:
+  name: gabbar-dev
+  labels:
+    env.stakater.com/name: 'dev'
+    env.stakater.com/kind: 'dev'
+    kind: 'dev'
