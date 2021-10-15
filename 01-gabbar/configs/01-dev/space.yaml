@@ -17,3 +17,4 @@ metadata:
     env.stakater.com/name: 'dev'
     env.stakater.com/kind: 'dev'
     kind: 'dev'
+    tenantoperator.stakater.com/tenant: gabbar
