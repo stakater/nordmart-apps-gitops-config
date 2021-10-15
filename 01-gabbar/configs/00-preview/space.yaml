@@ -15,3 +15,4 @@ metadata:
   labels:
     env.stakater.com/name: 'preview'
     env.stakater.com/kind: 'preview'
+    tenantoperator.stakater.com/tenant: gabbar
