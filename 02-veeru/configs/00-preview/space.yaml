@@ -18,3 +18,13 @@ metadata:
     env.stakater.com/kind: 'preview'
     kind: 'pr'
     stakater.com/tenant: veeru
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: veeru-preview-demo
+  labels:
+    env.stakater.com/name: 'preview-demo'
+    env.stakater.com/kind: 'preview-demo'
+    kind: 'pr'
+    stakater.com/tenant: veeru
