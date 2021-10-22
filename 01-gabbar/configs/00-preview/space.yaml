@@ -7,12 +7,3 @@ metadata:
     env.stakater.com/kind: 'preview'
 spec:
   tenant: gabbar
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: gabbar-preview
-  labels:
-    env.stakater.com/name: 'preview'
-    env.stakater.com/kind: 'preview'
-    stakater.com/tenant: gabbar
