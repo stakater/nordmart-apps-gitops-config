@@ -11,9 +11,8 @@ spec:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: gabbar-build
+  name: gabbar-preview
   labels:
-    env.stakater.com/name: 'build'
-    env.stakater.com/kind: 'build'
-    kind: 'build'
+    env.stakater.com/name: 'preview'
+    env.stakater.com/kind: 'preview'
     stakater.com/tenant: gabbar
