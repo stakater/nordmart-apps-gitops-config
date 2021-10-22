@@ -1,11 +1,9 @@
-apiVersion: tenantoperator.stakater.com/v1alpha1
-kind: Space
+apiVersion: v1
+kind: Namespace
 metadata:
   name: veeru-preview
   labels:
     env.stakater.com/name: 'preview'
     env.stakater.com/kind: 'preview'
     kind: 'pr'
-spec:
-  tenant: veeru
----
+    stakater.com/tenant: veeru
