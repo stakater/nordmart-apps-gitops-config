@@ -4,6 +4,7 @@ metadata:
   name: veeru
 spec:
   users:
+    owner:
     - hanzala@stakater.com
     - sabkat@stakater.com
     - nebojsa
