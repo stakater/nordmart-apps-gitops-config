@@ -1,8 +1,10 @@
-apiVersion: v1
-kind: Namespace
+apiVersion: tenantoperator.stakater.com/v1alpha1
+kind: Space
 metadata:
   name: gabbar-preview
   labels:
     env.stakater.com/name: 'preview'
     env.stakater.com/kind: 'preview'
-    stakater.com/tenant: gabbar
+spec:
+  tenant: gabbar
+---
