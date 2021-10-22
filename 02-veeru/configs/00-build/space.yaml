@@ -8,13 +8,3 @@ metadata:
     kind: build
 spec:
   tenant: veeru
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: veeru-build
-  labels:
-    env.stakater.com/name: 'build'
-    env.stakater.com/kind: 'build'
-    kind: build
-    stakater.com/tenant: veeru
