@@ -1,21 +1,9 @@
-apiVersion: tenantoperator.stakater.com/v1alpha1
-kind: Space
+apiVersion: v1
+kind: Namespace
 metadata:
   name: gabbar-build
   labels:
-     env.stakater.com/name: 'build'
-     env.stakater.com/kind: 'build'
-     kind: build
-spec:
-  tenant: gabbar
-
----
-# apiVersion: v1
-# kind: Namespace
-# metadata:
-#   name: gabbar-build
-#   labels:
-#     env.stakater.com/name: 'build'
-#     env.stakater.com/kind: 'build'
-#     kind: 'build'
-#     stakater.com/tenant: gabbar
+    env.stakater.com/name: 'build'
+    env.stakater.com/kind: 'build'
+    kind: 'build'
+    stakater.com/tenant: gabbar
