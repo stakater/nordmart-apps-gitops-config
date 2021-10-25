@@ -1,14 +1,3 @@
-apiVersion: tenantoperator.stakater.com/v1alpha1
-kind: Space
-metadata:
-  name: gabbar-dev
-  labels:
-    env.stakater.com/name: 'dev'
-    env.stakater.com/kind: 'dev'
-    kind: 'dev'
-spec:
-  tenant: gabbar
----
 apiVersion: v1
 kind: Namespace
 metadata:
