@@ -4,7 +4,6 @@ metadata:
   name: gabbar
 spec:
   users:
-    owner:
     - hanzala@stakater.com
     - nebojsa
     - bilal.bokharee@stakater.com
