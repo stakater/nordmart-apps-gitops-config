@@ -4,7 +4,8 @@ metadata:
   name: veeru
 spec:
   users:
-  - hanzala@stakater.com
-  # Test user for Stakater Cloud IAM
-  - sro-privileged
+   owner:
+    - hanzala@stakater.com
+    # Test user for Stakater Cloud IAM
+    - sro-privileged
   quota: medium
