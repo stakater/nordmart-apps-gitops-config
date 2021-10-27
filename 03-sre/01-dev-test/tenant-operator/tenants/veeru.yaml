@@ -6,8 +6,9 @@ spec:
   users:
     owner:
     - hanzala@stakater.com
-    - sabkat@stakater.com
     - nebojsa
     # Test user for Stakater Cloud IAM
     - sro-privileged
+    editor:
+    - sabkat@stakater.com
   quota: medium
