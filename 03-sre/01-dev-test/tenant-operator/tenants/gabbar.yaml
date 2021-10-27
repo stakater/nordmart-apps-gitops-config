@@ -8,5 +8,6 @@ spec:
     - hanzala@stakater.com
     - nebojsa
     - bilal.bokharee@stakater.com
-    - sabkat@stakater.com
+    editor:
+     - sabkat@stakater.com
   quota: medium
