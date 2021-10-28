@@ -9,6 +9,6 @@ spec:
     - nebojsa
     # Test user for Stakater Cloud IAM
     - sro-privileged
-    editor:
+    edit:
     - sabkat@stakater.com
   quota: medium
