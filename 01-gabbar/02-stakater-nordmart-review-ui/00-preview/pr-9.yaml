@@ -1,10 +1,27 @@
 apiVersion: v1
+kind: Namespace
+metadata:
+  annotations: null
+  labels:
+    app: review-web
+    appVersion: SNAPSHOT-PR-9-8c3d6b50
+    chart: application-0.0.71
+    group: com.stakater.platform
+    heritage: Helm
+    kind: pr
+    provider: stakater
+    release: stakater-nordmart-review-ui
+    stakater.com/tenant: gabbar
+    team: gabbar
+  name: gabbar-stakater-nordmart-review-ui-pr-9
+---
+apiVersion: v1
 kind: ServiceAccount
 metadata:
   labels:
     app: review-web
     appVersion: SNAPSHOT-PR-9-8c3d6b50
-    chart: application-0.0.70
+    chart: application-0.0.71
     group: com.stakater.platform
     heritage: Helm
     provider: stakater
@@ -19,7 +36,7 @@ metadata:
   labels:
     app: review-web
     appVersion: SNAPSHOT-PR-9-8c3d6b50
-    chart: application-0.0.70
+    chart: application-0.0.71
     group: com.stakater.platform
     heritage: Helm
     provider: stakater
@@ -46,7 +63,7 @@ metadata:
     app: review-web
     appCategory: frontend
     appVersion: SNAPSHOT-PR-9-8c3d6b50
-    chart: application-0.0.70
+    chart: application-0.0.71
     group: com.stakater.platform
     heritage: Helm
     provider: stakater
@@ -114,7 +131,7 @@ metadata:
   labels:
     app: review-web
     appVersion: SNAPSHOT-PR-9-8c3d6b50
-    chart: application-0.0.70
+    chart: application-0.0.71
     group: com.stakater.platform
     heritage: Helm
     provider: stakater
@@ -137,7 +154,7 @@ metadata:
   labels:
     app: review-web
     appVersion: SNAPSHOT-PR-9-8c3d6b50
-    chart: application-0.0.70
+    chart: application-0.0.71
     group: com.stakater.platform
     heritage: Helm
     provider: stakater
@@ -157,20 +174,3 @@ spec:
     name: review-web
     weight: 100
   wildcardPolicy: None
----
-apiVersion: v1
-kind: namespace
-metadata:
-  annotations: null
-  labels:
-    app: review-web
-    appVersion: SNAPSHOT-PR-9-8c3d6b50
-    chart: application-0.0.70
-    group: com.stakater.platform
-    heritage: Helm
-    kind: pr
-    provider: stakater
-    release: stakater-nordmart-review-ui
-    stakater.com/tenant: gabbar
-    team: gabbar
-  name: gabbar-stakater-nordmart-review-ui-pr-9
