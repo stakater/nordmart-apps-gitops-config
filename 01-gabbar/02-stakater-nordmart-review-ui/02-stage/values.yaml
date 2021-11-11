@@ -2,6 +2,8 @@ stakater-nordmart-review-ui:
   application:
     space:
        enabled: false
+    namespace:
+       enabled: false
     deployment:
       image:
         repository: nexus-docker-openshift-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-review-ui
