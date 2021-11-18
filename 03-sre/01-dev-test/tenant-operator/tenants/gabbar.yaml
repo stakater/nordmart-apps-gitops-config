@@ -11,3 +11,10 @@ spec:
     edit:
      - sabkat@stakater.com
   quota: medium
+  namespacetemplate:
+  templateInstances:
+  - spec:
+      template: external-secret-template
+    selector:
+      matchLabels:
+        kind: build
