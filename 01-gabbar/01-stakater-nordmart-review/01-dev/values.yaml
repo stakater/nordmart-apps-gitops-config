@@ -4,7 +4,7 @@ stakater-nordmart-review:
     space:
        enabled: false
     namespace:
-      enabled: true
+      enabled: false
     deployment:   
       image:
         repository: nexus-docker-openshift-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-review
