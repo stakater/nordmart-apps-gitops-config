@@ -17,3 +17,8 @@ spec:
       selector:
         matchLabels:
           kind: build
+    - spec:
+        template: nexus-docker-auth-forked
+      selector:
+        matchLabels:
+          kind: build
