@@ -22,3 +22,23 @@ spec:
       selector:
         matchLabels:
           kind: build
+    - spec:
+        template: nexus-helm-auth-forked
+      selector:
+        matchLabels:
+          kind: build
+    - spec:
+        template: git-auth-forked
+      selector:
+        matchLabels:
+          kind: build
+    - spec:
+        template: nexus-mnn-rw-auth-forked
+      selector:
+        matchLabels:
+          kind: build
+    - spec:
+        template: sonarqube-auth-forked
+      selector:
+        matchLabels:
+          kind: build
