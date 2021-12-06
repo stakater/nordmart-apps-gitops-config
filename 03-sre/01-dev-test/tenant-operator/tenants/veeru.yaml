@@ -15,31 +15,37 @@ spec:
     templateInstances:
     - spec:
         template: external-secret-template
+        sync: true
       selector:
         matchLabels:
           kind: build
     - spec:
         template: nexus-docker-auth-forked
+        sync: true
       selector:
         matchLabels:
           kind: build
     - spec:
         template: nexus-helm-auth-forked
+        sync: true
       selector:
         matchLabels:
           kind: build
     - spec:
         template: git-auth-forked
+        sync: true
       selector:
         matchLabels:
           kind: build
     - spec:
         template: nexus-mnn-rw-auth-forked
+        sync: true
       selector:
         matchLabels:
           kind: build
     - spec:
         template: sonarqube-auth-forked
+        sync: true
       selector:
         matchLabels:
           kind: build
