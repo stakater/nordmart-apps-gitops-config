@@ -59,4 +59,4 @@ spec:
         sync: true
       selector:
         matchExpressions:
-        - {key: tronador.stakater.com/git-auth, operator: In, values: [true]}        
+        - {key: tronador.stakater.com/git-auth, operator: In, values: ["true"]}        
