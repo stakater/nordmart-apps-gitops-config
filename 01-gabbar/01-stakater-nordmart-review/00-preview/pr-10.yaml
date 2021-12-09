@@ -329,6 +329,6 @@ spec:
   secretObjects:
   - data:
     - key: MONGO_HOST
-      objectName: mongo-host
+      objectName: MONGO_HOST
     secretName: secret-mongo-host
     type: Opaque
