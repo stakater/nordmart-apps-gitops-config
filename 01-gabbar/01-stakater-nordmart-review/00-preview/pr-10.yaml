@@ -323,8 +323,8 @@ spec:
   parameters:
     objects: "- objectName: \"MONGO_HOST\"\n  secretPath: \"gabbar/kv/data/mongoDb\"\n
       \ secretKey: \"MONGO_HOST\"  \n"
-    roleName: testing-role
-    vaultAddress: http://vault:8200
+    #roleName: testing-role
+    #vaultAddress: http://vault:8200
   provider: vault
   secretObjects:
   - data:
