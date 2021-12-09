@@ -4,7 +4,7 @@ metadata:
   annotations: null
   labels:
     app: review
-    appVersion: SNAPSHOT-PR-10-83cac495
+    appVersion: SNAPSHOT-PR-10-4730e6b5
     chart: application-0.0.72
     group: com.stakater.platform
     heritage: Helm
@@ -20,7 +20,7 @@ kind: ServiceAccount
 metadata:
   labels:
     app: review
-    appVersion: SNAPSHOT-PR-10-83cac495
+    appVersion: SNAPSHOT-PR-10-4730e6b5
     chart: application-0.0.72
     group: com.stakater.platform
     heritage: Helm
@@ -50,7 +50,7 @@ kind: ConfigMap
 metadata:
   labels:
     app: review
-    appVersion: SNAPSHOT-PR-10-83cac495
+    appVersion: SNAPSHOT-PR-10-4730e6b5
     chart: application-0.0.72
     group: com.stakater.platform
     heritage: Helm
@@ -83,7 +83,7 @@ kind: Service
 metadata:
   labels:
     app: review
-    appVersion: SNAPSHOT-PR-10-83cac495
+    appVersion: SNAPSHOT-PR-10-4730e6b5
     chart: application-0.0.72
     group: com.stakater.platform
     heritage: Helm
@@ -131,7 +131,7 @@ metadata:
   labels:
     app: review
     appCategory: backend
-    appVersion: SNAPSHOT-PR-10-83cac495
+    appVersion: SNAPSHOT-PR-10-4730e6b5
     chart: application-0.0.72
     group: com.stakater.platform
     heritage: Helm
@@ -153,10 +153,16 @@ spec:
         app: review
     spec:
       containers:
-      - envFrom:
+      - env:
+        - name: MONGO_HOST
+          valueFrom:
+            secretKeyRef:
+              key: MONGO_HOST
+              name: secret-mongo-host
+        envFrom:
         - configMapRef:
             name: review
-        image: nexus-docker-openshift-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-review:SNAPSHOT-PR-10-83cac495
+        image: nexus-docker-openshift-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-review:SNAPSHOT-PR-10-4730e6b5
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
@@ -184,9 +190,20 @@ spec:
           requests:
             cpu: 0.1
             memory: 128Mi
+        volumeMounts:
+        - mountPath: /data/db-creds
+          name: mongo-db-creds
+          readOnly: true
       imagePullSecrets:
       - name: nexus-docker-config-forked
       serviceAccountName: review
+      volumes:
+      - csi:
+          driver: secrets-store.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: mongo-host
+        name: mongo-db-creds
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -276,7 +293,7 @@ kind: Route
 metadata:
   labels:
     app: review
-    appVersion: SNAPSHOT-PR-10-83cac495
+    appVersion: SNAPSHOT-PR-10-4730e6b5
     chart: application-0.0.72
     group: com.stakater.platform
     heritage: Helm
