@@ -4,12 +4,13 @@ metadata:
   annotations: null
   labels:
     app: inventory
-    appVersion: SNAPSHOT-PR-46-f6e2066d
+    appVersion: SNAPSHOT-PR-46-3bce113d
     chart: application-0.0.73
     group: com.stakater
     heritage: Helm
     provider: stakater
     release: stakater-nordmart-inventory
+    stakater.com/tenant: veeru
     team: nordmart
   name: veeru-stakater-nordmart-inventory-pr-46
 ---
@@ -18,7 +19,7 @@ kind: ServiceAccount
 metadata:
   labels:
     app: inventory
-    appVersion: SNAPSHOT-PR-46-f6e2066d
+    appVersion: SNAPSHOT-PR-46-3bce113d
     chart: application-0.0.73
     group: com.stakater
     heritage: Helm
@@ -48,7 +49,7 @@ kind: ConfigMap
 metadata:
   labels:
     app: inventory
-    appVersion: SNAPSHOT-PR-46-f6e2066d
+    appVersion: SNAPSHOT-PR-46-3bce113d
     chart: application-0.0.73
     group: com.stakater
     heritage: Helm
@@ -63,7 +64,7 @@ kind: Service
 metadata:
   labels:
     app: inventory
-    appVersion: SNAPSHOT-PR-46-f6e2066d
+    appVersion: SNAPSHOT-PR-46-3bce113d
     chart: application-0.0.73
     group: com.stakater
     heritage: Helm
@@ -130,7 +131,7 @@ metadata:
     reloader.stakater.com/auto: "true"
   labels:
     app: inventory
-    appVersion: SNAPSHOT-PR-46-f6e2066d
+    appVersion: SNAPSHOT-PR-46-3bce113d
     chart: application-0.0.73
     group: com.stakater
     heritage: Helm
@@ -164,7 +165,7 @@ spec:
         envFrom:
         - configMapRef:
             name: inventory
-        image: nexus-docker-openshift-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-inventory:SNAPSHOT-PR-46-f6e2066d
+        image: nexus-docker-openshift-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-inventory:SNAPSHOT-PR-46-3bce113d
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
@@ -352,7 +353,7 @@ kind: Route
 metadata:
   labels:
     app: inventory
-    appVersion: SNAPSHOT-PR-46-f6e2066d
+    appVersion: SNAPSHOT-PR-46-3bce113d
     chart: application-0.0.73
     group: com.stakater
     heritage: Helm
@@ -397,7 +398,7 @@ kind: ServiceMonitor
 metadata:
   labels:
     app: inventory
-    appVersion: SNAPSHOT-PR-46-f6e2066d
+    appVersion: SNAPSHOT-PR-46-3bce113d
     chart: application-0.0.73
     group: com.stakater
     heritage: Helm
