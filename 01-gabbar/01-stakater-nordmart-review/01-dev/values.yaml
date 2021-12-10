@@ -1,8 +1,6 @@
 
 stakater-nordmart-review:
   application: 
-    space:
-       enabled: true
     namespace:
       enabled: false
     deployment:   
