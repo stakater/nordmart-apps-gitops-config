@@ -3,4 +3,4 @@ dependencies:
   repository: https://nexus-helm-openshift-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/repository/helm-charts/
   version: 0.0.788
 digest: sha256:5de5c5c075cf1f515e15bba93487eaf825c9fc54076a1ff5461d5200aa33b2b3
-generated: "2021-12-10T08:29:08.424466888Z"
+generated: "2021-12-10T13:42:44.919342286+05:00"
