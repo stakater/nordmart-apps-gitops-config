@@ -4,8 +4,8 @@ metadata:
   annotations: null
   labels:
     app: review
-    appVersion: SNAPSHOT-PR-10-4730e6b5
-    chart: application-0.0.72
+    appVersion: SNAPSHOT-PR-10-6d70bdbf
+    chart: application-0.0.73
     group: com.stakater.platform
     heritage: Helm
     kind: pr
@@ -20,8 +20,8 @@ kind: ServiceAccount
 metadata:
   labels:
     app: review
-    appVersion: SNAPSHOT-PR-10-4730e6b5
-    chart: application-0.0.72
+    appVersion: SNAPSHOT-PR-10-6d70bdbf
+    chart: application-0.0.73
     group: com.stakater.platform
     heritage: Helm
     provider: stakater
@@ -50,8 +50,8 @@ kind: ConfigMap
 metadata:
   labels:
     app: review
-    appVersion: SNAPSHOT-PR-10-4730e6b5
-    chart: application-0.0.72
+    appVersion: SNAPSHOT-PR-10-6d70bdbf
+    chart: application-0.0.73
     group: com.stakater.platform
     heritage: Helm
     provider: stakater
@@ -83,8 +83,8 @@ kind: Service
 metadata:
   labels:
     app: review
-    appVersion: SNAPSHOT-PR-10-4730e6b5
-    chart: application-0.0.72
+    appVersion: SNAPSHOT-PR-10-6d70bdbf
+    chart: application-0.0.73
     group: com.stakater.platform
     heritage: Helm
     provider: stakater
@@ -131,8 +131,8 @@ metadata:
   labels:
     app: review
     appCategory: backend
-    appVersion: SNAPSHOT-PR-10-4730e6b5
-    chart: application-0.0.72
+    appVersion: SNAPSHOT-PR-10-6d70bdbf
+    chart: application-0.0.73
     group: com.stakater.platform
     heritage: Helm
     provider: stakater
@@ -162,7 +162,7 @@ spec:
         envFrom:
         - configMapRef:
             name: review
-        image: nexus-docker-openshift-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-review:SNAPSHOT-PR-10-4730e6b5
+        image: nexus-docker-openshift-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-review:SNAPSHOT-PR-10-6d70bdbf
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
@@ -293,8 +293,8 @@ kind: Route
 metadata:
   labels:
     app: review
-    appVersion: SNAPSHOT-PR-10-4730e6b5
-    chart: application-0.0.72
+    appVersion: SNAPSHOT-PR-10-6d70bdbf
+    chart: application-0.0.73
     group: com.stakater.platform
     heritage: Helm
     provider: stakater
@@ -324,7 +324,7 @@ spec:
     objects: "- objectName: \"MONGO_HOST\"\n  secretPath: \"gabbar/kv/data/mongoDb\"\n
       \ secretKey: \"MONGO_HOST\"  \n"
     roleName: gabbar-stakater-nordmart-review-pr-10
-    #vaultAddress: http://vault:8200
+    vaultAddress: http://vault:8200
   provider: vault
   secretObjects:
   - data:
