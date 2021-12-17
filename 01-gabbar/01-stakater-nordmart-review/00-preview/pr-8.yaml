@@ -313,22 +313,4 @@ spec:
     name: review
     weight: 100
   wildcardPolicy: None
----
-apiVersion: tenantoperator.stakater.com/v1alpha1
-kind: Space
-metadata:
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1"
-  labels:
-    app: review
-    appVersion: SNAPSHOT-PR-8-66cb54de
-    chart: application-0.0.71
-    group: com.stakater.platform
-    heritage: Helm
-    kind: pr
-    provider: stakater
-    release: stakater-nordmart-review
-    team: gabbar
-  name: gabbar-stakater-nordmart-review-pr-8
-spec:
-  tenant: gabbar
+
