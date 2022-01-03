@@ -49,12 +49,6 @@ spec:
         matchExpressions:
         - {key: kind, operator: In, values: [build,argocd]}
     - spec:
-        template: sonarqube-auth-forked
-        sync: true
-      selector:
-        matchExpressions:
-        - {key: kind, operator: In, values: [build,argocd]}
-    - spec:
         template: tronador-git-auth
         sync: true
       selector:
