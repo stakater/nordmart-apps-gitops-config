@@ -4,7 +4,7 @@ metadata:
   annotations: null
   labels:
     app: review
-    appVersion: SNAPSHOT-PR-15-b171ea2b
+    appVersion: SNAPSHOT-PR-15-fef1eaf4
     chart: application-0.0.76
     group: com.stakater.platform
     heritage: Helm
@@ -20,7 +20,7 @@ kind: ServiceAccount
 metadata:
   labels:
     app: review
-    appVersion: SNAPSHOT-PR-15-b171ea2b
+    appVersion: SNAPSHOT-PR-15-fef1eaf4
     chart: application-0.0.76
     group: com.stakater.platform
     heritage: Helm
@@ -51,7 +51,7 @@ kind: ConfigMap
 metadata:
   labels:
     app: review
-    appVersion: SNAPSHOT-PR-15-b171ea2b
+    appVersion: SNAPSHOT-PR-15-fef1eaf4
     chart: application-0.0.76
     group: com.stakater.platform
     heritage: Helm
@@ -84,7 +84,7 @@ kind: Service
 metadata:
   labels:
     app: review
-    appVersion: SNAPSHOT-PR-15-b171ea2b
+    appVersion: SNAPSHOT-PR-15-fef1eaf4
     chart: application-0.0.76
     group: com.stakater.platform
     heritage: Helm
@@ -132,7 +132,7 @@ metadata:
   labels:
     app: review
     appCategory: backend
-    appVersion: SNAPSHOT-PR-15-b171ea2b
+    appVersion: SNAPSHOT-PR-15-fef1eaf4
     chart: application-0.0.76
     group: com.stakater.platform
     heritage: Helm
@@ -163,7 +163,7 @@ spec:
         envFrom:
         - configMapRef:
             name: review
-        image: nexus-docker-openshift-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-review:SNAPSHOT-PR-15-b171ea2b
+        image: nexus-docker-openshift-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-review:SNAPSHOT-PR-15-fef1eaf4
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
@@ -294,7 +294,7 @@ kind: Route
 metadata:
   labels:
     app: review
-    appVersion: SNAPSHOT-PR-15-b171ea2b
+    appVersion: SNAPSHOT-PR-15-fef1eaf4
     chart: application-0.0.76
     group: com.stakater.platform
     heritage: Helm
