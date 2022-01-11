@@ -11,6 +11,9 @@ spec:
     edit:
     - sabkat@stakater.com
   quota: medium
-  parameters:
-  - name: tenant
-    value: veeru
+  namespacetemplate:
+    templateInstances:
+    - spec:
+        parameters:
+        - name: tenant
+          value: veeru
