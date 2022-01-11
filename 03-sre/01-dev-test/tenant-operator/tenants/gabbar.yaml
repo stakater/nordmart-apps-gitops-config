@@ -15,3 +15,6 @@ spec:
         parameters:
         - name: tenant
           value: gabbar
+      selector:
+        matchLabels:
+          kind: build, dev, pr
