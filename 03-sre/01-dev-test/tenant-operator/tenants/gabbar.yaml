@@ -16,5 +16,5 @@ spec:
         - name: tenant
           value: gabbar
       selector:
-        matchLabels:
-          kind: build, dev, pr
+        matchExpressions:
+        - {key: kind, operator: In, values: [dev,pr]}
