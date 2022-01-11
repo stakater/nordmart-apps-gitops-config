@@ -12,7 +12,7 @@ spec:
     templateInstances:
     - spec:
         template: tenant-vault-access
-        sync: "true"
+        sync: true
         parameters:
         - name: TENANT
           value: gabbar
