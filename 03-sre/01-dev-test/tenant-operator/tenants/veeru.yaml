@@ -13,8 +13,9 @@ spec:
     templateInstances:
     - spec:
         template: tenant-vault-access    
+        sync: "true"
         parameters:
-        - name: tenant
+        - name: TENANT
           value: veeru
       selector:
         matchExpressions:
