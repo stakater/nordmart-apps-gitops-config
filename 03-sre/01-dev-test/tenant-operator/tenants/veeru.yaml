@@ -8,6 +8,11 @@ spec:
     - nebojsa
     # Test user for Stakater Cloud IAM
     - sro-privileged
-    edit:
-    - sabkat@stakater.com
   quota: medium
+  namespacetemplate:
+    templateInstances:
+    - spec:
+        template: tenant-vault-access    
+        parameters:
+        - name: tenant
+          value: veeru

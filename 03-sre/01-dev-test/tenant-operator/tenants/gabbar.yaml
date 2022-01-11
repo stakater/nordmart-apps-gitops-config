@@ -7,6 +7,11 @@ spec:
     owner:
     - nebojsa
     - bilal.bokharee@stakater.com
-    edit:
-     - sabkat@stakater.com
   quota: medium
+  namespacetemplate:
+    templateInstances:
+    - spec:
+        template: tenant-vault-access
+        parameters:
+        - name: tenant
+          value: gabbar
