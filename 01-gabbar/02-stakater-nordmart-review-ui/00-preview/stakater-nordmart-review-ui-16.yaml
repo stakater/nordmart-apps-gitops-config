@@ -7,12 +7,12 @@ spec:
     release:
       chart:
         git: https://github.com/stakater-lab/stakater-nordmart-review-ui
-        ref: edf337f859cfcc6b6232181f35d6360f285fcbd8
+        ref: 6455106f9f449a3e242748227065a95e5645c499
         path: deploy
-      releaseName: edf337f859cfcc6b6232181f35d6360f285fcbd8
+      releaseName: 6455106f9f449a3e242748227065a95e5645c499
       values:
         application:
           deployment:
             image:
               repository: nexus-docker-openshift-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-review-ui
-              tag: SNAPSHOT-PR-16-edf337f8
+              tag: SNAPSHOT-PR-16-6455106f
