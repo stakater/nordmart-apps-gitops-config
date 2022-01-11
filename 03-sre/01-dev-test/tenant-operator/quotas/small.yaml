@@ -6,32 +6,5 @@ metadata:
     quota.tenantoperator.stakater.com/is-default: "false"
 spec:
   hard:
-    configmaps: 80
----
-apiVersion: tenantoperator.stakater.com/v1alpha1
-kind: Quota
-metadata:
-  name: medium
-  annotations:
-    quota.tenantoperator.stakater.com/is-default: "false"
-spec:
-  hard:
-    configmaps: 60
-    # requests.cpu: "10"
-    # requests.memory: 20Gi
-    # limits.cpu: "20"
-    # limits.memory: 30Gi 
----
-apiVersion: tenantoperator.stakater.com/v1alpha1
-kind: Quota
-metadata:
-  name: large
-  annotations:
-    quota.tenantoperator.stakater.com/is-default: "false"
-spec:
-  hard:
-    configmaps: 180
-    # requests.cpu: "10"
-    # requests.memory: 20Gi
-    # limits.cpu: "20"
-    # limits.memory: 30Gi 
+    requests.cpu: "2"
+    requests.memory: 4Gi
