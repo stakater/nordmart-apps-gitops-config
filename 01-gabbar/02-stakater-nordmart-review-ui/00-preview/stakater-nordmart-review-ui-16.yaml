@@ -15,4 +15,4 @@ spec:
           deployment:
             image:
               repository: nexus-docker-openshift-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-review-ui
-              tag: SNAPSHOT-PR-16-4df336cf
+              tag: SNAPSHOT-PR-16-333c0d4f
