@@ -7,12 +7,12 @@ spec:
     release:
       chart:
         git: https://github.com/stakater-lab/stakater-nordmart-review-ui
-        ref: 6455106f9f449a3e242748227065a95e5645c499
+        ref: add-tronador
         path: deploy
-      releaseName: 6455106f9f449a3e242748227065a95e5645c499
+      releaseName: add-tronador
       values:
         application:
           deployment:
             image:
               repository: nexus-docker-openshift-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-review-ui
-              tag: SNAPSHOT-PR-16-6455106f
+              tag: SNAPSHOT-PR-16-4df336cf
