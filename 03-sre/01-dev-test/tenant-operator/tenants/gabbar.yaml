@@ -13,6 +13,7 @@ spec:
   namespacetemplate:
     templateInstances:
     - spec:
+        template: tenant-vault-access
         parameters:
         - name: tenant
           value: gabbar
