@@ -1,0 +1,10 @@
+apiVersion: tenantoperator.stakater.com/v1alpha1
+kind: Quota
+metadata:
+  name: tiny
+  annotations:
+    quota.tenantoperator.stakater.com/is-default: "false"
+spec:
+  hard:
+    requests.cpu: "1"
+    requests.memory: 2Gi
