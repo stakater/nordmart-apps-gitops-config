@@ -16,3 +16,6 @@ spec:
         parameters:
         - name: tenant
           value: veeru
+      selector:
+        matchExpressions:
+        - {key: kind, operator: In, values: [dev,pr,stage,prod,build]}
