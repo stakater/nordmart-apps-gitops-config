@@ -18,4 +18,4 @@ spec:
           value: veeru
       selector:
         matchExpressions:
-        - {key: kind, operator: In, values: [dev,pr,stage,prod,build]}
+        - {key: kind, operator: In, values: [dev,pr]}
