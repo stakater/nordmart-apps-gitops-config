@@ -13,9 +13,6 @@ spec:
     - spec:
         template: tenant-vault-access
         sync: true
-        parameters:
-        - name: TENANT
-          value: gabbar
       selector:
         matchExpressions:
         - {key: kind, operator: In, values: [dev,pr]}
