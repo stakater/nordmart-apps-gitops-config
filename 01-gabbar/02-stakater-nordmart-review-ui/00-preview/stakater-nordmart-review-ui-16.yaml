@@ -1,5 +1,5 @@
-apiVersion: tronador.stakater.com/v1alpha1 
-kind: EnvironmentProvisioner 
+apiVersion: tronador.stakater.com/v1alpha1
+kind: EnvironmentProvisioner
 metadata:
   name: stakater-nordmart-review-ui-16
 spec:
@@ -9,10 +9,18 @@ spec:
         git: https://github.com/stakater-lab/stakater-nordmart-review-ui
         ref: add-tronador
         path: deploy
+        secretRef:
+          null
       releaseName: add-tronador
+      valuesFrom:
+        null
       values:
         application:
           deployment:
             image:
-              repository: nexus-docker-openshift-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-review-ui
-              tag: SNAPSHOT-PR-16-eed5754a
+              repository: nexus-docker-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-review-ui
+              tag: SNAPSHOT-PR-16-0facd820
+  namespaceLabels:
+    label: value
+    stakater.com/tenant: alpha
+    owner: stakater
