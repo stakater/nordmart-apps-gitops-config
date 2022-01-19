@@ -5,5 +5,5 @@ stakater-nordmart-review:
       enabled: false
     deployment:   
       image:
-        repository: nexus-docker-openshift-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-review
+        repository: nexus-docker-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-review
         tag: 0.0.795
