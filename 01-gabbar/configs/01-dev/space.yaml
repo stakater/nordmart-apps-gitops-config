@@ -7,3 +7,14 @@ metadata:
     env.stakater.com/kind: 'dev'
     kind: 'dev'
     stakater.com/tenant: gabbar
+---
+# Temporary namespace for tekton workshop
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: tekton-workshop
+  labels:
+    env.stakater.com/name: 'dev'
+    env.stakater.com/kind: 'dev'
+    kind: 'dev'
+    stakater.com/tenant: gabbar
