@@ -1,21 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: veeru-stage-inventory
+  name: veeru-prod-inventory
   namespace: openshift-stakater-argocd
   labels:
     tenant.stakater.com/name: "veeru"
-    env.stakater.com/name: "stage"
-    env.stakater.com/kind: "stage"     
+    env.stakater.com/name: "prod"
+    env.stakater.com/kind: "prod"    
 spec:
   destination:
-    namespace: veeru-stage
+    namespace: veeru-prod
     server: 'https://kubernetes.default.svc'
   source:
-    path: 02-veeru/01-stakater-nordmart-inventory/02-stage
+    path: 02-veeru/apps/01-stakater-nordmart-inventory/03-prod
     repoURL: 'https://github.com/stakater/gitops-config-template.git'
     targetRevision: main
-  project: veeru-stage
+  project: veeru-prod
   syncPolicy:
     automated:
       prune: true
+      selfHeal: true

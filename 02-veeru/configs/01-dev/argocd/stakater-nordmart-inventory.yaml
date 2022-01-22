@@ -1,21 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: veeru-preview-inventory
+  name: veeru-dev-inventory
   namespace: openshift-stakater-argocd
   labels:
     tenant.stakater.com/name: "veeru"
-    env.stakater.com/name: "preview"
-    env.stakater.com/kind: "preview"     
+    env.stakater.com/name: "dev"
+    env.stakater.com/kind: "dev"     
 spec:
   destination:
-    namespace: veeru-preview
+    namespace: veeru-dev
     server: 'https://kubernetes.default.svc'
   source:
-    path: 02-veeru/01-stakater-nordmart-inventory/00-preview
+    path: 02-veeru/apps/01-stakater-nordmart-inventory/01-dev
     repoURL: 'https://github.com/stakater/gitops-config-template.git'
     targetRevision: main
-  project: veeru-preview
+  project: veeru-dev
   syncPolicy:
     automated:
       prune: true
