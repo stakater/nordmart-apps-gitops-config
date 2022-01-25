@@ -6,5 +6,5 @@ stakater-nordmart-review-ui:
        enabled: false
     deployment:
       image:
-        repository: nexus-docker-openshift-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-review-ui
+        repository: nexus-docker-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-review-ui
         tag: 0.0.8
