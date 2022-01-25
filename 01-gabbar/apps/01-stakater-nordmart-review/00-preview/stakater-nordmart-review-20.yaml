@@ -1,0 +1,26 @@
+apiVersion: tronador.stakater.com/v1alpha1
+kind: EnvironmentProvisioner
+metadata:
+  name: stakater-nordmart-review-20
+spec:
+  application:
+    release:
+      chart:
+        git: https://github.com/stakater-lab/stakater-nordmart-review
+        ref: update-tronador
+        path: deploy
+        secretRef:
+          null
+      releaseName: update-tronador
+      valuesFrom:
+        null
+      values:
+        application:
+          deployment:
+            image:
+              repository: nexus-docker-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-review
+              tag: SNAPSHOT-PR-20-304ecf61
+  namespaceLabels:
+    kind: pr
+    team: gabbar
+    stakater.com/tenant: gabbar
