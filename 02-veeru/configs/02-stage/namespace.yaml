@@ -3,6 +3,6 @@ kind: Namespace
 metadata:
   name: veeru-stage
   labels:
-    env.stakater.com/name: 'stage'
-    env.stakater.com/kind: 'stage'
+    stakater.com/env: stage
+    stakater.com/kind: stage
     stakater.com/tenant: veeru

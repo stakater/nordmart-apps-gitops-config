@@ -3,6 +3,6 @@ kind: Namespace
 metadata:
   name: gabbar-preview
   labels:
-    env.stakater.com/name: 'preview'
-    env.stakater.com/kind: 'preview'
+    stakater.com/env: preview
+    stakater.com/kind: preview
     stakater.com/tenant: gabbar

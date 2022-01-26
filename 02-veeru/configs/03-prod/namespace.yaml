@@ -3,6 +3,6 @@ kind: Namespace
 metadata:
   name: veeru-prod
   labels:
-    env.stakater.com/name: 'prod'
-    env.stakater.com/kind: 'prod'
+    stakater.com/env: prod
+    stakater.com/kind: prod
     stakater.com/tenant: veeru
