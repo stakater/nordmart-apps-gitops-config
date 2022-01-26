@@ -3,7 +3,7 @@ kind: Namespace
 metadata:
   name: veeru-build
   labels:
-    env.stakater.com/name: 'build'
-    env.stakater.com/kind: 'build'
     kind: build
+    stakater.com/env: build
+    stakater.com/kind: build
     stakater.com/tenant: veeru
