@@ -3,7 +3,7 @@
 # openssl ecparam -name secp521r1 -genkey -noout -out myCA.key
 # openssl req -x509 -new -nodes -key myCA.key -sha512 -days 3653 -subj "/C=SV/ST=Stockholm/L=Stockholm/O=Stakater/OU=Platinum Platform Root CA/CN=Platinum Platform Root Certificate Authority" -out myCA.crt
 
-apiVersion: cert-manager.io/v1
+apiVersion: cert-manager.io/v1alpha3
 kind: ClusterIssuer
 metadata:
   name: ca-issuer
