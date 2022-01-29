@@ -4,9 +4,9 @@ metadata:
   name: gabbar-preview-stakater-nordmart-review-ui
   namespace: openshift-stakater-argocd
   labels:
-    tenant.stakater.com/name: "gabbar"  
-    env.stakater.com/name: "preview"
-    env.stakater.com/kind: "preview"    
+    stakater.com/tenant: gabbar
+    stakater.com/env: preview
+    stakater.com/kind: preview    
 spec:
   destination:
     namespace: gabbar-preview
