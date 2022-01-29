@@ -4,9 +4,9 @@ metadata:
   name: veeru-stage-inventory
   namespace: openshift-stakater-argocd
   labels:
-    tenant.stakater.com/name: "veeru"
-    env.stakater.com/name: "stage"
-    env.stakater.com/kind: "stage"     
+    stakater.com/tenant: veeru
+    stakater.com/env: stage
+    stakater.com/kind: stage     
 spec:
   destination:
     namespace: veeru-stage

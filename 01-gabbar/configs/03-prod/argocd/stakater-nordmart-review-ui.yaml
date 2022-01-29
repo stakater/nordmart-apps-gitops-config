@@ -5,9 +5,9 @@ metadata:
   name: gabbar-prod-review-ui
   namespace: openshift-stakater-argocd
   labels:
-    tenant.stakater.com/name: "gabbar"
-    env.stakater.com/name: "prod"
-    env.stakater.com/kind: "prod"  
+    stakater.com/tenant: gabbar
+    stakater.com/env: prod
+    stakater.com/kind: prod  
 spec:
   destination:
     namespace: gabbar-prod

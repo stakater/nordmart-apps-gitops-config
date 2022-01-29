@@ -4,9 +4,9 @@ metadata:
   name: veeru-dev-inventory
   namespace: openshift-stakater-argocd
   labels:
-    tenant.stakater.com/name: "veeru"
-    env.stakater.com/name: "dev"
-    env.stakater.com/kind: "dev"     
+    stakater.com/tenant: veeru
+    stakater.com/env: dev
+    stakater.com/kind: dev     
 spec:
   destination:
     namespace: veeru-dev
