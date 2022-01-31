@@ -13,6 +13,3 @@ spec:
     - spec:
         template: tenant-vault-access
         sync: true
-      selector:
-        matchExpressions:
-        - {key: kind, operator: In, values: [dev,pr]}
