@@ -7,6 +7,7 @@ spec:
     owner:
     - nebojsa
     - bilal.bokharee@stakater.com
+    - hanzala@stakater.com
   quota: medium
   namespacetemplate:
     templateInstances:
