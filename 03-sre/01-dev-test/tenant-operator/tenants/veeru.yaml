@@ -5,7 +5,7 @@ metadata:
 spec:
   users:
     owner:
-    - nebojsa
+    - bilal.bokharee@stakater.com
     # Test user for Stakater Cloud IAM
     - sro-privileged
   quota: medium
