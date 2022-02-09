@@ -7,6 +7,12 @@ An opinionated gitops structure
 - ArgoCD for application deployment
 - Helm for templatization
 
+## Hierarchy
+
+Tenant (Product) owns Applications which are promoted to different Environments (Static and Dynamic)
+
+Tenant >> Applications >> Environments
+
 This gitops structure supports:
 
 - Multiple tenants/teams/products
