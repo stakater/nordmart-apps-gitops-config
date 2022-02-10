@@ -16,7 +16,7 @@ spec:
     path: 01-gabbar/apps/01-stakater-nordmart-review/03-prod
     repoURL: 'https://github.com/stakater/gitops-config-template.git'
     targetRevision: HEAD
-  project: gabbar-prod   
+  project: gabbar   
   syncPolicy:
     automated:
       prune: true
