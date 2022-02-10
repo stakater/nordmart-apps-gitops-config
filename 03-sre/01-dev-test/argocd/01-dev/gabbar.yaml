@@ -1,23 +1,4 @@
 apiVersion: argoproj.io/v1alpha1
-kind: AppProject
-metadata:
-  name: gabbar-dev
-  namespace: openshift-stakater-argocd
-spec:
-  description: gabbar team
-  # Allow manifests to deploy from any Git repos
-  sourceRepos:
-  - '*'
-  destinations:
-  - namespace: "gabbar-dev"
-    server: https://kubernetes.default.svc
-  - namespace: "openshift-stakater-argocd"
-    server: https://kubernetes.default.svc
-  clusterResourceWhitelist:
-  - group: "*"
-    kind: "*"
----
-apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: gabbar-dev
@@ -32,7 +13,7 @@ spec:
     targetRevision: main
     directory:
        recurse: true
-  project: gabbar-dev
+  project: gabbar
   syncPolicy:
     automated:
       prune: true
