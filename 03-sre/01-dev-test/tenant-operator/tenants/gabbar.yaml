@@ -1,17 +1,18 @@
-apiVersion: tenantoperator.stakater.com/v1alpha1
+apiVersion: tenantoperator.stakater.com/v1beta1
 kind: Tenant
 metadata:
   name: gabbar
 spec:
-  users:
-    owner:
-    - nebojsa
-    - bilal.bokharee@stakater.com
-    - hanzala@stakater.com
-    - shahid@stakater.com
   quota: medium
-  namespacetemplate:
-    templateInstances:
-    - spec:
-        template: tenant-vault-access
-        sync: true
+  owners:
+    users:
+      - nebojsa
+      - bilal.bokharee@stakater.com
+      - hanzala@stakater.com
+  argocd:
+    sourceRepos:
+      - 'https://github.com/stakater/gitops-config-template'
+  templateInstances:
+  - spec:
+      template: tenant-vault-access
+      sync: true
