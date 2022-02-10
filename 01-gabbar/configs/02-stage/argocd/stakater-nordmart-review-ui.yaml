@@ -12,7 +12,7 @@ spec:
   destination:
     namespace: gabbar-stage
     server: 'https://kubernetes.default.svc'
-  project: gabbar-stage
+  project: gabbar
   source:
     path: 01-gabbar/apps/02-stakater-nordmart-review-ui/02-stage
     repoURL: 'https://github.com/stakater/gitops-config-template.git'
