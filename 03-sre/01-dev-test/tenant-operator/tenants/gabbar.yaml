@@ -16,3 +16,5 @@ spec:
   - spec:
       template: tenant-vault-access
       sync: true
+  namespaces:
+  - build
