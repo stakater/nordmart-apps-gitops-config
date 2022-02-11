@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: gabbar-build
-  labels:
-    kind: build
-    stakater.com/env: build
-    stakater.com/kind: build
-    stakater.com/tenant: gabbar
