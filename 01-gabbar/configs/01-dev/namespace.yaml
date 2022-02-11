@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: gabbar-dev
-  labels:
-    kind: dev
-    stakater.com/env: dev
-    stakater.com/kind: dev
-    stakater.com/tenant: gabbar
