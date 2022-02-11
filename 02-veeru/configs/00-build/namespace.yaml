@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: veeru-build
-  labels:
-    kind: build
-    stakater.com/env: build
-    stakater.com/kind: build
-    stakater.com/tenant: veeru
