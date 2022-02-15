@@ -9,6 +9,7 @@ spec:
       - nebojsa
       - bilal.bokharee@stakater.com
       - hanzala@stakater.com
+      - shahid@stakater.com
   argocd:
     sourceRepos:
       - 'https://github.com/stakater/gitops-config-template'
