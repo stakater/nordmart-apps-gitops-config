@@ -1,0 +1,11 @@
+kind: LimitRange
+apiVersion: v1
+metadata:
+  name: alpha2
+  namespace: testing
+spec:
+  limits:
+    - type: Container
+      defaultRequest:
+        cpu: 200m
+        memory: 200Mi
