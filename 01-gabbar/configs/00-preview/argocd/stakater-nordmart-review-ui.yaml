@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: gabbar-preview-stakater-nordmart-review-ui
-  namespace: openshift-stakater-argocd
+  namespace: openshift-gitops
   labels:
     stakater.com/tenant: gabbar
     stakater.com/env: preview
