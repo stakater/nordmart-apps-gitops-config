@@ -8,7 +8,7 @@ spec:
     namespace: signport-dev
     server: 'https://kubernetes.default.svc'
   source:
-    path: argocd/
+    path: argocd-apps/
     repoURL: 'https://github.com/stakater/signport.git'
     targetRevision: main
     directory:
