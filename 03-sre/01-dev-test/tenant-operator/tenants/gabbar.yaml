@@ -10,6 +10,14 @@ spec:
       - bilal.bokharee@stakater.com
       - hanzala@stakater.com
       - shahid@stakater.com
+    groups:
+      - azure-gabbar-owner
+  editors:
+    groups:
+      - azure-gabbar-editor
+  viewers:
+    groups:
+      - azure-gabbar-viewer
   argocd:
     sourceRepos:
       - 'https://github.com/stakater/gitops-config-template'

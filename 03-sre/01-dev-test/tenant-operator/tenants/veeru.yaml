@@ -9,6 +9,14 @@ spec:
       - bilal.bokharee@stakater.com
       # Test user for Stakater Cloud IAM
       - sro-privileged
+    groups:
+      - azure-veeru-owner
+  editors:
+    groups:
+      - azure-veeru-editor
+  viewers:
+    groups:
+      - azure-veeru-viewer
   argocd:
     sourceRepos:
       - 'https://github.com/stakater/gitops-config-template'
