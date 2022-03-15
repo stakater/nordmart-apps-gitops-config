@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gabbar-preview
+  name: gabbar-build
   namespace: openshift-gitops
 spec:
   destination:
-    namespace: openshift-gitops
+    namespace: gabbar-build
     server: 'https://kubernetes.default.svc'
   source:
-    path: 01-gabbar/configs/00-preview/
+    path: 01-gabbar/00-argocd-apps/00-build/
     repoURL: 'https://github.com/stakater/gitops-config-template.git'
     targetRevision: main
     directory:
