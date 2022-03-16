@@ -8,4 +8,4 @@ sample-app-helm:
   application:
     deployment:
       image:
-        tag: 0.0.1
+        tag: ${GENERATED_TAG}
