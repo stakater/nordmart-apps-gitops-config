@@ -8,7 +8,7 @@ spec:
     namespace: openshift-gitops
     server: 'https://kubernetes.default.svc'
   source:
-    path: 02-veeru/configs/02-stage/
+    path: 02-veeru/00-argocd-apps/02-stage/
     repoURL: 'https://github.com/stakater/gitops-config-template.git'
     targetRevision: main
     directory:

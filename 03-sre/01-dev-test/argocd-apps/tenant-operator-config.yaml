@@ -1,14 +1,15 @@
+
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cluster-operators
+  name: tenant-operator-config
   namespace: openshift-gitops
 spec:
   destination:
     namespace: openshift-gitops
     server: 'https://kubernetes.default.svc'
   source:
-    path: 03-sre/01-dev-test/operators
+    path: 03-sre/01-dev-test/tenant-operator
     repoURL: 'https://github.com/stakater/gitops-config-template.git'
     targetRevision: main
     directory:
@@ -18,3 +19,4 @@ spec:
     automated:
       prune: true
       selfHeal: true
+
