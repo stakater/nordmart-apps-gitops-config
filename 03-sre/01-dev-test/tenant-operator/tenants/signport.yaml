@@ -1,0 +1,17 @@
+apiVersion: tenantoperator.stakater.com/v1beta1
+kind: Tenant
+metadata:
+  name: signport
+spec:
+  quota: medium
+  owners:
+    users:
+      - bilal.bokharee@stakater.com
+      - hanzala@stakater.com
+  argocd:
+    sourceRepos:
+      - 'https://github.com/stakater/gitops-config-template'
+      - 'https://nexus-helm-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/repository/helm-charts/'
+      - 'https://github.com/stakater/signport'
+  namespaces:
+  - dev

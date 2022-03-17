@@ -1,0 +1,9 @@
+apiVersion: tenantoperator.stakater.com/v1alpha1
+kind: Tenant
+metadata:
+  name: gabbar
+spec:
+  users:
+   owner:
+   - hanzala@stakater.com
+  quota: medium

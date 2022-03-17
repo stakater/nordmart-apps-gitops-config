@@ -1,0 +1,6 @@
+stakater-nordmart-inventory:
+  application:
+    deployment:
+      image:
+        repository: nexus-docker-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-inventory
+        tag: 0.0.28

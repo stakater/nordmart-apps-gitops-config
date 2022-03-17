@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gabbar-dev-stakater-nordmart-review
+  namespace: openshift-gitops
+  labels:
+    stakater.com/tenant: gabbar
+    stakater.com/env: dev
+    stakater.com/kind: dev         
+spec:
+  destination:
+    namespace: gabbar-dev
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: 01-gabbar/apps/01-stakater-nordmart-review/01-dev
+    repoURL: 'https://github.com/stakater/gitops-config-template.git'
+    targetRevision: HEAD
+  project: gabbar 
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

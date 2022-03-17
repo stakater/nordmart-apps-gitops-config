@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gabbar-prod
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: openshift-gitops
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: 01-gabbar/configs/03-prod/
+    repoURL: 'https://github.com/stakater/gitops-config-template.git'
+    targetRevision: main
+    directory:
+       recurse: true
+  project: gabbar
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

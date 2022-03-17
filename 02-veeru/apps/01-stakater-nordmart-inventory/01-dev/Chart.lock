@@ -1,0 +1,6 @@
+dependencies:
+- name: stakater-nordmart-inventory
+  repository: https://nexus-helm-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/repository/helm-charts/
+  version: 0.0.28
+digest: sha256:d037021d6e6299eb750b5168a8d140e8f839d900517d246a7e08fcd856d6eeb0
+generated: "2022-01-28T12:11:48.290851384Z"

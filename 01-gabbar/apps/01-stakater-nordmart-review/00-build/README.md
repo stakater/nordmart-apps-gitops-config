@@ -1,0 +1,1 @@
+SAAP automatically deploys tekton pipelines and tasks in this environment.
