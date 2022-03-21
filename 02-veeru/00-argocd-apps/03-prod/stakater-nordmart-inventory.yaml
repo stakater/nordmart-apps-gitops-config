@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: veeru-prod-inventory
-  namespace: openshift-gitops
+  namespace: openshift-stakater-gitops
   labels:
     stakater.com/tenant: veeru
     stakater.com/env: prod
