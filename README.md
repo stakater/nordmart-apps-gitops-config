@@ -22,18 +22,16 @@ This gitops structure supports:
 
 ## Mutliple tenants
 
-We have 2 product based tenants:
+We have 2 product based tenants; who have exactly same structure
 
 1. gabbar
 2. veeru
-
-Who have exactly same structure
 
 And then there is one special tenant which is SRE
 
 ## Mutliple environments
 
-We have 5 environments for each application:
+We have 5 environments for each **application**:
 
 1. build
 2. preview
@@ -54,12 +52,12 @@ We have 3 apps:
 
 **Gabbar** has two apps: 
 
-- stakater-nordmart-review, 
-- stakater-nordmart-review-ui
+1. stakater-nordmart-review, 
+2. stakater-nordmart-review-ui
 
 **Veeru** has one app: 
 
-- stakater-nordmart-inventory
+1. stakater-nordmart-inventory
 
 ## CI/CD/CD Workflow
 
