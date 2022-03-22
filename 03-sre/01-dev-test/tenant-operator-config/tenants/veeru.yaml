@@ -31,3 +31,4 @@ spec:
   - dev
   - stage
   - prod
+  - demo
