@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: veeru-dev-inventory
+  name: veeru-dev-stakater-nordmart-inventory
   namespace: openshift-gitops
   labels:
     stakater.com/tenant: veeru
