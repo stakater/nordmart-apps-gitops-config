@@ -11,6 +11,8 @@ spec:
   source:
     path: 03-sre/02-stage-prod/tenant-operator-config
     repoURL: 'https://github.com/stakater/gitops-config-template.git'
+    directory:
+       recurse: true
     targetRevision: main
   project: default
   syncPolicy:
