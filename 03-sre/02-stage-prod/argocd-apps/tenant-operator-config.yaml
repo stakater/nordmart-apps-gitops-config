@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: tenant-operator
-  namespace: openshift-stakater-gitops
+  namespace: openshift-stakater-argocd
 spec:
   destination:
     namespace: openshift-stakater-argocd
