@@ -9,7 +9,7 @@ spec:
     namespace: openshift-gitops
     server: 'https://kubernetes.default.svc'
   source:
-    path: 03-sre/01-dev-test/tenant-operator
+    path: 03-sre/01-dev-test/tenant-operator-config
     repoURL: 'https://github.com/stakater/gitops-config-template.git'
     targetRevision: main
     directory:
