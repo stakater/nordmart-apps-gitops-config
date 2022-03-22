@@ -2,10 +2,10 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: veeru-prod
-  namespace: openshift-stakater-gitops
+  namespace: openshift-stakater-argocd
 spec:
   destination:
-    namespace: openshift-gitops
+    namespace: openshift-stakater-argocd
     server: 'https://kubernetes.default.svc'
   source:
     path: 02-veeru/00-argocd-apps/03-prod/
