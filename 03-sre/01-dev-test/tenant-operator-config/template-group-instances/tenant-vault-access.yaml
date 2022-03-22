@@ -1,0 +1,14 @@
+apiVersion: tenantoperator.stakater.com/v1alpha1
+kind: TemplateGroupInstance
+metadata:
+  name: tenant-vault-access
+spec:
+  sync: true
+  template: tenant-vault-access
+  selector:
+    matchExpressions:
+      - key: stakater.com/tenant
+        operator: In
+        values:
+          - gabbar
+          - veeru
