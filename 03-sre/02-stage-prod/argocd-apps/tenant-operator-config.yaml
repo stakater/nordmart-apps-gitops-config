@@ -6,7 +6,7 @@ metadata:
   namespace: openshift-stakater-gitops
 spec:
   destination:
-    namespace: openshift-stakater-gitops
+    namespace: openshift-stakater-argocd
     server: 'https://kubernetes.default.svc'
   source:
     path: 03-sre/02-stage-prod/tenant-operator-config
