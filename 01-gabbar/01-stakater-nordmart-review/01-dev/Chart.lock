@@ -1,6 +1,0 @@
-dependencies:
-- name: stakater-nordmart-review
-  repository: https://nexus-helm-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/repository/helm-charts/
-  version: 0.0.805
-digest: sha256:1b77a44e6421a2d3f301a032171cc8fc99db8f95a7efba29411f73e69af19f5f
-generated: "2022-03-06T11:50:53.942876997Z"
