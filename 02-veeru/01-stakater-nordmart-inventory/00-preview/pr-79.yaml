@@ -19,7 +19,7 @@ spec:
           deployment:
             image:
               repository: nexus-docker-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-inventory
-              tag: SNAPSHOT-PR-79-a287ee0b
+              tag: SNAPSHOT-PR-79-04e47446
   namespaceLabels:
     kind: pr
     team: gabbar
