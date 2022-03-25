@@ -61,6 +61,10 @@ We have 3 apps:
 
 ## CI/CD/CD Workflow
 
+### Overview
+
+![Overview](./docs/images/overview.png)
+
 ### Pull request workflow
 
 ![PR Workflow](./docs/images/pr-workflow.png)
