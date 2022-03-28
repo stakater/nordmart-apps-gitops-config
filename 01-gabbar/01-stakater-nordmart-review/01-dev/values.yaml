@@ -2,6 +2,7 @@ stakater-nordmart-review:
   application:
     persistence:
       enabled: true
+      storageClass: stakater
       annotations:
          argocd.argoproj.io/sync-options: Prune=false
     deployment:
