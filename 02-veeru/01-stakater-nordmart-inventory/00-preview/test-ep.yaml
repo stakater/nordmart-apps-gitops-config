@@ -1,7 +1,7 @@
 apiVersion: tronador.stakater.com/v1alpha1
 kind: EnvironmentProvisioner
 metadata:
-  name: main-test-stakater-nordmart-inventory
+  name: this-is-a-different-name-than-before
 spec:
   application:
     release:
