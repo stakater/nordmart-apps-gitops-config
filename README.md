@@ -78,3 +78,9 @@ We have 3 apps:
 ### Helm values override
 
 ![Helm values override](./docs/images/helm-values-override.png)
+
+### Outputs
+
+The pipelines produce following outputs
+
+![Pipeline outputs](./docs/images/outputs.png)
