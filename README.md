@@ -84,3 +84,7 @@ We have 3 apps:
 The pipelines produce following outputs
 
 ![Pipeline outputs](./docs/images/outputs.png)
+
+### Release workflow
+
+![Release workflow](./docs/images/release-workflow.png)
