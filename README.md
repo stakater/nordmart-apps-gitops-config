@@ -65,9 +65,13 @@ We have 3 apps:
 
 ![Overview](./docs/images/overview.png)
 
+---
+
 ### Pull request workflow
 
 ![PR Workflow](./docs/images/pr-workflow.png)
+
+---
 
 ### Main branch workflow
 
@@ -75,15 +79,27 @@ We have 3 apps:
 
 ![CI/CD/CD](./docs/images/ci-cd-cd-v1.png)
 
+---
+
 ### Helm values override
 
+#### Helm values override # 1
+
 ![Helm values override](./docs/images/helm-values-override.png)
+
+#### Helm values override # 2
+
+![Helm values override](./docs/images/helm-values-override-2.png)
+
+---
 
 ### Outputs
 
 The pipelines produce following outputs
 
 ![Pipeline outputs](./docs/images/outputs.png)
+
+---
 
 ### Release workflow
 
