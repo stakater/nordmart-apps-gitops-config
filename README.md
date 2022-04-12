@@ -104,3 +104,9 @@ The pipelines produce following outputs
 ### Release workflow
 
 ![Release workflow](./docs/images/release-workflow.png)
+
+---
+
+### Tenant, Application and Environment Mapping
+
+![Mapping](./docs/images/model-stk.jpg)
