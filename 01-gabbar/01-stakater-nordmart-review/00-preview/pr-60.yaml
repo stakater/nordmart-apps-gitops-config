@@ -1,0 +1,25 @@
+apiVersion: tronador.stakater.com/v1alpha1
+kind: EnvironmentProvisioner
+metadata:
+  name: pr-60-stakater-nordmart-review
+spec:
+  application:
+    release:
+      chart:
+        git: https://github.com/stakater-lab/stakater-nordmart-review
+        ref: kubehealth-test
+        path: deploy
+        secretRef:
+          null
+      releaseName: kubehealth-test
+      valuesFrom:
+        null
+      values:
+        application:
+          deployment:
+            image:
+              repository: nexus-docker-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-review
+              tag: SNAPSHOT-PR-60-bfa1f7f6
+  namespaceLabels:
+    stakater.com/kind: pr
+    stakater.com/tenant: gabbar
