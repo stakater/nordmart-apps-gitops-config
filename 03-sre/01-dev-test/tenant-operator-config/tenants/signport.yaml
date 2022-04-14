@@ -8,6 +8,7 @@ spec:
     users:
       - bilal.bokharee@stakater.com
       - hanzala@stakater.com
+      - Magnus.Suther@knowit.se
   argocd:
     sourceRepos:
       - 'https://github.com/stakater/gitops-config-template'
