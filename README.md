@@ -110,3 +110,24 @@ The pipelines produce following outputs
 ### Tenant, Application and Environment Mapping
 
 ![Mapping](./docs/images/model-stk.jpg)
+
+---
+
+### Using an external chart in a helm chart repository
+
+Helm charts in GitOps repositories can be defined
+
+- Option # 1: locally, with a templates folder including all the Kubernetes manifests or 
+- Option # 2: without a templates folder using a dependency and this dependency points to an external Helm Chart Repository where your chart is located.
+
+We prefer the later approach (option # 2); with this setup, the only configuration present in the GitOps repository is the environment-specific configuration and dependencies, based on versions. This solution scales better and has better versioning capabilities, but requires some more Helm expertise from developers.
+
+Your resources are structured as follows:
+
+1. For this particular environment, you define a Chart.yaml with an external dependency to a Chart Version. The Helm chart is located in a remote Helm Chart repository
+
+2. The values.yaml for this particular environment contains all the environment-specific configuration and includes an image tag that points to a tag in the Container Registry
+
+![App ](./docs/images/external-chart.png)
+
+[Credits](https://www.pionative.com/post/how-to-manage-gitops-environments-at-scale-a-technical-guide)
