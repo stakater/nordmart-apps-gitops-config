@@ -3,4 +3,4 @@ stakater-nordmart-review:
     deployment:
       image:
         repository: nexus-docker-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-review
-        tag: 1.0.0
+        tag: 1.0.1
