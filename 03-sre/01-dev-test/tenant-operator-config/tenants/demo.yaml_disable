@@ -5,14 +5,18 @@ metadata:
 spec:
   quota: medium
   owners:
+    users:
+      - Gabbar_Owner@azuretestrootstakater.onmicrosoft.com
     groups:
       - azure-gabbar-owner
   editors:
+    users:
+      - Gabbar_Editor@azuretestrootstakater.onmicrosoft.com
     groups:
       - azure-gabbar-editor
   viewers:
     groups:
       - azure-gabbar-viewer
   namespaces:
-  - demo1
-  - demo2
+  - demo-dev
+  - demo-prod
