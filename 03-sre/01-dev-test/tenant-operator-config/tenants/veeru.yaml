@@ -9,9 +9,12 @@ spec:
       - bilal.bokharee@stakater.com
       # Test user for Stakater Cloud IAM
       - sro-privileged
+      - Veeru_Owner@azuretestrootstakater.onmicrosoft.com
     groups:
       - azure-veeru-owner
   editors:
+    users:
+      - Veeru_Editor@azuretestrootstakater.onmicrosoft.com
     groups:
       - azure-veeru-editor
   viewers:

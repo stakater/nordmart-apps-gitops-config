@@ -10,9 +10,12 @@ spec:
       - bilal.bokharee@stakater.com
       - hanzala@stakater.com
       - shahid@stakater.com
+      - Gabbar_Owner@azuretestrootstakater.onmicrosoft.com
     groups:
       - azure-gabbar-owner
   editors:
+    users:
+      - Gabbar_Editor@azuretestrootstakater.onmicrosoft.com
     groups:
       - azure-gabbar-editor
   viewers:
