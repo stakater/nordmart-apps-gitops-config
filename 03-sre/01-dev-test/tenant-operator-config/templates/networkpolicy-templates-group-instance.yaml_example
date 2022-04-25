@@ -1,0 +1,10 @@
+apiVersion: tenantoperator.stakater.com/v1alpha1
+kind: TemplateGroupInstance
+metadata:
+  name: tenant-network-policy-group
+spec:
+  template: tenant-network-policy
+  selector:
+    matchLabels:
+      tenant-env: prod #Can match namespaces to target for the TemplateGroupIntsance
+  sync: true

@@ -1,0 +1,33 @@
+apiVersion: tenantoperator.stakater.com/v1beta1
+kind: Tenant
+metadata:
+  name: demo
+spec:
+  quota: medium
+  sandbox: true
+  owners:
+    users:
+      - Gabbar_Owner@azuretestrootstakater.onmicrosoft.com
+    groups:
+      - azure-gabbar-owner
+  editors:
+    users:
+      - Gabbar_Editor@azuretestrootstakater.onmicrosoft.com
+    groups:
+      - azure-gabbar-editor
+  viewers:
+    groups:
+      - azure-gabbar-viewer
+  argocd:
+    sourceRepos:
+      - 'https://github.com/stakater/gitops-config-template'
+      - 'https://nexus-helm-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/repository/helm-charts/'
+  templateInstances:
+  - spec:
+      template: docker-secret-template
+      parameters:
+        - name: ENCRYPTED_DOCKER_CONFIG
+          value: AgBbA6z+gjdhjBZ3YFaTIUAle2rpJsr1MdBkOFQM3bj5PXviOWnVFXBddFwZ07n4UZowGNSdKbhv1d3zAyyLrTtd+DXoQ00LXCyenO+6/UrKHtZ0ImX+Flse2ri5iLAtX+8cBlSDNPXckCjWrfXOiz/hG9SLu2TLoIshLeeThUHOOSYRqF3gla++WSi1Hv+QhzHgxB6A5FayDh1qZw/47Zhsp4jLgQq4pG4txgA9vpxHB51cFDMfiUothL4BlMJVB+x8afpitCV8XPdbglAew2nBvJ7qyfqatY+aEfAj2XpZ0wykDecl5r+2DMcftWE3h7uFNh+NJLdPYZrsaPRF1U55NPHuIbU2U+1hX20oymiRkjzrkjW37nYnGGgIju6wZjFjDYhFiXII7NwhDYuCu+bL3KXfEPT9OMvlMDZy1HWIMHP/8W+KB/YprMCbMx6mnKcBJ2DyU3Z7biB5mfDom307sAlnzyFe7qtfjZy5rT7tnxwWNbtn0qcINs7YTZwj2qAPGGlyaC1TdRu7aGozwmOovfwHBXtxdf7ME16nVnzUopba0dJM/MLNX3zEP8Ng8E5tMWVOqFoHiYQdfuYQiDwYGJ9cgtcAmiUym1wWepnHA3RQqs5emtZyQekjAW5ZD12K2jy+nQsL3OfFZUkgw+Istuo6lytd/nr/UqvR9Z4JKw8CnCbPj6zzV/VEHa76GExbXzZjuHANky5GIBMiZP9B0qFTFojdqgI4DeH92f79ieIcA04KqD0Z434EQAVunaREv5ta0MqSU9sRs14ZEpe/FD5CDCRHZy2/iEr6jkROnDmgwMBsbCeseJXC0LhsTJ8nqojOSgplUU1hGbix78ujD6hPEkHuYzOYc2CHYNtY0NUg7ITQCypPA0RsBWYRorf953aDFBzz+xrVAIVYof+RNyz7Pqdb/iJlCpyDre4/82WAdMNBimKifyrH4x/OcbbrakXhW1d1ZxvtPFIa6AHZ17CyjBP1apYhr7RG0/SfEHptK4L3U+D62RlyocOq05iEc+NhkCU=
+  namespaces:
+  - dev
+  - prod
