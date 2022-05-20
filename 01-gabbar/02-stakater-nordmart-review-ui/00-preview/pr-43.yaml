@@ -18,7 +18,7 @@ spec:
         application:
           deployment:
             image:
-              repository: nexus-docker-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-review-ui
+              repository: nexus-docker-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/stakater-nordmart-review-ui
               tag: SNAPSHOT-PR-43-17d2d3d7
   namespaceLabels:
     stakater.com/kind: pr

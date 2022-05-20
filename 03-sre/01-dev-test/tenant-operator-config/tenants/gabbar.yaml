@@ -24,7 +24,7 @@ spec:
   argocd:
     sourceRepos:
       - 'https://github.com/stakater/gitops-config-template'
-      - 'https://nexus-helm-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/repository/helm-charts/'
+      - 'https://nexus-helm-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/repository/helm-charts/'
   templateInstances:
   - spec:
       template: tenant-vault-access
