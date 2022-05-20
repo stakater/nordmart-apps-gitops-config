@@ -4,5 +4,5 @@ description: A Helm chart for Kubernetes
 dependencies:
   - name: stakater-nordmart-review
     version: "0.0.0"
-    repository: "https://nexus-helm-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/repository/helm-charts/"
+    repository: "https://nexus-helm-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/repository/helm-charts/"
 version: 0.0.0
