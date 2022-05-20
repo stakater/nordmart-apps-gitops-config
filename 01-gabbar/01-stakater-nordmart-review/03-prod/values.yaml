@@ -3,6 +3,6 @@ stakater-nordmart-review:
   application: 
     deployment:   
       image:
-        repository: nexus-docker-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/stakater-nordmart-review
+        repository: nexus-docker-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/stakater-nordmart-review
         tag: 0.0.798
       imagePullSecrets: nexus-docker-config-forked-test

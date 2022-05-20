@@ -1,7 +1,7 @@
 apiVersion: v2
 dependencies:
   - name: stakater-nordmart-review
-    repository: https://nexus-helm-stakater-nexus.apps.binero-test.8sdzwd1l.kubeapp.cloud/repository/helm-charts/
+    repository: https://nexus-docker-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/repository/helm-charts/
     version: 1.0.6
 description: A Helm chart for Kubernetes
 name: stakater-nordmart-review
