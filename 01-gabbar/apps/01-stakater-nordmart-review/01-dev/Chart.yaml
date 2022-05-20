@@ -5,4 +5,4 @@ dependencies:
   - name: stakater-nordmart-review
     version: "*"
     repository: "https://nexus-helm-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/repository/helm-charts/"
-version: 0.0.0
+version: 0.1.0
