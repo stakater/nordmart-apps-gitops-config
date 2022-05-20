@@ -4,8 +4,3 @@ stakater-nordmart-review:
       image:
         repository: nexus-docker-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/stakater-nordmart-review
         tag: 0.0.805
-sample-app-helm:
-  application:
-    deployment:
-      image:
-        tag: 0.0.0
