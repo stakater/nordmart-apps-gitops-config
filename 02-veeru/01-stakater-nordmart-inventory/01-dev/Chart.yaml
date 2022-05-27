@@ -3,6 +3,6 @@ name: helm
 description: A Helm chart for Kubernetes
 dependencies:
   - name: stakater-nordmart-inventory
-    version: 1.0.1
+    version: 1.2.3
     repository: "https://nexus-helm-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/repository/helm-charts/"
-version: 1.0.1
+version: 1.2.3
