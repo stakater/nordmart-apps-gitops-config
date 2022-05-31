@@ -7,6 +7,8 @@ spec:
   owners:
     users:
       - bilal.bokharee@stakater.com
+      - asfa@stakater.com
+      - mustafa@stakater.com
       # Test user for Stakater Cloud IAM
       - sro-privileged
       - Veeru_Owner@azuretestrootstakater.onmicrosoft.com
