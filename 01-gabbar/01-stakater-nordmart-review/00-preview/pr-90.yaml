@@ -1,0 +1,25 @@
+apiVersion: tronador.stakater.com/v1alpha1
+kind: EnvironmentProvisioner
+metadata:
+  name: pr-90-stakater-nordmart-review
+spec:
+  application:
+    release:
+      chart:
+        git: https://github.com/stakater-lab/stakater-nordmart-review
+        ref: devsecops
+        path: deploy
+        secretRef:
+          null
+      releaseName: devsecops
+      valuesFrom:
+        null
+      values:
+        application:
+          deployment:
+            image:
+              repository: nexus-docker-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/stakater-nordmart-review
+              tag: SNAPSHOT-PR-90-5d9b27cb
+  namespaceLabels:
+    stakater.com/kind: pr
+    stakater.com/tenant: gabbar
