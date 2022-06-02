@@ -19,7 +19,7 @@ spec:
           deployment:
             image:
               repository: nexus-docker-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/stakater-nordmart-review
-              tag: SNAPSHOT-PR-89-1fa10364
+              tag: SNAPSHOT-PR-89-555ad3cd
   namespaceLabels:
     stakater.com/kind: pr
     stakater.com/tenant: gabbar
