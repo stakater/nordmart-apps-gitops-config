@@ -1,16 +1,29 @@
-apiVersion: tronador.stakater.com/v1alpha1
-kind: EnvironmentProvisioner
+apiVersion: tronador.stakater.com/v1alpha2
+kind: Environment
 metadata:
   name: pr-98-stakater-nordmart-review
 spec:
+  namespaceLabels:
+    stakater.com/kind: pr
+    stakater.com/tenant: gabbar
   application:
+    gitRepository:
+      gitImplementation: go-git
+      interval: 1m0s
+      ref:
+        branch: renovate/application-1.1.x
+      timeout: 20s
+      url: https://github.com/stakater-lab/stakater-nordmart-review
     release:
       chart:
-        git: https://github.com/stakater-lab/stakater-nordmart-review
-        ref: renovate/application-1.1.x
-        path: deploy
-        secretRef:
-          null
+        spec:
+          chart: deploy
+          reconcileStrategy: ChartVersion
+          sourceRef:
+            kind: GitRepository
+            name: dte-renovate/application-1.1.x
+          version: '*'
+      interval: 1m0s
       releaseName: renovate/application-1.1.x
       valuesFrom:
         null
@@ -19,7 +32,4 @@ spec:
           deployment:
             image:
               repository: nexus-docker-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/stakater-nordmart-review
-              tag: SNAPSHOT-PR-98-a0088268
-  namespaceLabels:
-    stakater.com/kind: pr
-    stakater.com/tenant: gabbar
+              tag: SNAPSHOT-PR-98-b4ef92e1
