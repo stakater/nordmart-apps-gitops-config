@@ -1,16 +1,29 @@
-apiVersion: tronador.stakater.com/v1alpha1
-kind: EnvironmentProvisioner
+apiVersion: tronador.stakater.com/v1alpha2
+kind: Environment
 metadata:
   name: pr-103-stakater-nordmart-review
 spec:
+  namespaceLabels:
+    stakater.com/kind: pr
+    stakater.com/tenant: gabbar
   application:
+    gitRepository:
+      gitImplementation: go-git
+      interval: 1m0s
+      ref:
+        branch: renovate/patch-spring-boot
+      timeout: 20s
+      url: https://github.com/stakater-lab/stakater-nordmart-review
     release:
       chart:
-        git: https://github.com/stakater-lab/stakater-nordmart-review
-        ref: renovate/patch-spring-boot
-        path: deploy
-        secretRef:
-          null
+        spec:
+          chart: deploy
+          reconcileStrategy: ChartVersion
+          sourceRef:
+            kind: GitRepository
+            name: dte-renovate/patch-spring-boot
+          version: '*'
+      interval: 1m0s
       releaseName: renovate/patch-spring-boot
       valuesFrom:
         null
@@ -19,7 +32,4 @@ spec:
           deployment:
             image:
               repository: nexus-docker-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/stakater-nordmart-review
-              tag: SNAPSHOT-PR-103-70ae02ea
-  namespaceLabels:
-    stakater.com/kind: pr
-    stakater.com/tenant: gabbar
+              tag: SNAPSHOT-PR-103-3d789132
