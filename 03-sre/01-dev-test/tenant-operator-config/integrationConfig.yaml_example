@@ -42,7 +42,7 @@ spec:
       deny:
         privilegedNamespaces:
           users:
-            - system:serviceaccount:openshift-stakater-argocd:argocd-argocd-application-controller
+            - system:serviceaccount:openshift-gitops:argocd-argocd-application-controller
           groups:
             - saap-cluster-admins
     argocd:
