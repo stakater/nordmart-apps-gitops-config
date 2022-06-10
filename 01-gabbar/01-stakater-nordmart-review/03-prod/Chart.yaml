@@ -3,6 +3,6 @@ name: stakater-nordmart-review
 description: A Helm chart for Kubernetes
 dependencies:
 - name: stakater-nordmart-review
-  version: 0.0.798
+  version: 1.0.13
   repository: "https://nexus-helm-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/repository/helm-charts/"
-version: 0.0.798
+version: 1.0.13
