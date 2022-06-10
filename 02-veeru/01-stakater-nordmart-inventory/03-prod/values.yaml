@@ -4,4 +4,4 @@ stakater-nordmart-inventory:
       image:
         repository: nexus-docker-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/stakater-nordmart-inventory
         tag: 1.2.3
-      imagePullSecrets: nexus-docker-config-forked-test
+      imagePullSecrets: nexus-docker-config-forked-devtest
