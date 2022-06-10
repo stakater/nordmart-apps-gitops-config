@@ -8,3 +8,7 @@ stakater-nordmart-review-ui:
         repository: nexus-docker-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/stakater-nordmart-review-ui
         tag: 1.0.2
       imagePullSecrets: nexus-docker-config-forked-devtest
+      env:
+        REVIEW_API:
+          # This is hardcoded!
+          value: "https://review-gabbar-stage.apps.stage.2cc6dtsv.kubeapp.cloud/"
