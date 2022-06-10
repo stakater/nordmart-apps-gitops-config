@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: veeru-stage-stakater-nordmart-inventory
-  namespace: openshift-stakater-argocd
+  namespace: openshift-gitops
   labels:
     stakater.com/tenant: veeru
     stakater.com/env: stage
