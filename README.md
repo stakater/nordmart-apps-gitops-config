@@ -1,6 +1,6 @@
 # gitops-config-template
 
-An opinionated gitops structure
+Stakater opinionated gitops structure
 
 - Mono repo
 - Single branch i.e. main and then separate folders per environment
@@ -11,16 +11,25 @@ An opinionated gitops structure
 
 Tenant (Product) owns Applications which are promoted to different Environments (Static and Dynamic)
 
-Tenant >> Applications >> Environments
+Cluster >> Tenants (teams/products) >> Applications >> Environments
+
+A cluster can hold multiple tenants; and each tenant can hold multiple applications; and each application be deployed into multiple environments.
 
 This gitops structure supports:
 
-- Multiple tenants/teams/products
-- Multiple environments (both static and dynamic)
 - Multiple clusters
+- Multiple tenants/teams/products
 - Multiple apps
+- Multiple environments (both static and dynamic)
 
-## Mutliple tenants
+### Multiple clusters
+
+We have 2 clusters:
+
+1. Cluster # 1 (i.e. devtest) holds 3 environments: build, preview and dev
+2. Cluster # 2 (i.e. prod) holds 2 environments: stage and prod
+
+### Mutliple tenants
 
 We have 2 product based tenants; who have exactly same structure
 
@@ -29,24 +38,7 @@ We have 2 product based tenants; who have exactly same structure
 
 And then there is one special tenant which is SRE
 
-## Mutliple environments
-
-We have 5 environments for each **application**:
-
-1. build
-2. preview
-3. dev
-4. stage
-5. prod
-
-## Multiple clusters
-
-We have 2 clusters:
-
-1. Cluster # 1 holds 3 environments: build, preview and dev
-2. Cluster # 2  holds 2 environments: stage and prod
-
-## Multiple apps
+### Multiple apps
 
 We have 3 apps:
 
@@ -58,6 +50,16 @@ We have 3 apps:
 **Veeru** has one app: 
 
 1. stakater-nordmart-inventory
+
+### Mutliple environments
+
+We have 5 environments for each **application**:
+
+1. build
+2. preview
+3. dev
+4. stage
+5. prod
 
 ## CI/CD/CD Workflow
 
