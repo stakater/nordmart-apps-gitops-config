@@ -6,6 +6,7 @@ spec:
   owners:
    users:
    - hanzala@stakater.com
+   - osama@stakater.com
   quota: medium
   argocd:
     sourceRepos:
