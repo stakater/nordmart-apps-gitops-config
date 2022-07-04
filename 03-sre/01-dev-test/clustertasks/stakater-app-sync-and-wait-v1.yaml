@@ -1,0 +1,72 @@
+apiVersion: tekton.dev/v1beta1
+kind: ClusterTask
+metadata:
+  name: stakater-app-sync-and-wait-v1
+spec:
+  description: >-
+    This task syncs application and waits for it to be healthy.
+  params:
+  - description: Reference of the image tag.
+    name: IMAGE_TAG
+    type: string
+  - description: Reference of the image name.
+    name: IMAGE_NAME
+    type: string
+  - name: repoName
+    description: Name of the repository
+  - name: timeout
+    description: Timeout for waiting for pod
+  - name: argoAppPrefix
+    description: Argocd applocation name prefix
+    default: "NA"
+  - name: prNumber
+    description: In case of PR, PR number that is to be used in image tag. If this field is empty it means that it's a commit on main branch
+    default: "NA"
+  steps:
+    - name: argo-sync-and-wait
+      image: docker.io/argoproj/argocd:v2.2.5
+      env:
+      - name: ARGOCD_SERVER
+        valueFrom:
+          secretKeyRef:
+            name: argocd-cluster
+            key: server
+      - name: ARGOCD_USERNAME
+        valueFrom:
+          secretKeyRef:
+            name: argocd-cluster
+            key: username
+      - name: ARGOCD_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: argocd-cluster
+            key: password
+      script: |
+        if [ $(params.prNumber) = "NA" ] && [ ! -f pom.xml ]; then
+          argocd login "$ARGOCD_SERVER" --username="$ARGOCD_USERNAME" --password="$ARGOCD_PASSWORD"
+          argocd app sync "$(params.argoAppPrefix)-$(params.repoName)"
+          argocd app wait "$(params.argoAppPrefix)-$(params.repoName)" --health 
+        fi
+    - image: 'quay.io/openshift/origin-cli:latest'
+      name: sync-and-wait
+      script: |
+        if [ $(params.prNumber) != "NA" ] && [ ! -f pom.xml ]; then
+          while [[ "$SECONDS" -lt $(params.timeout) ]]
+          do 
+            for pod in $(oc get pod -n pr-$(params.prNumber)-$(params.repoName) -o=jsonpath={.items..metadata.name}); 
+            do podImage=$(oc get pod $pod -n pr-$(params.prNumber)-$(params.repoName) -o jsonpath={.spec.containers[*].image}); 
+              image=$(params.IMAGE_NAME):$(params.IMAGE_TAG)
+              if [ $podImage == $image ]; then
+                  readyStatus=$(oc get pods $pod -n pr-$(params.prNumber)-$(params.repoName) -o jsonpath='{.status.containerStatuses[*].ready}')
+                  break;
+              fi
+            done
+            if [ $readyStatus == true ]; then
+                echo “pod is ready”
+                break;
+            fi
+            echo “waiting for pod” && sleep 3
+          done
+        else
+            echo "Not a PR, wont wait for the pods"
+        fi
