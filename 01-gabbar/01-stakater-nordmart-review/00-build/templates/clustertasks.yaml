@@ -1,7 +1,8 @@
 apiVersion: tekton.dev/v1beta1
-kind: ClusterTask
+kind: Task
 metadata:
   name: stakater-app-sync-and-wait-v1
+  namespace: gabbar-build
 spec:
   description: >-
     This task syncs application and waits for it to be healthy.
@@ -77,9 +78,10 @@ spec:
 
 ---
 apiVersion: tekton.dev/v1beta1
-kind: ClusterTask
+kind: Task
 metadata:
   name: stakater-e2e-test-v1
+  namespace: gabbar-build
 spec:
   workspaces:
   - name: source
