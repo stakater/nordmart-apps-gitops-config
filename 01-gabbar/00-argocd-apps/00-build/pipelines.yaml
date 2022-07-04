@@ -13,7 +13,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: gabbar
   source:
-    path: 01-gabbar/03-pipelines/00-build
+    path: 01-gabbar/00-build/
     repoURL: 'https://github.com/stakater/gitops-config-template.git'
     targetRevision: HEAD
   syncPolicy:
