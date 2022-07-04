@@ -53,9 +53,10 @@ spec:
         apt-get update
         apt-get install -y chromium tzdata
         cp /usr/share/zoneinfo/Europe/Stockholm /etc/localtime
+        npm install -g yq
         yarn install
         if [ $(params.prNumber) != "NA" ]; then
-          URL=$(oc get route -n pr-$(params.prNumber)-$(params.repoName) -o jsonpath='{range .items[*]}{.spec.host}')
+          URL=$(oc get route -n pr-$(params.prNumber)-$(params.repoName) -l app=$(yq .application.applicationName deploy/values.yaml) -o jsonpath='{range .items[*]}{.spec.host}')
           yarn run start ci $URL 
         else
           yarn run start ci
