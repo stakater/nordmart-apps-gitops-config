@@ -55,7 +55,8 @@ spec:
         cp /usr/share/zoneinfo/Europe/Stockholm /etc/localtime
         yarn install
         if [ $(params.prNumber) != "NA" ]; then
-          yarn run start ci https://review-web-pr-$(params.prNumber)-$(params.repoName).apps.devtest.vxdqgl7u.kubeapp.cloud 
+          URL=$(oc get route -n pr-$(params.prNumber)-$(params.repoName) -o jsonpath='{range .items[*]}{.spec.host}')
+          yarn run start ci $URL 
         else
           yarn run start ci
         fi
