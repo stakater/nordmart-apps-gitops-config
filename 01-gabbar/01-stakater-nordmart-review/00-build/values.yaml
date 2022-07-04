@@ -1,0 +1,246 @@
+pipeline-charts:
+  name: stakater-main-pr-v2
+  additionalParams:
+    - name: gitbranch
+      description: The git branch name
+    - name: repoName
+      description: Repository name
+    - name: webhook-payload
+      description: Content of Webhook Payload
+    - name: tekton-base-url
+      description: Base Url of Tekton
+    - name: prnumberBranch
+      description: PR number in case of pr else main
+      default: main 
+  workspaces:
+    - name: source
+      volumeClaimTemplate:
+        accessModes: ReadWriteOnce
+        resourcesRequestsStorage: 1Gi
+  pipelines:  
+    finally:
+      - taskName: stakater-set-commit-status-v1
+        name: set-commit-status-task-result                    
+    tasks:
+      - taskName: stakater-set-commit-status-v1
+        params:
+        - name: state
+          value: pending
+      - taskName: git-clone
+      - taskName: stakater-create-git-tag-v1
+      - taskName: stakater-code-linting-v1
+        runAfter:
+        - stakater-create-git-tag-v1
+        workspaces:
+        - name: source
+          workspace: source 
+      - taskName: stakater-kube-linting-v1
+        params:
+        - name: file
+          value: manifest.yaml
+        - name: deployment_files_path
+          value: deploy
+        runAfter:
+        - stakater-create-git-tag-v1
+        workspaces:
+        - name: source
+          workspace: source
+      - taskName: stakater-unit-test-v1
+        runAfter:
+        - stakater-kube-linting-v1
+        - stakater-code-linting-v1
+        workspaces:
+        - name: source
+          workspace: source   
+      - taskName: stakater-sonarqube-scanner-v1
+        params:
+          - name: sonar_host_url
+            value: 'http://sonarqube.stakater-sonarqube:9000'
+          - name: sonar_project_key
+            value: $(params.repoName)
+        runAfter:
+          - stakater-unit-test-v1 
+        workspaces:
+        - name: source
+          workspace: source
+      - taskName: stakater-buildah-v1
+        runAfter:
+        - stakater-unit-test-v1
+      - taskName: stakater-trivy-scan-v1
+        params:
+        - name: IMAGE
+          value: $(params.image_registry_url):$(tasks.stakater-create-git-tag-v1.results.GIT_TAG)
+        workspaces:
+        - name: source
+          workspace: source
+        runAfter:
+        - stakater-buildah-v1
+        - stakater-sonarqube-scanner-v1
+      - taskName: rox-image-scan
+        params:
+          - name: image
+            value: '$(params.image_registry_url):$(tasks.stakater-create-git-tag-v1.results.GIT_TAG)'
+          - name: rox_api_token
+            value: rhacs-auth-forked
+          - name: rox_central_endpoint
+            value: rhacs-auth-forked
+          - name: output_format
+            value: csv
+          - name: image_digest
+            value: $(tasks.stakater-buildah-v1.results.IMAGE_DIGEST)    
+        runAfter:
+        - stakater-buildah-v1
+        - stakater-sonarqube-scanner-v1
+      - taskName: rox-image-check
+        params:
+          - name: image
+            value: '$(params.image_registry_url):$(tasks.stakater-create-git-tag-v1.results.GIT_TAG)'
+          - name: rox_api_token
+            value: rhacs-auth-forked
+          - name: rox_central_endpoint
+            value: rhacs-auth-forked    
+        runAfter:
+        - stakater-buildah-v1
+        - stakater-sonarqube-scanner-v1
+      - taskName: rox-deployment-check
+        params:
+          - name: rox_api_token
+            value: rhacs-auth-forked
+          - name: rox_central_endpoint
+            value: rhacs-auth-forked
+          - name: file
+            value: manifest.yaml
+          - name: deployment_files_path
+            value: deploy
+        workspaces:
+        - name: source
+          workspace: source
+        runAfter:
+        - stakater-buildah-v1
+        - stakater-sonarqube-scanner-v1
+      - taskName: stakater-checkov-scan-v1
+        runAfter:
+        - stakater-buildah-v1
+        - stakater-sonarqube-scanner-v1
+        workspaces:
+          - name: source
+            workspace: source
+      - taskName: stakater-comment-on-github-pr-v1
+        runAfter:
+        - stakater-trivy-scan-v1
+        - rox-image-scan
+        - rox-image-check
+        - rox-deployment-check
+        - stakater-checkov-scan-v1
+      - taskName: stakater-helm-push-v1
+      - taskName: stakater-create-environment-v1
+        params:
+          - name: repoName
+            value: $(params.repoName)
+          - name: prNumber
+            value: $(params.prnumber)
+          - name: gitUrl
+            value: $(params.gitrepositoryurl)
+          - name: gitBranch
+            value: $(params.gitbranch)
+          - name: imageTag
+            value: $(tasks.stakater-create-git-tag-v1.results.GIT_TAG)
+          - name: imageRepo
+            value: $(params.image_registry_url)
+        workspaces:
+          - name: output
+            workspace: source
+      - taskName: stakater-update-cd-repo-v3
+        params:
+        - name: prnumber
+          value: $(params.prnumber)
+        - name: IMAGE_TAG
+          value: $(tasks.stakater-create-git-tag-v1.results.GIT_TAG)
+        - name: IMAGE_NAME
+          value: $(params.image_registry_url)
+        - name: environment
+          value: $(params.environment)
+        - name: repoPath
+          value: $(params.repoPath)
+        - name: gitrevision
+          value: $(params.gitrevision)
+        - name: gitorganization
+          value: $(params.gitorganization)
+        - name: gitcdrepo
+          value: $(params.gitcdrepo)
+        - name: clusterName
+          value: $(params.clusterName)
+        - name: team
+          value: $(params.team)
+        - name: namespace
+          value: $(params.namespace)
+        - name: helm_registry
+          value: $(params.helm_registry)
+        workspaces:
+        - name: source
+          workspace: source
+      - taskName: stakater-push-main-tag-v1
+      - taskName: stakater-app-sync-and-wait-v1
+        params:
+        - name: prNumber
+          value: $(params.prnumber)
+        - name: repoName
+          value: $(params.repoName)
+        - name: timeout
+          value: 60
+        - name: argoAppPrefix
+          value: gabbar-dev
+        - name: IMAGE_TAG
+          value: $(tasks.stakater-create-git-tag-v1.results.GIT_TAG)
+        - name: IMAGE_NAME
+          value: $(params.image_registry_url)
+      - taskName: stakater-e2e-test-v1
+        params:
+        - name: gitorganization
+          value: github.com/stakater-lab
+        - name: gite2erepo
+          value: stakater-nordmart-review-e2e
+        - name: repoName
+          value: $(params.repoName)
+        - name: prNumber
+          value: $(params.prnumber)
+        workspaces:
+        - name: source
+          workspace: source
+  triggertemplate:
+    serviceAccountName: stakater-tekton-builder
+  triggers:
+    enabled: true
+    eventlistenerTriggers:
+    - defaultTriggerName: pullrequest
+      interceptors:
+        - ref:
+            name: "cel"
+          params:
+            - name: "filter"
+              value: "(header.match('X-GitHub-Event', 'pull_request') && body.action == 'opened' || body.action == 'synchronize')"
+            - name: "overlays"
+              value:
+                - key: marshalled-body
+                  expression: "body.marshalJSON()" 
+      bindings:
+      - ref: stakater-pr-v1
+    - defaultTriggerName: push
+      interceptors:
+        - ref:
+            name: "cel"
+          params:
+            - name: "filter"
+              value: "(header.match('X-GitHub-Event', 'push') && (body.ref == 'refs/heads/main' || body.ref == 'refs/heads/master') )"
+            - name: "overlays"
+              value:
+                - key: marshalled-body
+                  expression: "body.marshalJSON()" 
+      bindings:
+      - ref: stakater-main-v1
+  eventlistener:
+    serviceAccountName: stakater-tekton-builder
+    triggers:
+    - stakater-pr-cleaner-v2-pullrequest-merge
+    - stakater-main-pr-v2-pullrequest
+    - stakater-main-pr-v2-push
