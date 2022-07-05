@@ -1,0 +1,118 @@
+apiVersion: tenantoperator.stakater.com/v1alpha1
+kind: Template
+metadata:
+  name: tekton-pipelines-triggerbinding
+resources:
+  manifests:
+  - apiVersion: triggers.tekton.dev/v1alpha1
+    kind: TriggerBinding
+    metadata:
+      name: stakater-main-v1
+    spec:
+      params:
+        - name: gitrevision
+          value:  $(body.repository.master_branch)
+        - name: gitorganization
+          value: "github.com/stakater"
+        - name: gitcdrepo
+          value: "gitops-config-template"
+        - name: team
+          value: NA
+        - name: clusterName
+          value: "01-devtest"
+        - name: environment
+          value: "01-dev"
+        - name: repoName
+          value: $(body.repository.name)
+        - name: repoPath
+          value: $(body.repository.full_name)
+        - name: namespace
+          value: ${namespace}
+        - name: prnumberBranch
+          value: main
+        - name: prnumber
+          value: NA
+        - name: gitrepositoryurl
+          value: "https://github.com/$(body.repository.full_name)"
+        - name: image_registry_url
+          value: "nexus-docker-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/$(body.repository.name)"    
+        - name: author
+          value: $(body.head_commit.author.name)
+        - name: helm_registry
+          value: https://nexus-helm-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/repository/helm-charts/
+        - name: nexus_url
+          value: https://nexus-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/repository/maven-public
+        - name: tekton-base-url
+          value: https://console-openshift-console.apps.devtest.vxdqgl7u.kubeapp.cloud/k8s/
+        - name: webhook-payload
+          value: $(extensions.marshalled-body)
+  - apiVersion: triggers.tekton.dev/v1alpha1
+    kind: TriggerBinding
+    metadata:
+      name: stakater-pr-cleaner-v1
+    spec:
+      params:
+        - name: gitrevision
+          value: $(body.pull_request.head.sha)
+        - name: gitrepositoryurl
+          value: "https://github.com/$(body.repository.full_name)"
+        - name: prnumber
+          value: $(body.pull_request.number)
+        - name: repoName
+          value: $(body.repository.name)
+        - name: namespace
+          value: ${namespace}              
+        - name: repoPath
+          value: $(body.repository.full_name)
+        - name: gitorganization
+          value: "github.com/stakater"
+        - name: gitcdrepo
+          value: "gitops-config-template"
+        - name: team
+          value: NA
+        - name: clusterName
+          value: "01-devtest"
+  - apiVersion: triggers.tekton.dev/v1alpha1
+    kind: TriggerBinding
+    metadata:
+      name: stakater-pr-v1
+    spec:
+      params:
+        - name: gitrevision
+          value: $(body.pull_request.head.sha)
+        - name: gitbranch
+          value: $(body.pull_request.head.ref)
+        - name: namespace
+          value: ${namespace}              
+        - name: gitorganization
+          value: "github.com/stakater"
+        - name: gitcdrepo
+          value: "gitops-config-template"
+        - name: team
+          value: NA
+        - name: clusterName
+          value: "01-devtest"
+        - name: environment
+          value: "01-dev" 
+        - name: repoName
+          value: $(body.repository.name)
+        - name: repoPath
+          value: $(body.repository.full_name)
+        - name: prnumberBranch
+          value: pr-$(body.pull_request.number)
+        - name: prnumber
+          value: $(body.pull_request.number)
+        - name: gitrepositoryurl
+          value: "https://github.com/$(body.repository.full_name)"
+        - name: image_registry_url
+          value: "nexus-docker-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/$(body.repository.name)" 
+        - name: author
+          value: $(body.pull_request.user.login)
+        - name: helm_registry
+          value: https://nexus-helm-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/repository/helm-charts/
+        - name: nexus_url
+          value: https://nexus-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/repository/maven-public
+        - name: tekton-base-url
+          value: https://console-openshift-console.apps.devtest.vxdqgl7u.kubeapp.cloud/k8s/
+        - name: webhook-payload
+          value: $(extensions.marshalled-body)
