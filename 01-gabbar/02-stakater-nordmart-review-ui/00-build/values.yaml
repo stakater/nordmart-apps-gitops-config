@@ -19,34 +19,6 @@ pipeline-charts:
         resourcesRequestsStorage: 1Gi
   pipelines:  
     finally:
-        params:
-        - name: prnumber
-          value: $(params.prnumber)
-        - name: IMAGE_TAG
-          value: $(tasks.stakater-create-git-tag-v1.results.GIT_TAG) # LAST TAG
-        - name: IMAGE_NAME
-          value: $(params.image_registry_url)
-        - name: environment
-          value: $(params.environment)
-        - name: repoPath
-          value: $(params.repoPath)
-        - name: gitrevision
-          value: $(params.gitrevision)
-        - name: gitorganization
-          value: $(params.gitorganization)
-        - name: gitcdrepo
-          value: $(params.gitcdrepo)
-        - name: clusterName
-          value: $(params.clusterName)
-        - name: team
-          value: $(params.team)
-        - name: namespace
-          value: $(params.namespace)
-        - name: helm_registry
-          value: $(params.helm_registry)
-        workspaces:
-        - name: source
-          workspace: source
       - taskName: stakater-set-commit-status-v1
         name: set-commit-status-task-result                    
     tasks:
