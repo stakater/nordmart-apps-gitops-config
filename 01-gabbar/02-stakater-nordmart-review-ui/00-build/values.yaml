@@ -19,11 +19,6 @@ pipeline-charts:
         resourcesRequestsStorage: 1Gi
   pipelines:  
     finally:
-      - taskName: stakater-update-cd-repo-v3
-        when:
-        - input: $(tasks.stakater-e2e-test-v1.status)
-          operator: in
-          values: [“Failed”]
         params:
         - name: prnumber
           value: $(params.prnumber)
