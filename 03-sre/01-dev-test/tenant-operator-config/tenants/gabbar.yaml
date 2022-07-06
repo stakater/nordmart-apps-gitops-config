@@ -6,7 +6,8 @@ spec:
   quota: medium
   owners:
     users:
-      - nebojsa
+      - rasheed@stakater.com
+      - tehreem.nisa@stakater.com
       - bilal.bokharee@stakater.com
       - hanzala@stakater.com
       - shahid@stakater.com
