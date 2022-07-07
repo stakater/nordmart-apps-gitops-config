@@ -8,7 +8,7 @@ pipeline-charts:
   pipelines:
     finally:
       - taskName: stakater-update-cd-repo-v3
-        name: stakater-update-cd-repo-v3
+        name: stakater-rollback-cd-repo
         when:
         - input: $(tasks.stakater-e2e-test-v1.status)
           operator: in
