@@ -7,6 +7,14 @@ pipeline-charts:
         resourcesRequestsStorage: 1Gi
   pipelines:
     finally:
+      - taskName: stakater-update-cd-repo-v3
+        when:
+        - input: $(tasks.stakater-e2e-test-v1.status)
+          operator: in
+          values: [“Failed”]
+        params:
+        - name: IMAGE_TAG
+          value: $(tasks.stakater-update-cd-repo-v3.results.LAST_TAG)
       - taskName: stakater-set-commit-status-v1
         name: set-commit-status-task-result
     tasks:
