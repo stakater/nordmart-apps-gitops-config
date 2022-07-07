@@ -19,13 +19,24 @@ spec:
     name: repoName
     type: string
   steps:
-  - image: 'stakater/pipeline-toolbox:v0.0.2'
-    name: clone
+  - image: 'stakater/pipeline-toolbox:v0.0.11'
+    name: e2e-test
     args:
       - '-c'
       - >
         git clone
         https://${GIT_USERNAME}:${GIT_PASSWORD}@$(params.gitorganization)/$(params.gite2erepo)
+        if [ ! -f pom.xml ]; then
+          cd $(params.gite2erepo)
+          ln -sf /usr/share/zoneinfo/Europe/Stockholm /etc/localtime
+          yarn install
+          if [ $(params.prNumber) != "NA" ]; then
+            URL=$(oc get route -n pr-$(params.prNumber)-$(params.repoName) -l app=$(yq .application.applicationName ../deploy/values.yaml) -o jsonpath='{range .items[*]}{.spec.host}')
+            yarn run start ci $URL 
+          else
+            yarn run start ci
+          fi
+        fi
     command:
       - /bin/bash        
     env:
@@ -44,27 +55,4 @@ spec:
           secretKeyRef:
             name: git-auth-forked
             key: email
-    workingDir: $(workspaces.source.path)
-  - image: 'node:16'
-    name: e2e
-    script: |
-       if [ ! -f pom.xml ]; then
-          cd $(params.gite2erepo)
-          wget -qO- https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable-4.8/openshift-client-linux.tar.gz | tar xvz -C /usr/local/bin && \
-          oc version --client && \
-          echo "Installed oc"
-          wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/v4.22.1/yq_linux_amd64 && \
-          chmod +x /usr/local/bin/yq && \
-          echo "Installed yq"
-          apt-get update
-          apt-get install -y chromium tzdata
-          cp /usr/share/zoneinfo/Europe/Stockholm /etc/localtime
-          yarn install
-          if [ $(params.prNumber) != "NA" ]; then
-            URL=$(oc get route -n pr-$(params.prNumber)-$(params.repoName) -l app=$(yq .application.applicationName ../deploy/values.yaml) -o jsonpath='{range .items[*]}{.spec.host}')
-            yarn run start ci $URL 
-          else
-            yarn run start ci
-          fi
-        fi
     workingDir: $(workspaces.source.path)
