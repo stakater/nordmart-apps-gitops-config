@@ -15,7 +15,7 @@ pipeline-charts:
           values: [“Failed”]
         params:
         - name: IMAGE_TAG
-          value: $(tasks.stakater-update-cd-repo-v3.results.LAST_TAG)
+          value: $(tasks.stakater-create-git-tag-v1.results.CURRENT_GIT_TAG)
       - taskName: stakater-set-commit-status-v1
         name: set-commit-status-task-result
     tasks:
