@@ -19,7 +19,7 @@ spec:
     name: repoName
     type: string
   steps:
-  - image: 'stakater/pipeline-toolbox:v0.0.11'
+  - image: 'stakater/pipeline-toolbox:SNAPSHOT-PR-13-d29264b5'
     name: e2e-test
     args:
       - '-c'
@@ -44,7 +44,7 @@ spec:
             yarn run start ci
 
           fi
-          
+
         fi
     command:
       - /bin/bash        
