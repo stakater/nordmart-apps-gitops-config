@@ -21,6 +21,9 @@ spec:
   steps:
   - image: 'stakater/pipeline-toolbox:v0.0.11'
     name: e2e-test
+    securityContext:
+      privileged: true
+      runAsUser: 0
     args:
       - '-c'
       - >
