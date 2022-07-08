@@ -51,6 +51,12 @@ spec:
         fi
     - image: 'stakater/pipeline-toolbox:v0.0.11'
       name: sync-and-wait
+      env:
+      - name: GITHUBTOKEN
+        valueFrom:
+          secretKeyRef:
+            name: git-auth-forked
+            key: password
       script: |
         if [ $(params.prNumber) != "NA" ] && [ ! -f pom.xml ]; then
           while [[ "$SECONDS" -lt $(params.timeout) ]]
