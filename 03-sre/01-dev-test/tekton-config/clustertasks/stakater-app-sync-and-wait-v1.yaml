@@ -22,6 +22,8 @@ spec:
   - name: prNumber
     description: In case of PR, PR number that is to be used in image tag. If this field is empty it means that it's a commit on main branch
     default: "NA"
+  - name: gitrepositoryurl
+    description: The git repository url
   steps:
     - name: argo-sync-and-wait
       image: docker.io/argoproj/argocd:v2.2.5
@@ -47,7 +49,7 @@ spec:
           argocd app sync "$(params.argoAppPrefix)-$(params.repoName)"
           argocd app wait "$(params.argoAppPrefix)-$(params.repoName)" --health 
         fi
-    - image: 'quay.io/openshift/origin-cli:latest'
+    - image: 'stakater/pipeline-toolbox:v0.0.11'
       name: sync-and-wait
       script: |
         if [ $(params.prNumber) != "NA" ] && [ ! -f pom.xml ]; then
@@ -67,6 +69,16 @@ spec:
             fi
             echo “waiting for pod” && sleep 3
           done
+          REPO_URL=$(params.gitrepositoryurl)
+          #Remove protocol
+          REPO_NAME=${REPO_URL#*//}
+          #Remove baseurl
+          REPO_NAME=${REPO_NAME#*/}
+          URL=$(oc get route -n pr-$(params.prNumber)-$(params.repoName) -l app=$(yq .application.applicationName deploy/values.yaml) -o jsonpath='{range .items[*]}{.spec.host}')
+          echo $URL
+          curl -s -H "Authorization: token ${GITHUBTOKEN}" \
+          -X POST -d '{"body": "Tekton - Pipeline ran successfully and url `$URL` is available"}' \
+          "https://api.github.com/repos/${REPO_NAME}/issues/$(params.prNumber)/comments"
         else
             echo "Not a PR, wont wait for the pods"
         fi
