@@ -23,7 +23,7 @@ spec:
     name: e2e-test
     securityContext:
       privileged: true
-      runAsRoot: true
+      runAsUser: 0
     args:
       - '-c'
       - >
