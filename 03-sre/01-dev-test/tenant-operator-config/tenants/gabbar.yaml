@@ -36,7 +36,7 @@ spec:
       template: tenant-vault-access
       sync: true
   hibernation:
-    sleepSchedule: '0 16 * * *'
+    sleepSchedule: '0 20 * * *'
     wakeSchedule: '0 8 * * *'
   namespaces:
   - build
