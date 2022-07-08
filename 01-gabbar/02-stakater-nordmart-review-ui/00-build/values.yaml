@@ -78,6 +78,9 @@ pipeline-charts:
         params:
         - name: gitrepositoryurl
           value: $(params.gitrepositoryurl)
+        workspaces:
+        - name: source
+          workspace: source
       - taskName: stakater-e2e-test-v1
   triggertemplate:
     serviceAccountName: stakater-tekton-builder

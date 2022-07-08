@@ -24,6 +24,8 @@ spec:
     default: "NA"
   - name: gitrepositoryurl
     description: The git repository url
+  workspaces:
+  - name: source
   steps:
     - name: argo-sync-and-wait
       image: docker.io/argoproj/argocd:v2.2.5
@@ -52,11 +54,12 @@ spec:
     - image: 'stakater/pipeline-toolbox:v0.0.11'
       name: sync-and-wait
       env:
-      - name: GITHUBTOKEN
+      - name: GITHUB_TOKEN
         valueFrom:
           secretKeyRef:
             name: git-auth-forked
             key: password
+      workingDir: $(workspaces.source.path)
       script: |
         if [ $(params.prNumber) != "NA" ] && [ ! -f pom.xml ]; then
           while [[ "$SECONDS" -lt $(params.timeout) ]]
@@ -82,7 +85,7 @@ spec:
           REPO_NAME=${REPO_NAME#*/}
           URL=$(oc get route -n pr-$(params.prNumber)-$(params.repoName) -l app=$(yq .application.applicationName deploy/values.yaml) -o jsonpath='{range .items[*]}{.spec.host}')
           echo $URL
-          curl -s -H "Authorization: token ${GITHUBTOKEN}" \
+          curl -s -H "Authorization: token ${GITHUB_TOKEN}" \
           -X POST -d '{"body": "Tekton - Pipeline ran successfully and url `$URL` is available"}' \
           "https://api.github.com/repos/${REPO_NAME}/issues/$(params.prNumber)/comments"
         else
