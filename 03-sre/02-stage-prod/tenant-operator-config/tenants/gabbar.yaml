@@ -3,6 +3,9 @@ kind: Tenant
 metadata:
   name: gabbar
 spec:
+  hibernation:
+    sleepSchedule: '0 20 * * *'
+    wakeSchedule: '0 8 * * *'
   owners:
    users:
    - hanzala@stakater.com

@@ -17,6 +17,7 @@ spec:
       - julian.rubino@stakater.com
       - muneeb@stakater.com
       - Gabbar_Owner@azuretestrootstakater.onmicrosoft.com
+      - tanveer.alam@stakater.com
     groups:
       - azure-gabbar-owner
   editors:
@@ -35,6 +36,9 @@ spec:
   - spec:
       template: tenant-vault-access
       sync: true
+  hibernation:
+    sleepSchedule: '0 13 * * *'
+    wakeSchedule: '0 8 * * *'
   namespaces:
   - build
   - preview
