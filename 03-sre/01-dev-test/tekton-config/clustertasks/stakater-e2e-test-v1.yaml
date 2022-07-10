@@ -19,36 +19,13 @@ spec:
     name: repoName
     type: string
   steps:
-  - image: 'stakater/pipeline-toolbox:v0.0.11'
-    name: e2e-test
-    securityContext:
-      privileged: true
-      runAsUser: 0
+  - image: 'stakater/pipeline-toolbox:v0.0.2'
+    name: clone
     args:
       - '-c'
       - >
-        git clone https://${GIT_USERNAME}:${GIT_PASSWORD}@$(params.gitorganization)/$(params.gite2erepo)
-        
-        if [ ! -f pom.xml ]; then
-
-          cd $(params.gite2erepo)
-
-          ln -sf /usr/share/zoneinfo/Europe/Stockholm /etc/localtime
-
-          yarn install
-
-          if [ $(params.prNumber) != "NA" ]; then
-
-            URL=$(oc get route -n pr-$(params.prNumber)-$(params.repoName) -l app=$(yq .application.applicationName ../deploy/values.yaml) -o jsonpath='{range .items[*]}{.spec.host}')
-            
-            yarn run start ci $URL 
-          else
-
-            yarn run start ci
-
-          fi
-
-        fi
+        git clone
+        https://${GIT_USERNAME}:${GIT_PASSWORD}@$(params.gitorganization)/$(params.gite2erepo)
     command:
       - /bin/bash        
     env:
@@ -67,4 +44,18 @@ spec:
           secretKeyRef:
             name: git-auth-forked
             key: email
+    workingDir: $(workspaces.source.path)
+  - image: 'stakater/pipeline-e2e-toolbox:v0.0.1'
+    name: e2e
+    script: |
+       if [ ! -f pom.xml ]; then
+          cd $(params.gite2erepo)
+          yarn install
+          if [ $(params.prNumber) != "NA" ]; then
+            URL=$(oc get route -n pr-$(params.prNumber)-$(params.repoName) -l app=$(yq .application.applicationName ../deploy/values.yaml) -o jsonpath='{range .items[*]}{.spec.host}')
+            yarn run start ci $URL 
+          else
+            yarn run start ci
+          fi
+        fi
     workingDir: $(workspaces.source.path)
