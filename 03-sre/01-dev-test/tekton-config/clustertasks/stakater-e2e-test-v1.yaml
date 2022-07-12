@@ -32,17 +32,17 @@ spec:
       - name: GIT_PASSWORD
         valueFrom:
           secretKeyRef:
-            name: git-auth-forked
+            name: github-stakater-tekton-bot
             key: password
       - name: GIT_USERNAME
         valueFrom:
           secretKeyRef:
-            name: git-auth-forked
+            name: github-stakater-tekton-bot
             key: username
       - name: GIT_EMAIL
         valueFrom:
           secretKeyRef:
-            name: git-auth-forked
+            name: github-stakater-tekton-bot
             key: email
     workingDir: $(workspaces.source.path)
   - image: 'stakater/pipeline-e2e-toolbox:v0.0.1'

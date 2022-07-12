@@ -57,7 +57,7 @@ spec:
       - name: GITHUB_TOKEN
         valueFrom:
           secretKeyRef:
-            name: git-auth-forked
+            name: github-stakater-tekton-bot
             key: password
       workingDir: $(workspaces.source.path)
       script: |
