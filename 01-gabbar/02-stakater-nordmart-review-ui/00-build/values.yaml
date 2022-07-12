@@ -28,6 +28,7 @@ pipeline-charts:
           value: $(params.repoName)
         - name: gitrepositoryurl
         - name: tekton-base-url
+        - name: prnumber
     tasks:
       - taskName: stakater-set-commit-status-v1
         params:
