@@ -84,7 +84,7 @@ spec:
                 URL=$(oc get route -n pr-$(params.prNumber)-$(params.repoName) -l app=$(yq .application.applicationName deploy/values.yaml) -o jsonpath='{range .items[*]}{.spec.host}')
                 echo $URL
                 curl -s -H "Authorization: token ${GITHUB_TOKEN}" \
-                -X POST -d '{"body": "Tekton - Pipeline ran successfully and url $URL is available"}' \
+                -X POST -d '{"body": "Tekton - Pipeline ran successfully and url '$URL' is available"}' \
                 "https://api.github.com/repos/${REPO_NAME}/issues/$(params.prNumber)/comments"
 
                 break;
