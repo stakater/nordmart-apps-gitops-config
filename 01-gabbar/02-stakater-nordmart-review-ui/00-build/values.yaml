@@ -18,6 +18,17 @@ pipeline-charts:
           value: $(tasks.stakater-create-git-tag-v1.results.CURRENT_GIT_TAG)
       - taskName: stakater-set-commit-status-v1
         name: set-commit-status-task-result
+      - taskName: stakater-notify-slack-v1
+        name: notify-slack
+        params:
+        - name: namespace
+        - name: author
+        - name: gitrevision
+        - name: repo
+          value: $(params.repoName)
+        - name: gitrepositoryurl
+        - name: tekton-base-url
+        - name: prnumber
     tasks:
       - taskName: stakater-set-commit-status-v1
         params:

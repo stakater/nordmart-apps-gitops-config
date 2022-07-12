@@ -1,7 +1,7 @@
 apiVersion: tronador.stakater.com/v1alpha2
 kind: Environment
 metadata:
-  name: pr-149-stakater-nordmart-review
+  name: pr-59-stakater-nordmart-review-ui
 spec:
   namespaceLabels:
     stakater.com/kind: pr
@@ -11,9 +11,9 @@ spec:
       gitImplementation: go-git
       interval: 1m0s
       ref:
-        branch: linting
+        branch: empty-commit
       timeout: 20s
-      url: https://github.com/stakater-lab/stakater-nordmart-review
+      url: https://github.com/stakater-lab/stakater-nordmart-review-ui
     release:
       chart:
         spec:
@@ -21,15 +21,15 @@ spec:
           reconcileStrategy: ChartVersion
           sourceRef:
             kind: GitRepository
-            name: dte-linting
+            name: dte-empty-commit
           version: '*'
       interval: 1m0s
-      releaseName: linting
+      releaseName: empty-commit
       valuesFrom:
         null
       values:
         application:
           deployment:
             image:
-              repository: nexus-docker-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/stakater-nordmart-review
-              tag: SNAPSHOT-PR-149-f4c9d795
+              repository: nexus-docker-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/stakater-nordmart-review-ui
+              tag: SNAPSHOT-PR-59-495ff207
