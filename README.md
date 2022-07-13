@@ -61,6 +61,10 @@ We have 5 environments for each **application**:
 4. stage
 5. prod
 
+### Why sre tenant folder has different structure?
+
+- Infra apps are cluster scoped and not environment scoped; so, hence different structure
+
 ## CI/CD/CD Workflow
 
 ### Overview
