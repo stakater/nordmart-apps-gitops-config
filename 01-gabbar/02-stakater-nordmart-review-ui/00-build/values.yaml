@@ -95,6 +95,7 @@ pipeline-charts:
       - taskName: stakater-e2e-test-v1
   triggertemplate:
     serviceAccountName: stakater-tekton-builder
+    pipelineRunNamePrefix: $(tt.params.repoName)-$(tt.params.gitbranch)-
   eventlistener:
     serviceAccountName: stakater-tekton-builder
     triggers:
