@@ -9,7 +9,9 @@ spec:
       - bilal.bokharee@stakater.com
       - asfa@stakater.com
       - mustafa@stakater.com
+      - hanzala@stakater.com      
       - osama@stakater.com
+      - rasheed@stakater.com
       # Test user for Stakater Cloud IAM
       - sro-privileged
       - Veeru_Owner@azuretestrootstakater.onmicrosoft.com
