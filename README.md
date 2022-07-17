@@ -67,9 +67,15 @@ We have 5 environments for each **application**:
 
 ## CI/CD/CD Workflow
 
-### Overview
+### High Level Architecture
 
-![Overview](./docs/images/overview.png)
+![High Level Architecture](./docs/images/cluster-tenant-app-env.png)
+
+---
+
+### CI/CD Overview
+
+![CI/CD Overview](./docs/images/overview.png)
 
 ---
 
