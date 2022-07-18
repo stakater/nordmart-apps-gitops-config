@@ -89,6 +89,8 @@ pipeline-charts:
         params:
         - name: gitrepositoryurl
           value: $(params.gitrepositoryurl)
+        - name: timeout
+          value: "120"
         workspaces:
         - name: source
           workspace: source
