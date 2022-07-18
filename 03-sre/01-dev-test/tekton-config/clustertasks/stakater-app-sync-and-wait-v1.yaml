@@ -59,6 +59,21 @@ spec:
           secretKeyRef:
             name: github-stakater-tekton-bot
             key: password
+      - name: ARGOCD_SERVER
+        valueFrom:
+          secretKeyRef:
+            name: argocd-cluster
+            key: server
+      - name: ARGOCD_USERNAME
+        valueFrom:
+          secretKeyRef:
+            name: argocd-cluster
+            key: username
+      - name: ARGOCD_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: argocd-cluster
+            key: password
       workingDir: $(workspaces.source.path)
       script: |
         if [ $(params.prNumber) != "NA" ] && [ ! -f pom.xml ]; then
