@@ -89,8 +89,6 @@ pipeline-charts:
         params:
         - name: gitrepositoryurl
           value: $(params.gitrepositoryurl)
-        - name: timeout
-          value: "120"
         - name: argoPreviewAppPrefix
           value: gabbar-preview
         workspaces:
