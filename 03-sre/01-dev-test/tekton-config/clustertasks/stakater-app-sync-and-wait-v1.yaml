@@ -16,9 +16,8 @@ spec:
     description: Name of the repository
   - name: timeout
     description: Timeout for waiting for pod
-  - name: argoAppPrefix
-    description: Argocd applocation name prefix
-    default: "NA"
+  - name: namespace
+    description: Namespace for deployment
   - name: prNumber
     description: In case of PR, PR number that is to be used in image tag. If this field is empty it means that it's a commit on main branch
     default: "NA"
@@ -27,30 +26,6 @@ spec:
   workspaces:
   - name: source
   steps:
-    - name: argo-sync-and-wait
-      image: docker.io/argoproj/argocd:v2.2.5
-      env:
-      - name: ARGOCD_SERVER
-        valueFrom:
-          secretKeyRef:
-            name: argocd-cluster
-            key: server
-      - name: ARGOCD_USERNAME
-        valueFrom:
-          secretKeyRef:
-            name: argocd-cluster
-            key: username
-      - name: ARGOCD_PASSWORD
-        valueFrom:
-          secretKeyRef:
-            name: argocd-cluster
-            key: password
-      script: |
-        if [ $(params.prNumber) = "NA" ] && [ ! -f pom.xml ]; then
-          argocd login "$ARGOCD_SERVER" --username="$ARGOCD_USERNAME" --password="$ARGOCD_PASSWORD"
-          argocd app sync "$(params.argoAppPrefix)-$(params.repoName)"
-          argocd app wait "$(params.argoAppPrefix)-$(params.repoName)" --health 
-        fi
     - image: 'stakater/pipeline-toolbox:v0.0.11'
       name: sync-and-wait
       env:
@@ -76,9 +51,22 @@ spec:
             key: password
       workingDir: $(workspaces.source.path)
       script: |
-        if [ $(params.prNumber) != "NA" ] && [ ! -f pom.xml ]; then
+        TENANT=$(echo $(params.namespace) | cut -d'-' -f 1)
+        # PR Merged into Main Branch 
+        if [ $(params.prNumber) = "NA" ] && [ ! -f pom.xml ]; then
+          echo "Not a PR, wont wait for the pods"
+          ENVIRONMENT="dev"
           argocd login "$ARGOCD_SERVER" --username="$ARGOCD_USERNAME" --password="$ARGOCD_PASSWORD"
-          argocd app get "$(params.argoPreviewAppPrefix)-$(params.repoName)" --refresh
+          argocd app sync "$TENANT-$ENVIRONMENT-$(params.repoName)"
+          argocd app wait "$TENANT-$ENVIRONMENT-$(params.repoName)" --health
+
+        # PR Opened/Modified
+        elif [ $(params.prNumber) != "NA" ] && [ ! -f pom.xml ]; then
+          echo "It is a PR"
+          ENVIRONMENT="preview"
+          argocd login "$ARGOCD_SERVER" --username="$ARGOCD_USERNAME" --password="$ARGOCD_PASSWORD"
+          argocd app sync "$TENANT-$ENVIRONMENT-$(params.repoName)"
+          argocd app wait "$TENANT-$ENVIRONMENT-$(params.repoName)" --health
           while [[ "$SECONDS" -lt $(params.timeout) ]]
           do 
             for pod in $(oc get pod -n pr-$(params.prNumber)-$(params.repoName) -o=jsonpath={.items..metadata.name}); 
@@ -108,6 +96,4 @@ spec:
             fi
             echo “waiting for pod” && sleep 3
           done
-        else
-            echo "Not a PR, wont wait for the pods"
         fi
