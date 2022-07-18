@@ -86,14 +86,6 @@ pipeline-charts:
       - taskName: stakater-update-cd-repo-v3
       - taskName: stakater-push-main-tag-v1
       - taskName: stakater-app-sync-and-wait-v1
-        params:
-        - name: gitrepositoryurl
-          value: $(params.gitrepositoryurl)
-        - name: argoPreviewAppPrefix
-          value: gabbar-preview
-        workspaces:
-        - name: source
-          workspace: source
       - taskName: stakater-e2e-test-v1
   triggertemplate:
     serviceAccountName: stakater-tekton-builder
