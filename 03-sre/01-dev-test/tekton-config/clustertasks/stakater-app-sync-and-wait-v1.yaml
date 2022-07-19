@@ -58,7 +58,7 @@ spec:
           ENVIRONMENT="dev"
           argocd login "$ARGOCD_SERVER" --username="$ARGOCD_USERNAME" --password="$ARGOCD_PASSWORD"
           argocd app get "$TENANT-$ENVIRONMENT-$(params.repoName)" --refresh
-          argocd app wait "$TENANT-$ENVIRONMENT-$(params.repoName)" --health
+          argocd app wait "$TENANT-$ENVIRONMENT-$(params.repoName)" --health --sync
 
         # PR Opened/Modified
         elif [ $(params.prNumber) != "NA" ] && [ ! -f pom.xml ]; then
@@ -66,7 +66,7 @@ spec:
           ENVIRONMENT="preview"
           argocd login "$ARGOCD_SERVER" --username="$ARGOCD_USERNAME" --password="$ARGOCD_PASSWORD"
           argocd app sync "$TENANT-$ENVIRONMENT-$(params.repoName)"
-          argocd app wait "$TENANT-$ENVIRONMENT-$(params.repoName)" --health
+          argocd app wait "$TENANT-$ENVIRONMENT-$(params.repoName)" --health --sync
           while [[ "$SECONDS" -lt $(params.timeout) ]]
           do 
             for pod in $(oc get pod -n pr-$(params.prNumber)-$(params.repoName) -o=jsonpath={.items..metadata.name}); 
