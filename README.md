@@ -36,8 +36,6 @@ We have 2 product based tenants; who have exactly same structure
 1. gabbar
 2. veeru
 
-And then there is one special tenant which is SRE
-
 ### Multiple apps
 
 We have 3 apps:
@@ -61,9 +59,14 @@ We have 5 environments for each **application**:
 4. stage
 5. prod
 
-### Why sre tenant folder has different structure?
+### Naming Convention
 
-- Infra apps are cluster scoped and not environment scoped; so, hence different structure
+Environment names are prefixed by a number which depends upon the order in which the application should be deployed to the environments
+Cluster names follow the same convention
+
+## Nordmart Infra Config
+
+The cluster scoped infrastructural configurations are deployed through a separate [infra](https://github.com/stakater/nordmart-infra-gitops-config) repository.
 
 ## CI/CD/CD Workflow
 
