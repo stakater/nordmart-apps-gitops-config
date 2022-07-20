@@ -9,7 +9,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   source:
     path: 01-gabbar/00-argocd-apps/00-preview/
-    repoURL: 'https://github.com/stakater/gitops-config-template.git'
+    repoURL: 'https://github.com/stakater/nordmart-apps-gitops-config.git'
     targetRevision: main
     directory:
        recurse: true

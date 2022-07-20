@@ -1,21 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gabbar-stage
+  name: veeru-build
   namespace: openshift-gitops
 spec:
   destination:
-    namespace: openshift-gitops
+    namespace: veeru-build
     server: 'https://kubernetes.default.svc'
   source:
-    path: 01-gabbar/00-argocd-apps/02-stage/
-    repoURL: 'https://github.com/stakater/gitops-config-template.git'
+    path: 02-veeru/00-argocd-apps/00-build/
+    repoURL: 'https://github.com/stakater/nordmart-apps-gitops-config.git'
     targetRevision: main
     directory:
-       recurse: true
-  project: gabbar
+      recurse: true
+  project: veeru
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-
