@@ -1,5 +1,5 @@
 pipeline-charts:
-  name: stakater-nordmart-review-ui
+  name: stakater-main-pr-v2
   workspaces:
     - name: source
       volumeClaimTemplate:
@@ -7,15 +7,6 @@ pipeline-charts:
         resourcesRequestsStorage: 1Gi
   pipelines:
     finally:
-      - taskName: stakater-update-cd-repo-v3
-        name: stakater-rollback-cd-repo
-        when:
-        - input: $(tasks.stakater-e2e-test-v1.status)
-          operator: in
-          values: [“Failed”]
-        params:
-        - name: IMAGE_TAG
-          value: $(tasks.stakater-create-git-tag-v1.results.CURRENT_GIT_TAG)
       - taskName: stakater-set-commit-status-v1
         name: set-commit-status-task-result
       - taskName: stakater-notify-slack-v1
@@ -85,11 +76,6 @@ pipeline-charts:
       - taskName: stakater-create-environment-v1
       - taskName: stakater-update-cd-repo-v3
       - taskName: stakater-push-main-tag-v1
-      - taskName: stakater-app-sync-and-wait-v1
-        params:
-        - name: timeout
-          value: "120"
-      - taskName: stakater-e2e-test-v1
   triggertemplate:
     serviceAccountName: stakater-tekton-builder
     pipelineRunNamePrefix: $(tt.params.repoName)-branch-$(tt.params.gitbranch)
