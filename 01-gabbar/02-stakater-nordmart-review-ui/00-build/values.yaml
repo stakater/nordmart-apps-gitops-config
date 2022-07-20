@@ -1,5 +1,5 @@
 pipeline-charts:
-  name: stakater-nordmart-review-ui
+  name: stakater-nordmart-review-ui-pipeline
   workspaces:
     - name: source
       volumeClaimTemplate:

@@ -4,5 +4,5 @@ dependencies:
     repository: https://stakater.github.io/stakater-charts
     version: 0.0.22
 description: A Helm chart for Kubernetes
-name: stakater-nordmart-review-ui
+name: stakater-nordmart-review-ui-pipeline
 version: 0.0.22
