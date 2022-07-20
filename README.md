@@ -1,4 +1,4 @@
-# gitops-config-template
+# nordmart-apps-gitops-config
 
 Stakater opinionated gitops structure
 
