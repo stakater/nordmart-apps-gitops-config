@@ -76,14 +76,9 @@ pipeline-charts:
       - taskName: stakater-create-environment-v1
       - taskName: stakater-update-cd-repo-v3
       - taskName: stakater-push-main-tag-v1
-      - taskName: stakater-set-commit-status-v1
-        name: set-commit-status-delete-later
-        params:
-           - name: state
-             value: $(params.commit-id)
   triggertemplate:
     serviceAccountName: stakater-tekton-builder
-    pipelineRunNamePrefix: $(tt.params.repoName)-$(tt.params.prnumberBranch)-$(tt.params.commit-id)
+    pipelineRunNamePrefix: $(tt.params.repoName)-$(tt.params.prnumberBranch)
   eventlistener:
     serviceAccountName: stakater-tekton-builder
     triggers:
@@ -92,8 +87,6 @@ pipeline-charts:
     - name: pullrequest
       bindings:
       - ref: stakater-pr-v1
-      - name: commit-id
-        value: $(body.pull_request.head.sha)
     - name: push
       bindings:
       - ref: stakater-main-v1
