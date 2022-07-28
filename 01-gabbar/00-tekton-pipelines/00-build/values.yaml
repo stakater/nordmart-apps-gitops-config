@@ -93,7 +93,7 @@ pipeline-charts:
       bindings:
       - ref: stakater-pr-v1
       - name: commit-id
-        value: $(body.head_commit.id)
+        value: $(body.head.sha)
     - name: push
       bindings:
       - ref: stakater-main-v1
