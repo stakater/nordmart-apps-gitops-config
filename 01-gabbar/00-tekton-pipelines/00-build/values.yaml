@@ -83,7 +83,7 @@ pipeline-charts:
              value: $(params.commit-id)
   triggertemplate:
     serviceAccountName: stakater-tekton-builder
-    pipelineRunNamePrefix: $(tt.params.repoName)-branch-$(tt.params.gitbranch)-$(tt.params.commit-id)
+    pipelineRunNamePrefix: $(tt.params.repoName)-$(tt.params.prnumberBranch)-$(tt.params.commit-id)
   eventlistener:
     serviceAccountName: stakater-tekton-builder
     triggers:
