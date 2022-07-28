@@ -78,7 +78,6 @@ pipeline-charts:
       - taskName: stakater-push-main-tag-v1
   triggertemplate:
     serviceAccountName: stakater-tekton-builder
-    pipelineRunNamePrefix: $(tt.params.repoName)-branch-$(tt.params.gitbranch)
   eventlistener:
     serviceAccountName: stakater-tekton-builder
     triggers:
