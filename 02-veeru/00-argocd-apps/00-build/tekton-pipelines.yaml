@@ -13,7 +13,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: veeru
   source:
-    path: 01-veeru/00-tekton-pipelines/00-build
+    path: 02-veeru/00-tekton-pipelines/00-build
     repoURL: 'https://github.com/stakater/nordmart-apps-gitops-config.git'
     targetRevision: HEAD
   syncPolicy:
