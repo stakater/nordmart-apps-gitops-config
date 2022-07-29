@@ -5,4 +5,4 @@ dependencies:
     version: 0.0.23
 description: Helm chart for Tekton Pipelines
 name: stakater-main-pr-v2
-version: 0.0.2
+version: 0.0.23
