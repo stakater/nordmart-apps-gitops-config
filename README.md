@@ -1,8 +1,8 @@
 # nordmart-apps-gitops-config
 
-Stakater opinionated gitops structure
+Stakater opinionated gitops repository structure:
 
-- Mono repo
+- Mono repo; one repo for all clusters, tenants/teams and environments
 - Single branch i.e. main and then separate folders per environment
 - ArgoCD for application deployment
 - Helm for templatization
