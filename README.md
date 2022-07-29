@@ -97,7 +97,7 @@ Environment names are prefixed by a number which depends upon the order in which
 
 We follow similar naming convention for naming the clusters.
 
-## Nordmart Infra Config
+### Nordmart Infra GitOps Config
 
 The cluster scoped infrastructural configurations are deployed through a separate [infra](https://github.com/stakater/nordmart-infra-gitops-config) repository.
 
