@@ -59,10 +59,19 @@ We have 5 environments for each **application**:
 4. stage
 5. prod
 
+#### Build Env
+
+A dedicated build namespace for a tenant which holds tekton pipleines; all tekton pipleines for all of applications of a given tenant run in this particular namespace
+
+#### Preview Env
+
+To support dynamic environments on PR (pull requests) we use Stakater Tronador; and Tronador's **Environment** custom resource is created in this namespace.
+
 ### Naming Convention
 
-Environment names are prefixed by a number which depends upon the order in which the application should be deployed to the environments
-Cluster names follow the same convention
+Environment names are prefixed by a number which depends upon the order in which the application should be promoted between the different environments; e.g. DTE > dev > stage > prod
+
+We follow similar naming convention for naming the clusters.
 
 ## Nordmart Infra Config
 
