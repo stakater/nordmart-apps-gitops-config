@@ -69,7 +69,7 @@ To support dynamic environments on PR (pull requests) we use Stakater Tronador; 
 
 ### Naming Convention
 
-Environment names are prefixed by a number which depends upon the order in which the application should be promoted between the different environments
+Environment names are prefixed by a number which depends upon the order in which the application should be promoted between the different environments; e.g. DTE > dev > stage > prod
 
 We follow similar naming convention for naming the clusters.
 
