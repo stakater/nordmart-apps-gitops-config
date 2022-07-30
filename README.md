@@ -24,6 +24,18 @@ As a software organization, I would like to:
 * GitOps is a natural evolution of DevOps and Infrastructure-as-Code.
 * GitOps is when the infrastructure and/or application state is fully represented by the contents of a git repository. Any changes to the git repository are reflected in the corresponding state of the associated infrastructure and applications through automation.
 
+### GitOps
+
+GitOps is a set of practices that leverages Git workflows to manage infrastructure and application configurations. By using Git repositories as the source of truth, it allows the DevOps team to store the entire state of the cluster configuration in Git so that the trail of changes are visible and auditable.
+
+**GitOps** simplifies the propagation of infrastructure and application configuration changes across multiple clusters by defining your infrastructure and applications definitions as “code”.
+
+- Ensure that the clusters have similar states for configuration, monitoring, or storage.
+- Recover or recreate clusters from a known state.
+- Create clusters with a known state.
+- Apply or revert configuration changes to multiple clusters.
+- Associate templated configuration with different environments.
+
 ## Principles?
 
 * Git is the source of truth.
