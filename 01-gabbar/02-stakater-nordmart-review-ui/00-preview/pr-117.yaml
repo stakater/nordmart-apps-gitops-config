@@ -1,0 +1,35 @@
+apiVersion: tronador.stakater.com/v1alpha2
+kind: Environment
+metadata:
+  name: pr-117-stakater-nordmart-review-ui
+spec:
+  namespaceLabels:
+    stakater.com/kind: pr
+    stakater.com/tenant: gabbar
+  application:
+    gitRepository:
+      gitImplementation: go-git
+      interval: 1m0s
+      ref:
+        branch: renovate/eslint-plugin-react-7.x
+      timeout: 20s
+      url: https://github.com/stakater-lab/stakater-nordmart-review-ui
+    release:
+      chart:
+        spec:
+          chart: deploy
+          reconcileStrategy: ChartVersion
+          sourceRef:
+            kind: GitRepository
+            name: dte-renovate/eslint-plugin-react-7.x
+          version: '*'
+      interval: 1m0s
+      releaseName: renovate/eslint-plugin-react-7.x
+      valuesFrom:
+        null
+      values:
+        application:
+          deployment:
+            image:
+              repository: nexus-docker-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/stakater-nordmart-review-ui
+              tag: SNAPSHOT-PR-117-47354483
