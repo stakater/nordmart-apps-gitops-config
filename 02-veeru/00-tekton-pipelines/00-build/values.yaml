@@ -76,6 +76,10 @@ pipeline-charts:
       - taskName: stakater-create-environment-v1
       - taskName: stakater-update-cd-repo-v3
       - taskName: stakater-push-main-tag-v1
+      - taskName: stakater-app-sync-and-wait-v1
+        params:
+        - name: timeout
+          value: "120"
   triggertemplate:
     serviceAccountName: stakater-tekton-builder
     pipelineRunNamePrefix: $(tt.params.repoName)-$(tt.params.prnumberBranch)
