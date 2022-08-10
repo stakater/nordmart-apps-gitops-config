@@ -72,6 +72,10 @@ pipeline-charts:
         - rox-image-check
         - rox-deployment-check
         - stakater-checkov-scan-v1
+      - taskName: stakater-helm-lint-and-dryrun-install-v1
+        workspaces:
+          - name: source
+            workspace: source
       - taskName: stakater-helm-push-v1
       - taskName: stakater-create-environment-v1
       - taskName: stakater-update-cd-repo-v3
