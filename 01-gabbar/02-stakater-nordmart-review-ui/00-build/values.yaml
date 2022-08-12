@@ -81,7 +81,7 @@ pipeline-charts:
         - rox-image-check
         - rox-deployment-check
         - stakater-checkov-scan-v1
-      - taskName: stakater-helm-lint-and-dryrun-install-v1
+      - taskName: stakater-validate-app-helm-chart-v1
         name: validate-helm-chart
         workspaces:
           - name: source
