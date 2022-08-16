@@ -77,6 +77,10 @@ pipeline-charts:
         workspaces:
           - name: source
             workspace: source
+          - name: source1
+            workspace: source1
+          - name: build-script
+            workspace: build-script
       - taskName: stakater-helm-push-v1
       - taskName: stakater-create-environment-v1
       - taskName: stakater-update-cd-repo-v3
