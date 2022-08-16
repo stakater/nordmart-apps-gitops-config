@@ -6,8 +6,8 @@ pipeline-charts:
         accessModes: ReadWriteOnce
         resourcesRequestsStorage: 1Gi
     - configMap:
-        configMapName: build-script
-      name: script
+        configMapName: openapi2json-schema-build-script
+      name: build-script
     - emptyDir: "true"
       name: source1
   pipelines:
