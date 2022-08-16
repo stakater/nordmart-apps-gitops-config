@@ -5,6 +5,11 @@ pipeline-charts:
       volumeClaimTemplate:
         accessModes: ReadWriteOnce
         resourcesRequestsStorage: 1Gi
+    - configMap:
+        configMapName: build-script
+      name: script
+    - emptyDir: "true"
+      name: source1
   pipelines:
     finally:
       - taskName: stakater-set-commit-status-v1

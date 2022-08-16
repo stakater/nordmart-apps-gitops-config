@@ -6,9 +6,9 @@ pipeline-charts:
         accessModes: ReadWriteOnce
         resourcesRequestsStorage: 1Gi
     - configMap:
-        name: build-script
-      name: script
-    - emptyDir: {}
+        configMapName: build-script
+      name: build-script
+    - emptyDir: "true"
       name: source1
   pipelines:
     finally:
