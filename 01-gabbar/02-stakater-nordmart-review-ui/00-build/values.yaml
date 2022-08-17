@@ -5,9 +5,6 @@ pipeline-charts:
       volumeClaimTemplate:
         accessModes: ReadWriteOnce
         resourcesRequestsStorage: 1Gi
-    - configMap:
-        configMapName: openapi2json-schema-build-script
-      name: build-script
     - emptyDir: "true"
       name: source1
   pipelines:
@@ -93,8 +90,6 @@ pipeline-charts:
             workspace: source
           - name: source1
             workspace: source1
-          - name: build-script
-            workspace: build-script
       - taskName: stakater-helm-push-v1
       - taskName: stakater-create-environment-v1
       - taskName: stakater-update-cd-repo-v3
