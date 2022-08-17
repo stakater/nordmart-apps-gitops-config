@@ -38,10 +38,22 @@ pipeline-charts:
       - taskName: stakater-sonarqube-scanner-v1
         runAfter:
           - stakater-unit-test-v1
+      - taskName: stakater-build-image-flag-v1
+        runAfter:
+          - build-and-push
+        workspaces:
+          - name: source
+            workspace: source
+        params:
+          - name: before
+          - name: after
+          - name: basecommit
       - taskName: stakater-buildah-v1
         name: build-and-push
-        runAfter:
-        - stakater-unit-test-v1
+        when:
+          - input: $(tasks.stakater-generate-build-flag-v1.buildflag)
+            operator: in
+            values: [“true”]
       - taskName: stakater-trivy-scan-v1
         runAfter:
         - build-and-push
