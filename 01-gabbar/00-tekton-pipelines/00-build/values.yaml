@@ -40,7 +40,7 @@ pipeline-charts:
           - stakater-unit-test-v1
       - taskName: stakater-build-image-flag-v1
         runAfter:
-          - build-and-push
+          - stakater-unit-test-v1
         workspaces:
           - name: source
             workspace: source
