@@ -45,8 +45,8 @@ pipeline-charts:
           - name: source
             workspace: source
         params:
-          - name: before
-          - name: after
+          - name: oldcommit
+          - name: newcommit
           - name: basecommit
       - taskName: stakater-buildah-v1
         name: build-and-push
