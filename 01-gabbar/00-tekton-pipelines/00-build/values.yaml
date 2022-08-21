@@ -50,12 +50,12 @@ pipeline-charts:
       - taskName: stakater-buildah-v1
         name: build-and-push
         when:
-          - input: $(tasks.stakater-generate-build-flag-v1.buildflag)
+          - input: $(tasks.stakater-generate-build-flag-v1.buildImage)
             operator: in
             values: [“true”]
       - taskName: stakater-trivy-scan-v1
         when:
-          - input: $(tasks.stakater-generate-build-flag-v1.buildflag)
+          - input: $(tasks.stakater-generate-build-flag-v1.buildImage)
             operator: in
             values: [ “true” ]
         runAfter:
@@ -66,7 +66,7 @@ pipeline-charts:
         - name: image_digest
           value: $(tasks.build-and-push.results.IMAGE_DIGEST)
         when:
-          - input: $(tasks.stakater-generate-build-flag-v1.buildflag)
+          - input: $(tasks.stakater-generate-build-flag-v1.buildImage)
             operator: in
             values: [ “true” ]
         runAfter:
@@ -74,7 +74,7 @@ pipeline-charts:
         - stakater-sonarqube-scanner-v1
       - taskName: rox-image-check
         when:
-          - input: $(tasks.stakater-generate-build-flag-v1.buildflag)
+          - input: $(tasks.stakater-generate-build-flag-v1.buildImage)
             operator: in
             values: [ “true” ]
         runAfter:
@@ -82,7 +82,7 @@ pipeline-charts:
         - stakater-sonarqube-scanner-v1
       - taskName: rox-deployment-check
         when:
-          - input: $(tasks.stakater-generate-build-flag-v1.buildflag)
+          - input: $(tasks.stakater-generate-build-flag-v1.buildImage)
             operator: in
             values: [ “true” ]
         runAfter:
@@ -90,7 +90,7 @@ pipeline-charts:
         - stakater-sonarqube-scanner-v1
       - taskName: stakater-checkov-scan-v1
         when:
-          - input: $(tasks.stakater-generate-build-flag-v1.buildflag)
+          - input: $(tasks.stakater-generate-build-flag-v1.buildImage)
             operator: in
             values: [ “true” ]
         runAfter:
