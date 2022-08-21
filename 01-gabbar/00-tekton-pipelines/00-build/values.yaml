@@ -47,7 +47,6 @@ pipeline-charts:
         params:
           - name: oldcommit
           - name: newcommit
-          - name: basecommit
       - taskName: stakater-buildah-v1
         name: build-and-push
         when:
@@ -55,6 +54,10 @@ pipeline-charts:
             operator: in
             values: [“true”]
       - taskName: stakater-trivy-scan-v1
+        when:
+          - input: $(tasks.stakater-generate-build-flag-v1.buildflag)
+            operator: in
+            values: [ “true” ]
         runAfter:
         - build-and-push
         - stakater-sonarqube-scanner-v1
@@ -62,18 +65,34 @@ pipeline-charts:
         params:
         - name: image_digest
           value: $(tasks.build-and-push.results.IMAGE_DIGEST)
+        when:
+          - input: $(tasks.stakater-generate-build-flag-v1.buildflag)
+            operator: in
+            values: [ “true” ]
         runAfter:
         - build-and-push
         - stakater-sonarqube-scanner-v1
       - taskName: rox-image-check
+        when:
+          - input: $(tasks.stakater-generate-build-flag-v1.buildflag)
+            operator: in
+            values: [ “true” ]
         runAfter:
         - build-and-push
         - stakater-sonarqube-scanner-v1
       - taskName: rox-deployment-check
+        when:
+          - input: $(tasks.stakater-generate-build-flag-v1.buildflag)
+            operator: in
+            values: [ “true” ]
         runAfter:
         - build-and-push
         - stakater-sonarqube-scanner-v1
       - taskName: stakater-checkov-scan-v1
+        when:
+          - input: $(tasks.stakater-generate-build-flag-v1.buildflag)
+            operator: in
+            values: [ “true” ]
         runAfter:
         - build-and-push
         - stakater-sonarqube-scanner-v1
@@ -89,6 +108,7 @@ pipeline-charts:
         workspaces:
           - name: source
             workspace: source
+      - taskName: stakater-helm-push-v1
       - taskName: stakater-helm-push-v1
       - taskName: stakater-create-environment-v1
       - taskName: stakater-update-cd-repo-v3
