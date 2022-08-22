@@ -49,10 +49,13 @@ pipeline-charts:
           - name: newcommit
       - taskName: stakater-buildah-v1
         name: build-and-push
-        when:
-          - input: $(tasks.stakater-generate-build-flag-v1.buildImage)
-            operator: in
-            values: [“true”]
+        parmas:
+          - name: BUILD_IMAGE
+            value: $(tasks.stakater-generate-build-flag-v1.buildImage)
+          - name: IMAGE_REGISTRY
+            value: $(params.image_registry_url)
+          - name: CURRENT_GIT_TAG
+            value: $(tasks.stakater-create-git-tag-v1.results.CURRENT_GIT_TAG)
       - taskName: stakater-trivy-scan-v1
         when:
           - input: $(tasks.stakater-generate-build-flag-v1.buildImage)
