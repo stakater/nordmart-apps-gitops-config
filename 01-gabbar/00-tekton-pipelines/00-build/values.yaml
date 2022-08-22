@@ -112,7 +112,6 @@ pipeline-charts:
           - name: source
             workspace: source
       - taskName: stakater-helm-push-v1
-      - taskName: stakater-helm-push-v1
       - taskName: stakater-create-environment-v1
       - taskName: stakater-update-cd-repo-v3
       - taskName: stakater-push-main-tag-v1
