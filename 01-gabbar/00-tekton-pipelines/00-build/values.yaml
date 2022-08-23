@@ -85,7 +85,7 @@ pipeline-charts:
         - stakater-sonarqube-scanner-v1
       - taskName: rox-deployment-check
         when:
-          - input: $(tasks.stakater-build-image-flag-v1results.build-image)
+          - input: $(tasks.stakater-build-image-flag-v1.results.build-image)
             operator: in
             values: [ “true” ]
         runAfter:
