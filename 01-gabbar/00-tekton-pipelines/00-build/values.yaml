@@ -49,7 +49,7 @@ pipeline-charts:
           - name: newcommit
       - taskName: stakater-buildah-v1
         name: build-and-push
-        parmas:
+        params:
           - name: BUILD_IMAGE
             value: $(tasks.stakater-generate-build-flag-v1.results.build-image)
           - name: IMAGE_REGISTRY
