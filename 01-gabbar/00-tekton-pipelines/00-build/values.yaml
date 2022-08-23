@@ -57,10 +57,9 @@ pipeline-charts:
           - name: CURRENT_GIT_TAG
             value: $(tasks.stakater-create-git-tag-v1.results.CURRENT_GIT_TAG)
       - taskName: stakater-trivy-scan-v1
-        when:
-          - input: $(tasks.stakater-build-image-flag-v1.results.build-image)
-            operator: in
-            values: [ “true” ]
+        params:
+          - name: BUILD_IMAGE
+            value: $(tasks.stakater-build-image-flag-v1.results.build-image)
         runAfter:
         - build-and-push
         - stakater-sonarqube-scanner-v1
@@ -68,34 +67,29 @@ pipeline-charts:
         params:
         - name: image_digest
           value: $(tasks.build-and-push.results.IMAGE_DIGEST)
-        when:
-          - input: $(tasks.stakater-build-image-flag-v1.results.build-image)
-            operator: in
-            values: [ “true” ]
+        - name: BUILD_IMAGE
+          value: $(tasks.stakater-build-image-flag-v1.results.build-image)
         runAfter:
         - build-and-push
         - stakater-sonarqube-scanner-v1
       - taskName: rox-image-check
-        when:
-          - input: $(tasks.stakater-build-image-flag-v1.results.build-image)
-            operator: in
-            values: [ “true” ]
+        params:
+          - name: BUILD_IMAGE
+            value: $(tasks.stakater-build-image-flag-v1.results.build-image)
         runAfter:
         - build-and-push
         - stakater-sonarqube-scanner-v1
       - taskName: rox-deployment-check
-        when:
-          - input: $(tasks.stakater-build-image-flag-v1.results.build-image)
-            operator: in
-            values: [ “true” ]
+        params:
+          - name: BUILD_IMAGE
+            value: $(tasks.stakater-build-image-flag-v1.results.build-image)
         runAfter:
         - build-and-push
         - stakater-sonarqube-scanner-v1
       - taskName: stakater-checkov-scan-v1
-        when:
-          - input: $(tasks.stakater-build-image-flag-v1.results.build-image)
-            operator: in
-            values: [ “true” ]
+        params:
+          - name: BUILD_IMAGE
+            value: $(tasks.stakater-build-image-flag-v1.results.build-image)
         runAfter:
         - build-and-push
         - stakater-sonarqube-scanner-v1
