@@ -49,6 +49,8 @@ pipeline-charts:
           - name: newcommit
       - taskName: stakater-buildah-v1
         name: build-and-push
+        runAfter:
+          - stakater-build-image-flag-v1
         params:
           - name: BUILD_IMAGE
             value: $(tasks.stakater-build-image-flag-v1.results.build-image)
