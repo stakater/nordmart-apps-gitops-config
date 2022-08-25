@@ -38,6 +38,10 @@ pipeline-charts:
       - taskName: stakater-create-git-tag-v1
       - taskName: stakater-code-linting-v1
       - taskName: stakater-kube-linting-v1
+      - taskName: stakater-kube-linting-v1
+        params:
+        - name: namespace
+          value: $(context.pipelineRun.namespace)
         runAfter:
         - stakater-create-git-tag-v1
       - taskName: stakater-unit-test-v1
@@ -111,11 +115,6 @@ pipeline-charts:
         - rox-image-check
         - rox-deployment-check
         - stakater-checkov-scan-v1
-      - taskName: stakater-validate-app-helm-chart-v1
-        name: validate-helm-chart
-        workspaces:
-          - name: source
-            workspace: source
       - taskName: stakater-helm-push-v1
       - taskName: stakater-create-environment-v1
       - taskName: stakater-update-cd-repo-v3
