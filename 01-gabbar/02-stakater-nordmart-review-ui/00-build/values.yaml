@@ -38,7 +38,6 @@ pipeline-charts:
       - taskName: stakater-create-git-tag-v1
       - taskName: stakater-code-linting-v1
       - taskName: stakater-kube-linting-v1
-      - taskName: stakater-kube-linting-v1
         params:
         - name: namespace
           value: $(context.pipelineRun.namespace)
