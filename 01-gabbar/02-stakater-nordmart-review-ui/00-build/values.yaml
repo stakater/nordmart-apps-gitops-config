@@ -121,7 +121,7 @@ pipeline-charts:
       - taskName: stakater-app-sync-and-wait-v1
         params:
         - name: timeout
-          value: "120"
+          value: "180"
       - taskName: stakater-e2e-test-v1
   triggertemplate:
     serviceAccountName: stakater-tekton-builder
