@@ -36,6 +36,9 @@ pipeline-charts:
           value: pending
       - taskName: git-clone
       - taskName: stakater-create-git-tag-v1
+        params:
+          - name: oldcommit
+          - name: action
       - taskName: stakater-code-linting-v1
       - taskName: stakater-kube-linting-v1
         params:
@@ -133,6 +136,14 @@ pipeline-charts:
     - name: pullrequest
       bindings:
       - ref: stakater-pr-v1
+      - name: base-sha
+        value: $(body.pull_request.base.sha)
+      - name: head-sha
+        value: $(body.pull_request.head.sha)
     - name: push
       bindings:
       - ref: stakater-main-v1
+      - name: base-sha
+        value: $(body.pull_request.base.sha)
+      - name: head-sha
+        value: $(body.pull_request.head.sha)
