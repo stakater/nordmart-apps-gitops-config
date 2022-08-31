@@ -131,10 +131,9 @@ pipeline-charts:
         value: $(body.pull_request.base.sha)
       - name: head-sha
         value: $(body.pull_request.head.sha)
+    - name: pullrequest-synchronize
+      bindings:
+        - ref: stakater-pr-v1
     - name: push
       bindings:
-      - ref: stakater-main-v1
-      - name: base-sha
-        value: $(body.pull_request.base.sha)
-      - name: head-sha
-        value: $(body.pull_request.head.sha)
+        - ref: stakater-main-v1
