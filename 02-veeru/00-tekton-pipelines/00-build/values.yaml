@@ -124,7 +124,7 @@ pipeline-charts:
     triggers:
     - name: stakater-pr-cleaner-v2-pullrequest-merge
       create: false
-    - name: pullrequest
+    - name: pullrequest-create
       bindings:
       - ref: stakater-pr-v1
       - name: oldcommit
