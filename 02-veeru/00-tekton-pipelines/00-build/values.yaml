@@ -127,14 +127,21 @@ pipeline-charts:
     - name: pullrequest
       bindings:
       - ref: stakater-pr-v1
-      - name: base-sha
+      - name: oldcommit
         value: $(body.pull_request.base.sha)
-      - name: head-sha
+      - name: newcommit
         value: $(body.pull_request.head.sha)
+    - name: pullrequest-synchronize
+      bindings:
+        - ref: stakater-pr-v1
+        - name: oldcommit
+          value: $(body.before)
+        - name: newcommit
+          value: $(body.after)
     - name: push
       bindings:
-      - ref: stakater-main-v1
-      - name: base-sha
-        value: $(body.pull_request.base.sha)
-      - name: head-sha
-        value: $(body.pull_request.head.sha)
+        - ref: stakater-main-v1
+        - name: oldcommit
+          value: $(body.before)
+        - name: newcommit
+          value: $(body.after)
