@@ -21,10 +21,10 @@ spec:
           reconcileStrategy: ChartVersion
           sourceRef:
             kind: GitRepository
-            name: dte-test-update
+            name: dte-main
           version: '*'
       interval: 1m0s
-      releaseName: test-update
+      releaseName: main
       valuesFrom:
         null
       values:
@@ -57,10 +57,10 @@ spec:
           reconcileStrategy: ChartVersion
           sourceRef:
             kind: GitRepository
-            name: dte-test-update
+            name: dte-main
           version: '*'
       interval: 1m0s
-      releaseName: test-update
+      releaseName: main
       valuesFrom:
         null
       values:
@@ -93,10 +93,10 @@ spec:
           reconcileStrategy: ChartVersion
           sourceRef:
             kind: GitRepository
-            name: dte-test-update
+            name: dte-main
           version: '*'
       interval: 1m0s
-      releaseName: test-update
+      releaseName: main
       valuesFrom:
         null
       values:
@@ -129,10 +129,10 @@ spec:
           reconcileStrategy: ChartVersion
           sourceRef:
             kind: GitRepository
-            name: dte-test-update
+            name: dte-main
           version: '*'
       interval: 1m0s
-      releaseName: test-update
+      releaseName: main
       valuesFrom:
         null
       values:
