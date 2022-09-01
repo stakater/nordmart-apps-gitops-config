@@ -1,7 +1,7 @@
 apiVersion: tronador.stakater.com/v1alpha1
 kind: EnvironmentProvisioner
 metadata:
-  name: pr-test1-stakater-nordmart-review
+  name: prs-test1-stakater-nordmart-review
 spec:
   application:
     release:
@@ -24,7 +24,7 @@ spec:
 apiVersion: tronador.stakater.com/v1alpha1
 kind: EnvironmentProvisioner
 metadata:
-  name: pr-test2-stakater-nordmart-review
+  name: prs-test2-stakater-nordmart-review
 spec:
   application:
     release:
@@ -47,7 +47,7 @@ spec:
 apiVersion: tronador.stakater.com/v1alpha1
 kind: EnvironmentProvisioner
 metadata:
-  name: pr-test3-stakater-nordmart-review
+  name: prs-test3-stakater-nordmart-review
 spec:
   application:
     release:
@@ -70,7 +70,7 @@ spec:
 apiVersion: tronador.stakater.com/v1alpha1
 kind: EnvironmentProvisioner
 metadata:
-  name: pr-test4-stakater-nordmart-review
+  name: prs-test4-stakater-nordmart-review
 spec:
   application:
     release:
