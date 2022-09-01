@@ -16,7 +16,7 @@ spec:
             image:
               repository: >-
                 nexus-docker-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/stakater-nordmart-review
-              tag: v1.0.35
+              tag: 1.0.35
   namespaceLabels:
     kind: pr
     stakater.com/tenant: alpha
@@ -39,7 +39,7 @@ spec:
             image:
               repository: >-
                 nexus-docker-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/stakater-nordmart-review
-              tag: v1.0.35
+              tag: 1.0.35
   namespaceLabels:
     kind: pr
     stakater.com/tenant: alpha
@@ -62,7 +62,7 @@ spec:
             image:
               repository: >-
                 nexus-docker-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/stakater-nordmart-review
-              tag: v1.0.35
+              tag: 1.0.35
   namespaceLabels:
     kind: pr
     stakater.com/tenant: alpha
@@ -85,7 +85,7 @@ spec:
             image:
               repository: >-
                 nexus-docker-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/stakater-nordmart-review
-              tag: v1.0.35
+              tag: 1.0.35
   namespaceLabels:
     kind: pr
     stakater.com/tenant: alpha
