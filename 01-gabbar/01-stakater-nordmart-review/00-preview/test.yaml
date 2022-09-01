@@ -9,7 +9,7 @@ spec:
         git: "https://github.com/stakater-lab/stakater-nordmart-review"
         path: deploy
         ref: main
-      releaseName: stakater-nordmart-review
+      releaseName: main
       values:
         application:
           deployment:
@@ -32,7 +32,7 @@ spec:
         git: "https://github.com/stakater-lab/stakater-nordmart-review"
         path: deploy
         ref: main
-      releaseName: stakater-nordmart-review
+      releaseName: main
       values:
         application:
           deployment:
@@ -55,7 +55,7 @@ spec:
         git: "https://github.com/stakater-lab/stakater-nordmart-review"
         path: deploy
         ref: main
-      releaseName: stakater-nordmart-review
+      releaseName: main
       values:
         application:
           deployment:
@@ -78,7 +78,7 @@ spec:
         git: "https://github.com/stakater-lab/stakater-nordmart-review"
         path: deploy
         ref: main
-      releaseName: stakater-nordmart-review
+      releaseName: main
       values:
         application:
           deployment:
