@@ -71,6 +71,8 @@ apiVersion: tronador.stakater.com/v1alpha1
 kind: EnvironmentProvisioner
 metadata:
   name: prs-test4-stakater-nordmart-review
+  finalizers:
+    - 'tronador.stakater.com/environmentprovisioner'
 spec:
   application:
     release:
