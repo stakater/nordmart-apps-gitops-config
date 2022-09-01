@@ -157,4 +157,8 @@ pipeline-charts:
           value: $(body.before)
         - name: newcommit
           value: $(body.after)
-  rbac: disabled
+  rbac:
+    enabled: false
+  serviceAccount:
+    name: stakater-tekton-builder
+    create: false
