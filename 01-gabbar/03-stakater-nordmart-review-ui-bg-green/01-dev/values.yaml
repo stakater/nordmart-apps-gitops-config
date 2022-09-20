@@ -8,5 +8,8 @@ stakater-nordmart-review-ui:
       image:
         repository: stakater/stakater-nordmart-review-ui
         tag: 1.0.14-green
+    service:
+      additionalLabels:
+        blue_green: inactive
     route:
       enabled: false
