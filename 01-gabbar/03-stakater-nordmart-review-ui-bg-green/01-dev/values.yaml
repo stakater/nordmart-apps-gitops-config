@@ -1,6 +1,7 @@
 stakater-nordmart-review-ui:
   application:
     applicationName: "review-ui-green"
+    imagePullSecrets: []
     deployment:
       image:
         repository: stakater/stakater-nordmart-review-ui
