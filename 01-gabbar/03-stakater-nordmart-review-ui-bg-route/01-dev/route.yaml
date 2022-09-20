@@ -1,12 +1,12 @@
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
-  name: review-web
+  name: review-ui
 spec:
   host: review-ui-gabbar-dev.apps.devtest.vxdqgl7u.kubeapp.cloud
   to:
     kind: Service
-    name: review-web
+    name: review-ui-blue
     weight: 100
   port:
     targetPort: http
