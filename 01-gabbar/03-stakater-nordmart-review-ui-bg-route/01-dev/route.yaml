@@ -1,9 +1,9 @@
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
-  name: review-ui
+  name: review-ui-bg
 spec:
-  host: review-ui-gabbar-dev.apps.devtest.vxdqgl7u.kubeapp.cloud
+  host: review-ui-bg-gabbar-dev.apps.devtest.vxdqgl7u.kubeapp.cloud
   to:
     kind: Service
     name: review-ui-blue
