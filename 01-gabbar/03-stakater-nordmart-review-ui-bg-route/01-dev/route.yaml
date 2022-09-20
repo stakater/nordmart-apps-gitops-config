@@ -3,7 +3,7 @@ apiVersion: route.openshift.io/v1
 metadata:
   name: review-web
 spec:
-  host: review-web-gabbar-dev.apps.devtest.vxdqgl7u.kubeapp.cloud
+  host: review-ui-gabbar-dev.apps.devtest.vxdqgl7u.kubeapp.cloud
   to:
     kind: Service
     name: review-web
