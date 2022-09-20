@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gabbar-dev-stakater-nordmart-review-ui-bg-green
+  namespace: openshift-gitops
+  labels:
+    stakater.com/tenant: gabbar
+    stakater.com/env: dev
+    stakater.com/kind: dev            
+spec:
+  destination:
+    namespace: gabbar-dev
+    server: 'https://kubernetes.default.svc'
+  project: gabbar
+  source:
+    path: 01-gabbar/03-stakater-nordmart-review-ui-bg-green/01-dev
+    repoURL: 'https://github.com/stakater/nordmart-apps-gitops-config.git'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
