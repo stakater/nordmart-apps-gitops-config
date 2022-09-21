@@ -37,7 +37,7 @@ spec:
               enabled: 'false'
           auth:
             rootPassword: secretpassword
-  project: gabbar 
+  project: default 
   syncPolicy:
     automated:
       prune: true
