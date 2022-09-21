@@ -6,7 +6,7 @@ spec:
   host: review-ui-bg-gabbar-dev.apps.devtest.vxdqgl7u.kubeapp.cloud
   to:
     kind: Service
-    name: review-ui-blue
+    name: review-ui-green
     weight: 100
   port:
     targetPort: http

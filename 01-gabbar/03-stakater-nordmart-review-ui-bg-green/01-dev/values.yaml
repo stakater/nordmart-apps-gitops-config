@@ -10,6 +10,6 @@ stakater-nordmart-review-ui:
         tag: 1.0.15-green
     service:
       additionalLabels:
-        blue_green: inactive
+        blue_green: active
     route:
       enabled: false
