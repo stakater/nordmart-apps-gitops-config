@@ -2,8 +2,14 @@ stakater-nordmart-review-ui:
   application:
     applicationName: "review-ui-green"
     deployment:
+      imagePullSecrets: []
+      additionalLabels:
+        blue_green: inactive
       image:
-        repository: nexus-docker-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/stakater-nordmart-review-ui
+        repository: stakater/stakater-nordmart-review-ui
         tag: 1.0.14-green
+    service:
+      additionalLabels:
+        blue_green: inactive
     route:
       enabled: false
