@@ -1,0 +1,44 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: stakater-matomo
+  namespace: openshift-gitops
+  labels:
+    stakater.com/tenant: gabbar
+    stakater.com/env: dev
+    stakater.com/kind: dev         
+spec:
+  destination:
+    namespace: gabbar-dev
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: bitnami/matomo
+    repoURL: 'https://charts.bitnami.com/bitnami'
+    targetRevision: 11.3.1
+    helm:
+      releaseName: matomo
+      values: |
+        podSecurityContext:
+          enabled: 'false'
+        containerSecurityContext:
+          enabled: 'false'
+        matomoUsername: user
+        matomoPassword: password
+        mariadb:
+          primary:
+            containerSecurityContext:
+              enabled: 'false'
+            podSecurityContext:
+              enabled: 'false'
+          secondary:
+            podSecurityContext:
+              enabled: 'false'
+            containerSecurityContext:
+              enabled: 'false'
+          auth:
+            rootPassword: secretpassword
+  project: gabbar 
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
