@@ -126,6 +126,8 @@ pipeline-charts:
         - name: timeout
           value: "180"
       - taskName: stakater-e2e-test-v1
+        params:
+          - name: namespace
   triggertemplate:
     serviceAccountName: stakater-tekton-builder
   eventlistener:
