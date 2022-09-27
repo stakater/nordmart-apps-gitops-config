@@ -1,0 +1,35 @@
+apiVersion: tronador.stakater.com/v1alpha2
+kind: Environment
+metadata:
+  name: pr-187-stakater-nordmart-review-ui-ecf1b752
+spec:
+  namespaceLabels:
+    stakater.com/kind: pr
+    stakater.com/tenant: test2
+  application:
+    gitRepository:
+      gitImplementation: go-git
+      interval: 1m0s
+      ref:
+        branch: MuneebAijaz-patch-2
+      timeout: 20s
+      url: https://github.com/stakater-lab/stakater-nordmart-review-ui
+    release:
+      chart:
+        spec:
+          chart: deploy
+          reconcileStrategy: ChartVersion
+          sourceRef:
+            kind: GitRepository
+            name: dte-MuneebAijaz-patch-2
+          version: '*'
+      interval: 1m0s
+      releaseName: MuneebAijaz-patch-2
+      valuesFrom:
+        null
+      values:
+        application:
+          deployment:
+            image:
+              repository: nexus-docker-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/stakater-nordmart-review-ui
+              tag: SNAPSHOT-PR-187-ecf1b752
