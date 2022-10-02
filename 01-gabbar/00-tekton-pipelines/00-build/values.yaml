@@ -114,7 +114,7 @@ pipeline-charts:
       - taskName: stakater-app-sync-and-wait-v1
         params:
         - name: timeout
-          value: "120"
+          value: "300"
   triggertemplate:
     serviceAccountName: stakater-tekton-builder
     pipelineRunNamePrefix: $(tt.params.repoName)-$(tt.params.prnumberBranch)
