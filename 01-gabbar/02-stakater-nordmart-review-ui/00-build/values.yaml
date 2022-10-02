@@ -124,7 +124,7 @@ pipeline-charts:
       - taskName: stakater-app-sync-and-wait-v1
         params:
         - name: timeout
-          value: "180"
+          value: "300"
       - taskName: stakater-e2e-test-v1
         params:
           - name: namespace
