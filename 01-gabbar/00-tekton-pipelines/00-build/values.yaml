@@ -7,19 +7,20 @@ stakater-tekton-chart:
         resourcesRequestsStorage: 1Gi
   pipelines:
     finally:
-      - taskName: stakater-set-commit-status-v1
+      - defaultTaskName: stakater-set-commit-status-v1
         name: set-commit-status-task-result
-      - taskName: stakater-notify-slack-v1
+      - taskRef:
+          task: stakater-notify-slack-v1
+          kind: ClusterTask
         name: notify-slack
         params:
-        - name: namespace
-        - name: author
-        - name: gitrevision
-        - name: repo
-          value: $(params.repoName)
-        - name: gitrepositoryurl
-        - name: tekton-base-url
-        - name: prnumber
+          - name: namespace
+          - name: author
+          - name: gitrevision
+          - name: repo
+            value: $(params.repoName)
+          - name: gitrepositoryurl
+          - name: tekton-base-url
     tasks:
       - defaultTaskName: stakater-set-commit-status-v1
         params:
