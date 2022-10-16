@@ -1,5 +1,5 @@
 stakater-tekton-chart:
-  name: stakater-nordmart-review-ui-pipeline
+  name: stakater-nordmart-review-ui
   workspaces:
     - name: source
       volumeClaimTemplate:
