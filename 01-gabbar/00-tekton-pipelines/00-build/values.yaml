@@ -21,6 +21,7 @@ stakater-tekton-chart:
             value: $(params.repoName)
           - name: gitrepositoryurl
           - name: tekton-base-url
+          - name: prnumber
     tasks:
       - defaultTaskName: stakater-set-commit-status-v1
         params:
