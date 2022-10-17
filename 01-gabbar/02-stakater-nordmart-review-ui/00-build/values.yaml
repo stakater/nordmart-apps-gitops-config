@@ -115,6 +115,8 @@ stakater-tekton-chart:
           - name: timeout
             value: "300"
       - defaultTaskName: stakater-e2e-test-v1
+        params:
+          - name: namespace
   triggertemplate:
     serviceAccountName: stakater-tekton-builder
     pipelineRunNamePrefix: $(tt.params.repoName)-$(tt.params.prnumberBranch)
