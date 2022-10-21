@@ -108,8 +108,18 @@ stakater-tekton-chart:
   triggertemplate:
     serviceAccountName: stakater-tekton-builder
     pipelineRunNamePrefix: $(tt.params.repoName)-$(tt.params.prnumberBranch)
+    pipelineRunPodTemplate:
+      tolerations:
+        - key: "pipeline"
+          operator: "Exists"
+          effect: "NoExecute"
   eventlistener:
     serviceAccountName: stakater-tekton-builder
+    podTemplate:
+      tolerations:
+        - key: "pipeline"
+          operator: "Exists"
+          effect: "NoExecute"
     triggers:
     - name: stakater-pr-cleaner-v2-pullrequest-merge
       create: false
