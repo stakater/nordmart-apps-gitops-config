@@ -127,11 +127,6 @@ stakater-tekton-chart:
           effect: "NoExecute"
   eventlistener:
     serviceAccountName: stakater-tekton-builder
-    podTemplate:
-      tolerations:
-        - key: "pipeline"
-          operator: "Exists"
-          effect: "NoExecute"
     triggers:
       - name: stakater-pr-cleaner-v2-pullrequest-merge
         create: false
