@@ -31,14 +31,8 @@ stakater-tekton-chart:
           - name: gitrepositoryurl
           - name: tekton-base-url
           - name: prnumber
-      - taskRef:
-          task: stakater-remove-environment-v1
-          kind: ClusterTask
+      - defaultTaskName: stakater-remove-environment-v1
         name: remove-environment
-        when:
-          - input: $(tasks.stakater-update-cd-repo-v3.status)
-            operator: notin
-            values: ["Succeeded"]
     tasks:  
       - defaultTaskName: stakater-set-commit-status-v1
         params:
@@ -46,6 +40,7 @@ stakater-tekton-chart:
             value: pending
       - defaultTaskName: git-clone
       - defaultTaskName: stakater-create-git-tag-v1
+      - defaultTaskName: stakater-create-environment-v2
       - defaultTaskName: stakater-code-linting-v1
       - defaultTaskName: stakater-kube-linting-v1
         params:
@@ -115,7 +110,6 @@ stakater-tekton-chart:
           - rox-image-check
           - stakater-checkov-scan-v1
       - defaultTaskName: stakater-helm-push-v1
-      - defaultTaskName: stakater-create-environment-v2
       - defaultTaskName: stakater-update-cd-repo-v3
       - defaultTaskName: stakater-push-main-tag-v1
       - defaultTaskName: stakater-app-sync-and-wait-v1
