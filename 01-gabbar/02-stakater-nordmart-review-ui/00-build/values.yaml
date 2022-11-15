@@ -50,7 +50,7 @@ stakater-tekton-chart:
           - name: namespace
             value: $(context.pipelineRun.namespace)
         runAfter:
-          - stakater-create-git-tag-v1
+          - stakater-create-environment-v2
       - defaultTaskName: stakater-unit-test-v1
         runAfter:
           - stakater-kube-linting-v1
