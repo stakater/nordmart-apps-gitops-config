@@ -41,6 +41,9 @@ stakater-tekton-chart:
       - defaultTaskName: git-clone
       - defaultTaskName: stakater-create-git-tag-v1
       - defaultTaskName: stakater-create-environment-v2
+        params:
+        - name: createOnCluster
+          value: "true"
       - defaultTaskName: stakater-code-linting-v1
       - defaultTaskName: stakater-kube-linting-v1
         params:
