@@ -31,13 +31,16 @@ stakater-tekton-chart:
           - name: gitrepositoryurl
           - name: tekton-base-url
           - name: prnumber
-    tasks:
+      - defaultTaskName: stakater-remove-environment-v1
+        name: remove-environment
+    tasks:  
       - defaultTaskName: stakater-set-commit-status-v1
         params:
           - name: state
             value: pending
       - defaultTaskName: git-clone
       - defaultTaskName: stakater-create-git-tag-v1
+      - defaultTaskName: stakater-create-environment-v2
       - defaultTaskName: stakater-code-linting-v1
       - defaultTaskName: stakater-kube-linting-v1
         params:
@@ -107,7 +110,6 @@ stakater-tekton-chart:
           - rox-image-check
           - stakater-checkov-scan-v1
       - defaultTaskName: stakater-helm-push-v1
-      - defaultTaskName: stakater-create-environment-v1
       - defaultTaskName: stakater-update-cd-repo-v3
       - defaultTaskName: stakater-push-main-tag-v1
       - defaultTaskName: stakater-app-sync-and-wait-v1
