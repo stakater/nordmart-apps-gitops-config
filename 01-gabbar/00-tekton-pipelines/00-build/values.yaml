@@ -104,7 +104,6 @@ stakater-tekton-chart:
         - rox-image-check
         - stakater-checkov-scan-v1
       - defaultTaskName: stakater-helm-push-v1
-      - defaultTaskName: stakater-create-environment-v1
       - defaultTaskName: stakater-update-cd-repo-v3
       - defaultTaskName: stakater-push-main-tag-v1
       - defaultTaskName: stakater-app-sync-and-wait-v1
