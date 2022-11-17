@@ -1,7 +1,7 @@
 apiVersion: tronador.stakater.com/v1alpha2
 kind: Environment
 metadata:
-  name: pr-216-stakater-nordmart-review-ui-d5bb7962
+  name: pr-216-stakater-nordmart-review-ui-dabc4168
 spec:
   namespaceLabels:
     stakater.com/kind: pr
@@ -32,4 +32,4 @@ spec:
           deployment:
             image:
               repository: nexus-docker-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/stakater-nordmart-review-ui
-              tag: snapshot-pr-216-d5bb7962
+              tag: snapshot-pr-216-dabc4168
