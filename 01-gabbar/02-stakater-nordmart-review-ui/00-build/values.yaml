@@ -7,15 +7,15 @@ stakater-tekton-chart:
         resourcesRequestsStorage: 1Gi
   pipelines:
     finally:
-      - defaultTaskName: stakater-update-cd-repo-v3
-        name: stakater-rollback-cd-repo
-        when:
-          - input: $(tasks.stakater-e2e-test-v1.status)
-            operator: in
-            values: [ “Failed” ]
-        params:
-          - name: IMAGE_TAG
-            value: $(tasks.stakater-create-git-tag-v1.results.CURRENT_GIT_TAG)
+#       - defaultTaskName: stakater-update-cd-repo-v3
+#         name: stakater-rollback-cd-repo
+#         when:
+#           - input: $(tasks.stakater-e2e-test-v1.status)
+#             operator: in
+#             values: [ “Failed” ]
+#         params:
+#           - name: IMAGE_TAG
+#             value: $(tasks.stakater-create-git-tag-v1.results.CURRENT_GIT_TAG)
       - defaultTaskName: stakater-set-commit-status-v1
         name: set-commit-status-task-result
       - taskRef:
@@ -119,9 +119,9 @@ stakater-tekton-chart:
         params:
           - name: timeout
             value: "900"
-      - defaultTaskName: stakater-e2e-test-v1
-        params:
-          - name: namespace
+#       - defaultTaskName: stakater-e2e-test-v1
+#         params:
+#           - name: namespace
   triggertemplate:
     serviceAccountName: stakater-tekton-builder
     pipelineRunNamePrefix: $(tt.params.repoName)-$(tt.params.prnumberBranch)
