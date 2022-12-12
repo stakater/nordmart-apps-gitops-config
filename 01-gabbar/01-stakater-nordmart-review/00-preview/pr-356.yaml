@@ -1,7 +1,7 @@
 apiVersion: tronador.stakater.com/v1alpha2
 kind: Environment
 metadata:
-  name: pr-356-stakater-nordmart-review-ba94adbf
+  name: pr-356-stakater-nordmart-review-8f06d23b
 spec:
   namespaceLabels:
     stakater.com/kind: pr
@@ -32,4 +32,4 @@ spec:
           deployment:
             image:
               repository: nexus-docker-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/stakater-nordmart-review
-              tag: snapshot-pr-356-ba94adbf
+              tag: snapshot-pr-356-8f06d23b
