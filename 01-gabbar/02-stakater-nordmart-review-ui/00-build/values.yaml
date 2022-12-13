@@ -120,8 +120,8 @@ stakater-tekton-chart:
           - name: TIMEOUT
             value: "300"
         taskRef:
-          kind: Task
-          task: stakater-validate-environment-1.0.0-testing
+          kind: ClusterTask
+          task: stakater-validate-environment-1.0.1
         workspaces:
           - name: source
             workspace: source
