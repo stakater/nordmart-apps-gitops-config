@@ -109,7 +109,7 @@ stakater-tekton-chart:
       - name: stakater-validate-environment
         params:
           - name: TIMEOUT
-            value: 300
+            value: "300"
         taskRef:
           kind: Task
           task: stakater-validate-environment-1.0.0-testing
