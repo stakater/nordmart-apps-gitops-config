@@ -106,10 +106,16 @@ stakater-tekton-chart:
       - defaultTaskName: stakater-helm-push-v1
       - defaultTaskName: stakater-update-cd-repo-v3
       - defaultTaskName: stakater-push-main-tag-v1
-      - defaultTaskName: stakater-app-sync-and-wait-v1
+      - name: stakater-validate-environment
         params:
-        - name: timeout
-          value: "900"
+          - name: TIMEOUT
+            value: 300
+        taskRef:
+          kind: Task
+          task: stakater-validate-environment-1.0.0-testing
+        workspaces:
+          - name: source
+            workspace: source
   triggertemplate:
     serviceAccountName: stakater-tekton-builder
     pipelineRunNamePrefix: $(tt.params.repoName)-$(tt.params.prnumberBranch)
