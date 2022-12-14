@@ -53,7 +53,7 @@ stakater-tekton-chart:
           kind: Task
           task: stakater-create-environment-1.0.0-testing
         workspaces:
-          - name: source
+          - name: output
             workspace: source
       - defaultTaskName: stakater-code-linting-v1
       - defaultTaskName: stakater-kube-linting-v1
