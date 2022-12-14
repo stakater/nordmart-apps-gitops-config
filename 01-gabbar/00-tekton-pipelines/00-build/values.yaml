@@ -50,8 +50,8 @@ stakater-tekton-chart:
         - name: PULL_REQUEST_COMMITS_API
           value: $(params.pull_request_commits_api)
         taskRef:
-          kind: ClusterTask
-          task: stakater-create-environment-1.0.1
+          kind: Task
+          task: stakater-create-environment-1.0.2-testing
         workspaces:
           - name: output
             workspace: source
