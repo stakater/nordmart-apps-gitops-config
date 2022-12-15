@@ -139,6 +139,8 @@ stakater-tekton-chart:
         params:
           - name: TIMEOUT
             value: "300"
+          - name: PR_NUMBER
+            value: $(params.prnumber)
         taskRef:
           kind: Task
           task: stakater-validate-environment-1.0.2-testing
