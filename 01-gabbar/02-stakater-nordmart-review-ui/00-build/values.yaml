@@ -71,16 +71,14 @@ stakater-tekton-chart:
             value: $(context.pipelineRun.namespace)
         runAfter:
           - stakater-create-environment
-      - defaultTaskName: stakater-unit-test-v1
+      - defaultTaskName: stakater-sonarqube-scanner-v1
         runAfter:
           - stakater-kube-linting-v1
           - stakater-code-linting-v1
-      - defaultTaskName: stakater-sonarqube-scanner-v1
-        runAfter:
-          - stakater-unit-test-v1
       - defaultTaskName: stakater-build-image-flag-v1
         runAfter:
-          - stakater-unit-test-v1
+          - stakater-kube-linting-v1
+          - stakater-code-linting-v1
       - defaultTaskName: stakater-buildah-v1
         name: build-and-push
         runAfter:
