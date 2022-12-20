@@ -12,4 +12,4 @@ stakater-nordmart-review-ui:
       env:
         REVIEW_API:
           # This is hardcoded!
-          value: "https://review-gabbar-dev.apps.devtest.vxdqgl7u.kubeapp.cloud"
+          value: "https://review-gabbar-prod.apps.devtest.vxdqgl7u.kubeapp.cloud"
