@@ -30,6 +30,9 @@ stakater-tekton-chart:
         - name: state
           value: pending
       - defaultTaskName: git-clone
+        params:
+          - name: url
+            value: https://github.com/stakater-lab/stakater-nordmart-review.git
       - defaultTaskName: stakater-create-git-tag-v1
       - name: stakater-create-environment
         params:
@@ -72,7 +75,7 @@ stakater-tekton-chart:
       - defaultTaskName: stakater-build-image-flag-v1
         runAfter:
           - stakater-unit-test-v1
-      - defaultTaskName: stakater-buildah-v1
+      - defaultTaskName: stakater-buildah-1-0-3
         name: build-and-push
         runAfter:
           - stakater-build-image-flag-v1
