@@ -89,7 +89,7 @@ stakater-tekton-chart:
         runAfter:
         - build-and-push
         - stakater-sonarqube-scanner-v1
-      - defaultTaskName: rox-image-scan
+      - defaultTaskName: rox-image-scan-v2
         params:
         - name: image_digest
           value: $(tasks.build-and-push.results.IMAGE_DIGEST)
@@ -98,7 +98,7 @@ stakater-tekton-chart:
         runAfter:
         - build-and-push
         - stakater-sonarqube-scanner-v1
-      - defaultTaskName: rox-image-check
+      - defaultTaskName: rox-image-check-v2
         params:
           - name: BUILD_IMAGE
             value: $(tasks.stakater-build-image-flag-v1.results.build-image)
@@ -122,9 +122,9 @@ stakater-tekton-chart:
       - defaultTaskName: stakater-comment-on-github-pr-v2
         runAfter:
         - stakater-trivy-scan-v1
-        - rox-deployment-check
-        - rox-image-scan
-        - rox-image-check
+        - rox-deployment-check-v2
+        - rox-image-scan-v2
+        - rox-image-check-v2
         - stakater-checkov-scan-v1
       - defaultTaskName: stakater-helm-push-v2
       - defaultTaskName: stakater-update-cd-repo-v4
