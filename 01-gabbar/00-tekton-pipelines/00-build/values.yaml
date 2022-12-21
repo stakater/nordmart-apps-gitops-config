@@ -33,7 +33,7 @@ stakater-tekton-chart:
         params:
           - name: url
             value: https://github.com/stakater-lab/stakater-nordmart-review.git
-      - defaultTaskName: stakater-create-git-tag-v1
+      - defaultTaskName: stakater-create-git-tag-v2
       - name: stakater-create-environment
         params:
         - name: CREATE_ON_CLUSTER
@@ -47,7 +47,7 @@ stakater-tekton-chart:
         - name: GIT_BRANCH
           value: $(params.gitbranch)
         - name: IMAGE_TAG
-          value: $(tasks.stakater-create-git-tag-v1.results.GIT_TAG)
+          value: $(tasks.stakater-create-git-tag-v2.results.GIT_TAG)
         - name: IMAGE_REPO
           value: $(params.image_registry_url)
         - name: PULL_REQUEST_COMMITS_API
