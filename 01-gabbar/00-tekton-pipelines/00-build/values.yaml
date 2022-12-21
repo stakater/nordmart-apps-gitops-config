@@ -119,7 +119,7 @@ stakater-tekton-chart:
         runAfter:
         - build-and-push
         - stakater-sonarqube-scanner-v1
-      - defaultTaskName: stakater-comment-on-github-pr-1.0.1
+      - defaultTaskName: stakater-comment-on-github-pr-v2
         runAfter:
         - stakater-trivy-scan-v1
         - rox-deployment-check
