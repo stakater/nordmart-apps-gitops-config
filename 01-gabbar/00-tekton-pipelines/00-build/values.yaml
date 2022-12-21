@@ -7,7 +7,7 @@ stakater-tekton-chart:
         resourcesRequestsStorage: 1Gi
   pipelines:
     finally:
-      - defaultTaskName: stakater-remove-environment-v1
+      - defaultTaskName: stakater-remove-environment-v2
         name: remove-environment
       - defaultTaskName: stakater-set-commit-status-v1
         name: set-commit-status-task-result
