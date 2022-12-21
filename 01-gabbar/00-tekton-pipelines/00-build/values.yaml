@@ -82,6 +82,8 @@ stakater-tekton-chart:
         params:
           - name: BUILD_IMAGE
             value: $(tasks.stakater-build-image-flag-v1.results.build-image)
+          - name: GIT_DEPENDENCY_TOKEN
+            value: 'nil'
       - defaultTaskName: stakater-trivy-scan-v2
         params:
           - name: BUILD_IMAGE
