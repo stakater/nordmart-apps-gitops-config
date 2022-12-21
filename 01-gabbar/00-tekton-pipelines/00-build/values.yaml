@@ -82,7 +82,7 @@ stakater-tekton-chart:
         params:
           - name: BUILD_IMAGE
             value: $(tasks.stakater-build-image-flag-v1.results.build-image)
-      - defaultTaskName: stakater-trivy-scan-v1
+      - defaultTaskName: stakater-trivy-scan-v2
         params:
           - name: BUILD_IMAGE
             value: $(tasks.stakater-build-image-flag-v1.results.build-image)
@@ -121,7 +121,7 @@ stakater-tekton-chart:
         - stakater-sonarqube-scanner-v1
       - defaultTaskName: stakater-comment-on-github-pr-v2
         runAfter:
-        - stakater-trivy-scan-v1
+        - stakater-trivy-scan-v2
         - rox-deployment-check
         - rox-image-scan-v2
         - rox-image-check-v2
