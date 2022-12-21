@@ -119,16 +119,16 @@ stakater-tekton-chart:
         runAfter:
         - build-and-push
         - stakater-sonarqube-scanner-v1
-      - defaultTaskName: stakater-comment-on-github-pr-v1
+      - defaultTaskName: stakater-comment-on-github-pr-1.0.1
         runAfter:
         - stakater-trivy-scan-v1
         - rox-deployment-check
         - rox-image-scan
         - rox-image-check
         - stakater-checkov-scan-v1
-      - defaultTaskName: stakater-helm-push-v1
-      - defaultTaskName: stakater-update-cd-repo-v3
-      - defaultTaskName: stakater-push-main-tag-v1
+      - defaultTaskName: stakater-helm-push-v2
+      - defaultTaskName: stakater-update-cd-repo-v4
+      - defaultTaskName: stakater-push-main-tag-v2
       - name: stakater-validate-environment
         params:
           - name: TIMEOUT
