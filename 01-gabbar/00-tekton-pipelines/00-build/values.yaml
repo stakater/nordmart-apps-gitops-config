@@ -122,7 +122,7 @@ stakater-tekton-chart:
       - defaultTaskName: stakater-comment-on-github-pr-v2
         runAfter:
         - stakater-trivy-scan-v1
-        - rox-deployment-check-v2
+        - rox-deployment-check
         - rox-image-scan-v2
         - rox-image-check-v2
         - stakater-checkov-scan-v1
