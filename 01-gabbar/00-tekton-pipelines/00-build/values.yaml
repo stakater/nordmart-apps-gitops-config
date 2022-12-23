@@ -5,6 +5,9 @@ stakater-tekton-chart:
       volumeClaimTemplate:
         accessModes: ReadWriteOnce
         resourcesRequestsStorage: 1Gi
+    - name: buildah-git_dependency-token
+      secret:
+        secretName: stakater-ab-toke
   pipelines:
     finally:
       - defaultTaskName: stakater-remove-environment-v2
