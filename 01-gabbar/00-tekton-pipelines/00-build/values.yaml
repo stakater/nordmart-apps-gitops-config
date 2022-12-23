@@ -5,9 +5,6 @@ stakater-tekton-chart:
       volumeClaimTemplate:
         accessModes: ReadWriteOnce
         resourcesRequestsStorage: 1Gi
-    - name: buildah-git_dependency-token
-      secret:
-        secretName: stakater-ab-token
   pipelines:
     finally:
       - defaultTaskName: stakater-remove-environment-v2
@@ -78,19 +75,13 @@ stakater-tekton-chart:
       - defaultTaskName: stakater-build-image-flag-v1
         runAfter:
           - stakater-unit-test-v1
-      - defaultTaskName: stakater-buildah-1-0-3
+      - defaultTaskName: stakater-buildah-1-0-4
         name: build-and-push
         runAfter:
           - stakater-build-image-flag-v1
         params:
           - name: BUILD_IMAGE
             value: $(tasks.stakater-build-image-flag-v1.results.build-image)
-          - name: GIT_DEPENDENCY_TOKEN
-            value: 'nil'
-        workspaces:
-          - name: buildah-git_dependency-token
-            workspace: buildah-git_dependency-token
-        
       - defaultTaskName: stakater-trivy-scan-v2
         params:
           - name: BUILD_IMAGE
