@@ -32,4 +32,4 @@ spec:
           deployment:
             image:
               repository: nexus-docker-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/stakater-nordmart-review
-              tag: snapshot-pr-408-1a7f52ea
+              tag: snapshot-pr-408-60b217b1
