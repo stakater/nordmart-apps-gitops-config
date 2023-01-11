@@ -1,0 +1,37 @@
+apiVersion: tronador.stakater.com/v1alpha2
+kind: Environment
+metadata:
+  annotations:
+    stakater.com/repo-name: stakater-nordmart-review
+  name: pr-410-stakater-nordmart-review-3a7436b2
+spec:
+  namespaceLabels:
+    stakater.com/kind: pr
+    stakater.com/tenant: gabbar
+  application:
+    gitRepository:
+      gitImplementation: go-git
+      interval: 1m0s
+      ref:
+        branch: renovate/org.apache.maven.plugins-maven-checkstyle-plugin-3.x
+      timeout: 20s
+      url: https://github.com/stakater-lab/stakater-nordmart-review
+    release:
+      chart:
+        spec:
+          chart: deploy
+          reconcileStrategy: ChartVersion
+          sourceRef:
+            kind: GitRepository
+            name: dte-renovate/org.apache.maven.plugins-maven-checkstyl
+          version: '*'
+      interval: 1m0s
+      releaseName: renovate/org.apache.maven.plugins-maven-checkstyl
+      valuesFrom:
+        null
+      values:
+        application:
+          deployment:
+            image:
+              repository: nexus-docker-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/stakater-nordmart-review
+              tag: snapshot-pr-410-3a7436b2
