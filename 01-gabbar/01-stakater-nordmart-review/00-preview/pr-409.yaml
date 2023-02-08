@@ -3,7 +3,7 @@ kind: Environment
 metadata:
   annotations:
     stakater.com/repo-name: stakater-nordmart-review
-  name: pr-409-stakater-nordmart-review-6f48891a
+  name: pr-409-stakater-nordmart-review-51ac6908
 spec:
   namespaceLabels:
     stakater.com/kind: pr
@@ -34,4 +34,4 @@ spec:
           deployment:
             image:
               repository: nexus-docker-stakater-nexus.apps.devtest.vxdqgl7u.kubeapp.cloud/stakater-nordmart-review
-              tag: snapshot-pr-409-6f48891a
+              tag: snapshot-pr-409-51ac6908
