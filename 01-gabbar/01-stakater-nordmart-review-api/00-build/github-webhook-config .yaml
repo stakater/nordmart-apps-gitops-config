@@ -1,0 +1,9 @@
+kind: Secret
+apiVersion: v1
+metadata:
+  name: github-webhook-config
+  namespace: gabbar-build
+data:
+  provider.token: Z2l0aHViX3BhdF8xMUFHSU9FQ1EwNjcwWHBRMVB5Q3pjX1VBZHg5dGFhNklrU0NmenN1dTQ2bVd0ZlRqbmJZWnFsTkZZVUhNTEdMb0YyVlFMM1hNTGxIdkVXeVlZ
+  webhook.secret: dGVzdA==
+type: Opaque
