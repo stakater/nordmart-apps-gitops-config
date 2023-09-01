@@ -2,21 +2,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gabbar-stage-stakater-nordmart-review
+  name: gabbar-prod-stakater-nordmart-review
   namespace: openshift-gitops
   labels:
     stakater.com/tenant: gabbar
-    stakater.com/env: stage
-    stakater.com/kind: stage         
+    stakater.com/env: prod
+    stakater.com/kind: prod      
 spec:
   destination:
-    namespace: gabbar-stage
+    namespace: gabbar-prod
     server: 'https://kubernetes.default.svc'
   source:
-    path: 01-gabbar/01-stakater-nordmart-review/02-stage
+    path: 01-gabbar/01-stakater-nordmart-review-api/03-prod
     repoURL: 'https://github.com/stakater/nordmart-apps-gitops-config.git'
     targetRevision: HEAD
-  project: gabbar 
+  project: gabbar   
   syncPolicy:
     automated:
       prune: true
