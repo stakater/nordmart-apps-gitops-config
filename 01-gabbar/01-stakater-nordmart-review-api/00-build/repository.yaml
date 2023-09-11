@@ -1,13 +1,13 @@
-apiVersion: "pipelinesascode..dev/v1alpha1"
+apiVersion: pipelinesascode.tekton.dev/v1alpha1
 kind: Repository
 metadata:
-  name: stakater-nordmart-review-api
-  namespace: gabbar-build
+  name: git-stakater-nordmart-review-api-git
 spec:
-  url: "https://github.com/stakater-lab/stakater-nordmart-review-api.git"
   git_provider:
     secret:
-      name: "github-webhook-config"
-  webhook_secret:
-    name: "github-webhook-config"
-    key: "webhook.secret"
+      key: provider.token
+      name: scm-webhook-creds
+    webhook_secret:
+      key: webhook.secret
+      name: scm-webhook-creds
+  url: 'https://github.com/AsfaMumtaz/stakater-nordmart-review-api'

@@ -1,0 +1,25 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: scm-webhook-creds
+spec:
+  secretStoreRef:
+    name: tenant-vault-secret-store
+    kind: SecretStore
+  refreshInterval: "1m0s"
+  target:
+    name: scm-webhook-creds
+    creationPolicy: 'Owner'
+    template:
+      data:
+        provider.token: "{{ .password | toString }}"
+        webhook.secret: "{{ .secret | toString }}"
+  data:
+    - secretKey: password
+      remoteRef:
+        key: pat-config
+        property: password
+    - secretKey: secret
+      remoteRef:
+        key: webhook-secret
+        property: secret
