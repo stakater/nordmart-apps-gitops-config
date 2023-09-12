@@ -1,20 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: signport-dev
+  name: chelsea-stage
   namespace: rh-openshift-gitops-instance
 spec:
   destination:
-    namespace: signport-dev
+    namespace: rh-openshift-gitops-instance
     server: 'https://kubernetes.default.svc'
   source:
-    path: argocd-apps/
-    repoURL: 'https://github.com/stakater/signport.git'
+    path: 02-chelsea/00-argocd-apps/02-stage/
+    repoURL: 'https://github.com/stakater/gitops-config-template.git'
     targetRevision: main
     directory:
-       recurse: true
-  project: signport
+      recurse: true
+  project: chelsea
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+

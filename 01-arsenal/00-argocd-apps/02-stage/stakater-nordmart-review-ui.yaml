@@ -1,0 +1,24 @@
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: arsenal-stage-stakater-nordmart-review-ui
+  namespace: rh-openshift-gitops-instance
+  labels:
+    stakater.com/tenant: arsenal
+    stakater.com/env: stage
+    stakater.com/kind: stage     
+spec:
+  destination:
+    namespace: arsenal-stage
+    server: 'https://kubernetes.default.svc'
+  project: arsenal
+  source:
+    path: 01-arsenal/02-stakater-nordmart-review-ui/02-stage
+    repoURL: 'https://github.com/stakater/nordmart-apps-gitops-config.git'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+

@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: arsenal-build-tekton-pipelines
+  namespace: rh-openshift-gitops-instance
+  labels:
+    stakater.com/tenant: arsenal
+    stakater.com/env: build
+    stakater.com/kind: build    
+spec:
+  destination:
+    namespace: arsenal-build
+    server: 'https://kubernetes.default.svc'
+  project: arsenal
+  source:
+    path: 01-arsenal/00-tekton-pipelines/00-build
+    repoURL: 'https://github.com/stakater/nordmart-apps-gitops-config.git'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

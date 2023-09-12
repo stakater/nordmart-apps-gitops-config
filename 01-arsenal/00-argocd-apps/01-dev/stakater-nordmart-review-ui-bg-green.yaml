@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: arsenal-dev-stakater-nordmart-review-ui-bg-green
+  namespace: rh-openshift-gitops-instance
+  labels:
+    stakater.com/tenant: arsenal
+    stakater.com/env: dev
+    stakater.com/kind: dev            
+spec:
+  destination:
+    namespace: arsenal-dev
+    server: 'https://kubernetes.default.svc'
+  project: arsenal
+  source:
+    path: 01-arsenal/03-stakater-nordmart-review-ui-bg-green/01-dev
+    repoURL: 'https://github.com/stakater/nordmart-apps-gitops-config.git'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

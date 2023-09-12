@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: chelsea-build-inventory
+  namespace: rh-openshift-gitops-instance 
+  labels:
+    stakater.com/tenant: chelsea
+    stakater.com/env: build
+    stakater.com/kind: build     
+spec:
+  destination:
+    namespace: chelsea-build
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: 02-chelsea/01-stakater-nordmart-inventory/00-build
+    repoURL: 'https://github.com/stakater/nordmart-apps-gitops-config.git'
+    targetRevision: main
+  project: chelsea
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
