@@ -67,8 +67,8 @@ We have 2 clusters:
 
 We have 2 product based tenants; who have exactly same structure
 
-1. gabbar
-2. veeru
+1. arsenal
+2. chelsea
 
 ### Multiple apps
 

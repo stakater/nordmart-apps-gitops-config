@@ -1,19 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: signport-dev
+  name: arsenal-prod
   namespace: rh-openshift-gitops-instance
 spec:
   destination:
-    namespace: signport-dev
+    namespace: rh-openshift-gitops-instance
     server: 'https://kubernetes.default.svc'
   source:
-    path: argocd-apps/
-    repoURL: 'https://github.com/stakater/signport.git'
+    path: 01-arsenal/00-argocd-apps/03-prod/
+    repoURL: 'https://github.com/stakater/nordmart-apps-gitops-config.git'
     targetRevision: main
     directory:
        recurse: true
-  project: signport
+  project: arsenal
   syncPolicy:
     automated:
       prune: true

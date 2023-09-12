@@ -1,0 +1,20 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: nordmart-ssh-creds
+spec:
+  secretStoreRef:
+    name: tenant-vault-secret-store
+    kind: SecretStore
+  refreshInterval: "1m0s"
+  target:
+    name: nordmart-ssh-creds
+    creationPolicy: 'Owner'
+    template:
+      data:
+        id_rsa: "{{ .id_rsa | toString }}"
+  data:
+    - secretKey: id_rsa
+      remoteRef:
+        key: ssh-config
+        property: id_rsa
