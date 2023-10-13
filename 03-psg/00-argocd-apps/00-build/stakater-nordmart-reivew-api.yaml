@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: psg-build-stakater-nordmart-reivew
+  namespace: rh-openshift-gitops-instance
+  labels:
+    stakater.com/tenant: psg
+    stakater.com/env: build
+    stakater.com/kind: build
+spec:
+  destination:
+    namespace: psg-build
+    server: 'https://kubernetes.default.svc'
+  project: psg
+  source:
+    path: 03-psg/01-stakater-nordmart-review-api/00-build
+    repoURL: 'https://github.com/stakater/nordmart-apps-gitops-config.git'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

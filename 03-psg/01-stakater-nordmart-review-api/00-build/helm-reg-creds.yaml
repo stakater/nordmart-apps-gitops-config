@@ -1,0 +1,18 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: helm-reg-creds
+spec:
+  secretStoreRef:
+    name: tenant-vault-secret-store
+    kind: SecretStore
+  refreshInterval: "1m0s"
+  target:
+    name: helm-reg-creds
+    creationPolicy: 'Owner'
+    template:
+      type: Opaque
+  dataFrom:
+    - extract:
+        conversionStrategy: Default
+        key: helm-reg-creds
