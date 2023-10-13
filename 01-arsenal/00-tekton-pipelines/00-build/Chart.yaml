@@ -1,8 +1,0 @@
-apiVersion: v2
-dependencies:
-  - name: stakater-tekton-chart
-    repository: https://stakater.github.io/stakater-charts
-    version: 3.5.6
-description: Helm chart for Tekton Pipelines
-name: stakater-main-pr-v2
-version: 3.5.6
