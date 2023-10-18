@@ -1,4 +1,4 @@
-stakater-nordmart-review:
+stakater-nordmart-review-api:
   application:
     deployment:
       image:
