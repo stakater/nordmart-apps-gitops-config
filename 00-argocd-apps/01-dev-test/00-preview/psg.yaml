@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: psg-preview
+  namespace: rh-openshift-gitops-instance
+spec:
+  destination:
+    namespace: psg-build
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: 03-psg/00-argocd-apps/01-preview/
+    repoURL: 'https://github.com/stakater/nordmart-apps-gitops-config.git'
+    targetRevision: main
+    directory:
+       recurse: true
+  project: psg
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
