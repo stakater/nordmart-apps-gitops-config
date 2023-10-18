@@ -15,11 +15,11 @@ spec:
         provider.token: "{{ .password | toString }}"
         webhook.secret: "{{ .secret | toString }}"
   data:
-    - secretKey: password
+    - secretKey: pat
       remoteRef:
-        key: pat-config
-        property: password
+        key: scm-webhook-creds
+        property: pat
     - secretKey: secret
       remoteRef:
-        key: webhook-secret
+        key: scm-webhook-creds
         property: secret

@@ -16,5 +16,5 @@ spec:
   data:
     - secretKey: id_rsa
       remoteRef:
-        key: ssh-config
+        key: nordmart-ssh-creds
         property: id_rsa
