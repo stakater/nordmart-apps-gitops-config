@@ -8,7 +8,7 @@ spec:
     namespace: psg-build
     server: 'https://kubernetes.default.svc'
   source:
-    path: 03-psg/00-argocd-apps/01-preview/
+    path: 03-psg/00-argocd-apps/00-preview/
     repoURL: 'https://github.com/stakater/nordmart-apps-gitops-config.git'
     targetRevision: main
     directory:
