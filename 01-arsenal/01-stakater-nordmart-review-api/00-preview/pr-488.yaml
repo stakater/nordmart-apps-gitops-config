@@ -1,0 +1,35 @@
+apiVersion: tronador.stakater.com/v1alpha2
+kind: Environment
+metadata:
+  name: pr-488-stakater-nordmart-review-api-5b345243
+spec:
+  namespaceLabels:
+    stakater.com/kind: pr
+    stakater.com/tenant: psg
+  application:
+    gitRepository:
+      gitImplementation: go-git
+      interval: 1m0s
+      ref:
+        branch: demo-test
+      timeout: 20s
+      url: https://github.com/stakater-lab/stakater-nordmart-review-api.git
+    release:
+      chart:
+        spec:
+          chart: deploy
+          reconcileStrategy: ChartVersion
+          sourceRef:
+            kind: GitRepository
+            name: dte-demo-test
+          version: '*'
+      interval: 1m0s
+      releaseName: demo-test
+      valuesFrom:
+        null
+      values:
+        application:
+          deployment:
+            image:
+              repository: nexus-docker-stakater-nexus.apps.tno1-ams.s9nghh76.lab.kubeapp.cloud/stakater-nordmart-review-api
+              tag: snapshot-pr-488-5b345243
