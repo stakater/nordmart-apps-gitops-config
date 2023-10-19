@@ -3,7 +3,7 @@ stakater-nordmart-review-api:
     deployment:
       image:
         repository: nexus-docker-stakater-nexus.apps.tno1-ams.s9nghh76.lab.kubeapp.cloud/stakater-nordmart-review-api
-        tag: 1.0.54
+        tag: 1.0.55
     externalSecret:
       enabled: true
       secretStore:
