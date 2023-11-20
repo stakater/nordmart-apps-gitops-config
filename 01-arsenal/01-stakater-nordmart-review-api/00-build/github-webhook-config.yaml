@@ -1,0 +1,25 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: github-webhook-config
+spec:
+  secretStoreRef:
+    name: tenant-vault-secret-store
+    kind: SecretStore
+  refreshInterval: "1m0s"
+  target:
+    name: github-webhook-config
+    creationPolicy: 'Owner'
+    template:
+      data:
+        provider.token: "{{ .password | toString }}"
+        webhook.secret: "{{ .secret | toString }}"
+  data:
+  - secretKey: password
+    remoteRef:
+      key: github-webhook-config
+      property: provider.token
+  - secretKey: secret
+    remoteRef:
+      key: github-webhook-config
+      property: webhook.secret
